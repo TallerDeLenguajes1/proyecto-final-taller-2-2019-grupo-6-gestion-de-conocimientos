@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace entidades
+namespace Entidades
 {
-    public abstract class usuario
+    public class usuario
     {
         string apellido { get; set; }
         string nombre { get; set; }
@@ -13,11 +17,11 @@ namespace entidades
 
         public void verNotificacion()
         {
-        
+
         }
         public void crearPregunta(string titulo, string descripcion, string url_imagen)
         {
-            
+
         }
         public void crearPregunta(string titulo, string descripcion)
         {
@@ -51,5 +55,5 @@ namespace entidades
         {
 
         }
-    }
+    }   
 }
