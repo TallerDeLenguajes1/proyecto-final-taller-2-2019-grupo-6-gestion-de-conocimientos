@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{020488F7-3DFD-4556-8BF0-CF6A8230B164}</ProjectGuid>
+    <ProjectGuid>{F6C4874D-9E60-43B5-AD5A-E23EC7D669E1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccesoADatos</RootNamespace>
-    <AssemblyName>AccesoADatos</AssemblyName>
+    <RootNamespace>Entidades</RootNamespace>
+    <AssemblyName>Entidades</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -49,15 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABMUsuario.cs" />
-    <Compile Include="Conexion-Desconexion.cs" />
+    <Compile Include="Pregunta-Respuesta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{F6C4874D-9E60-43B5-AD5A-E23EC7D669E1}</Project>
-      <Name>Entidades</Name>
-    </ProjectReference>
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nlog.config" />
