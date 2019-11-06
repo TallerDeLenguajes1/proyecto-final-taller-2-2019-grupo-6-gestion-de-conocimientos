@@ -64,12 +64,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="vistas\HacerPregunta.xaml.cs">
+      <DependentUpon>HacerPregunta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\VerPreguntas.xaml.cs">
+      <DependentUpon>VerPreguntas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vistas\vistaNotificaciones.xaml.cs">
       <DependentUpon>vistaNotificaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\VistaPregunta.xaml.cs">
+      <DependentUpon>VistaPregunta.xaml</DependentUpon>
     </Compile>
     <Compile Include="vistas\vistaUsuario.xaml.cs">
       <DependentUpon>vistaUsuario.xaml</DependentUpon>
     </Compile>
+    <Page Include="vistas\HacerPregunta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="vistas\login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,7 +95,15 @@
       <DependentUpon>login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="vistas\VerPreguntas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="vistas\vistaNotificaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistas\VistaPregunta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

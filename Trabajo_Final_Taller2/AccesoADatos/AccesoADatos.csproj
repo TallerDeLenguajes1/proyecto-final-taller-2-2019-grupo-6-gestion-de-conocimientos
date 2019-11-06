@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABMRespuesta.cs" />
     <Compile Include="ABMUsuario.cs" />
     <Compile Include="Conexion-Desconexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

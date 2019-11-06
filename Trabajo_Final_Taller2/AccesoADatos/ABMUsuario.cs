@@ -24,7 +24,7 @@ namespace AccesoADatos
                 command.Parameters.AddWithValue("@nombre", txbnombre);
                 command.Parameters.AddWithValue("@apellido,"txbapellido);
                 command.Parameters.AddWithValue("@pais", txbpais);
-                command.Parameters.AddWithValue("email", txbemail);
+                command.Parameters.AddWithValue("@email", txbemail);
                 command.Parameters.AddWithValue("@contraseña", txbcontraseña);
                 command.ExecuteNonQuery();
                 //Desconectar

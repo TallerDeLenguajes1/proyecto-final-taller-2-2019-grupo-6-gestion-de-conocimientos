@@ -16,6 +16,7 @@ namespace Entidades
         string Titulo { get; set; }
         int IdPregunta { get; set; }
         Estado estado;
+
         public Usuario GetUserPregunta()
         {
 

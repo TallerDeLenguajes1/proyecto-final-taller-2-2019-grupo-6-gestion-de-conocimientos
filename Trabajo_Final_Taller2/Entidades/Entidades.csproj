@@ -62,5 +62,11 @@
   <ItemGroup>
     <None Include="Nlog.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccesoADatos\AccesoADatos.csproj">
+      <Project>{974e483e-b0b3-4f85-8f13-bb69c0d0fdf8}</Project>
+      <Name>AccesoADatos</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
