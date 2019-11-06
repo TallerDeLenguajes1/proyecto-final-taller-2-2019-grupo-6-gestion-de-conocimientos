@@ -17,8 +17,10 @@ namespace AccesoADatos
             try
             {
                 //Hacer conexion a la base de datos
+                Conexion_Desconexion.Connection();
                 string query = @"INSERT INTO Usuarios(Nombre,Apellido,Pais,Email,Contraseña) VALUES(@nombre,@apellido,@pais,@email,@contraseña)";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                /*NOTA: placeholders.*/
                 command.Parameters.AddWithValue("@nombre", txbnombre);
                 command.Parameters.AddWithValue("@apellido,"txbapellido);
                 command.Parameters.AddWithValue("@pais", txbpais);
@@ -26,10 +28,11 @@ namespace AccesoADatos
                 command.Parameters.AddWithValue("@contraseña", txbcontraseña);
                 command.ExecuteNonQuery();
                 //Desconectar
+                Conexion_Desconexion.Desconnect();
             }
             catch (Exception ex)
             {
-
+                //Nloggear
                 throw;
             }
         }

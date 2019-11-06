@@ -23,7 +23,7 @@ namespace Entidades
         {
 
         }
-        public override void CrearPregunta(string titulo, string descripcion)
+        public void CrearPregunta(string titulo, string descripcion)
         {
 
         }
@@ -31,7 +31,7 @@ namespace Entidades
         {
 
         }
-        public override void CrearRespuesta(Pregunta pregunta, string titulo, string descripcion)
+        public void CrearRespuesta(Pregunta pregunta, string titulo, string descripcion)
         {
 
         }
