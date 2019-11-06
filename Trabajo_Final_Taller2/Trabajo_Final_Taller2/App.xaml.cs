@@ -6,10 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfApp1
+namespace Trabajo_Final_Taller2
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Lógica de interacción para App.xaml
     /// </summary>
     public partial class App : Application
     {

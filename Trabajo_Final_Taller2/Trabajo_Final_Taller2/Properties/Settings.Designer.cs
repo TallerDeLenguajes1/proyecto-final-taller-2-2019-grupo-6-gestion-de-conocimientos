@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfApp1.Properties
+namespace Trabajo_Final_Taller2.Properties
 {
 
 
