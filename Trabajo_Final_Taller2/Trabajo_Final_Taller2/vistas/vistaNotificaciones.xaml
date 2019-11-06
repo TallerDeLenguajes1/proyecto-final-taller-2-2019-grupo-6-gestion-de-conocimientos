@@ -1,0 +1,23 @@
+﻿<Window x:Class="Trabajo_Final_Taller2.vistas.vistaNotificaciones"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        mc:Ignorable="d"
+        Title="vistaNotificaciones" Height="391" Width="449">
+    <Grid>
+        <ListBox x:Name="lbx_notificaciones" HorizontalAlignment="Left" Height="200" Margin="10,45,0,0" VerticalAlignment="Top" Width="230"/>
+        <Label x:Name="label" Content="Notificaciones" HorizontalAlignment="Left" Margin="70,25,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_borrarNotificacion" Content="Borrar" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btn_irAPregunta" Content="Ir a pregunta" HorizontalAlignment="Left" Margin="165,265,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btn_atrasNotificaciones" Content="Volver" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="label1" Content="Informacion:" HorizontalAlignment="Left" Margin="290,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="105"/>
+        <Label x:Name="lbl_notificacionSelecionada" Content="notificacion seleccionada" HorizontalAlignment="Left" Margin="257,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="150"/>
+        <Label x:Name="lbl_usuario" Content="user" HorizontalAlignment="Left" Margin="307,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="33"/>
+        <Label x:Name="label1_Copy2" Content="Ha respondido tu pregunta" HorizontalAlignment="Left" Margin="249,128,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="162"/>
+        <Label x:Name="lbl_tituloPregunta" Content="titulo pregunta" HorizontalAlignment="Left" Margin="249,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="162"/>
+        <Label x:Name="label1_Copy4" Content="el" HorizontalAlignment="Left" Margin="249,182,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="41"/>
+        <Label x:Name="lbl_fecha" Content="fecha" HorizontalAlignment="Left" Margin="275,182,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="120"/>
+    </Grid>
+</Window>

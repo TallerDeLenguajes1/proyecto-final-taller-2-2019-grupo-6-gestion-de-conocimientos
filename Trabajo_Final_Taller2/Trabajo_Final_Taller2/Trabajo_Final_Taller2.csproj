@@ -64,7 +64,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="vistas\MainWindow.xaml">
+    <Compile Include="vistas\vistaNotificaciones.xaml.cs">
+      <DependentUpon>vistaNotificaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\vistaUsuario.xaml.cs">
+      <DependentUpon>vistaUsuario.xaml</DependentUpon>
+    </Compile>
+    <Page Include="vistas\login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -72,10 +78,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="vistas\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="vistas\login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="vistas\vistaNotificaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistas\vistaUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
