@@ -15,7 +15,7 @@ namespace Entidades
         string Descripcion { get; set; }
         string Titulo { get; set; }
         int IdPregunta { get; set; }
-
+        Estado estado;
         public Usuario GetUserPregunta()
         {
 
@@ -58,7 +58,7 @@ namespace Entidades
         }
         public void SetEstado(Estado estado)
         {
-
+            this.estado = estado;
         }
         public void OrdenarRespuestas()
         {
