@@ -101,8 +101,20 @@ namespace Entidades
         /// <returns></returns>
         public int GetMesesDesdeUltimaResp()
         {
-            // Hacer codigo para calcular diferencia en meses
-            return 0;
+            int Meses;
+            int DiasUltimaResp;
+            float PorcentajeDias;
+            //Tomo la cantidad de dias que hay en el mes actual en el año actual
+            int DiasHoy = DateTime.DaysInMonth(DateTime.Today.Year,DateTime.Today.Month);
+            //Tomo la fecha de la ultima respuesta cargada
+            DateTime ultimaResp = Respuestas.Last().Fecha;
+            //Tomo la cantidad de dias que hay en el mes de la ultima respuesta
+            DiasUltimaResp = DateTime.DaysInMonth(ultimaResp.Year,ultimaResp.Month);
+            //Calculo la diferenicia entre los meses
+            Meses = Math.Abs(12*(DateTime.Today.Year - ultimaResp.Year) + DateTime.Today.Month - ultimaResp.Month) - 1;
+            //Calculo el porcentaje de los dias entre los dos meses
+            PorcentajeDias = ((DiasHoy - DateTime.Today.Day) / DiasHoy) + (ultimaResp.day / DiasUltimaResp);
+            return Meses + PorcentajeDias;
         }
 
         /// <summary>
