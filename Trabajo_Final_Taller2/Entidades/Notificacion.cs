@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Notificacion
+    public class Notificacion
     {
-        int id_user_pregunta;
-        int id_respuesta;
+        public int IdUserPregunta { get; set; }
+        public int IdRespuesta { get; set; }
     }
 }
