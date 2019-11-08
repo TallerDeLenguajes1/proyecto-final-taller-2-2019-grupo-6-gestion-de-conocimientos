@@ -37,7 +37,7 @@
         /// <param name="preg"></param>
         public override void ChequearEstadoSegunUltimaResp(Pregunta preg)
         {
-            if (preg.GetMesesDesdeUltimaPreg() >= 6)
+            if (preg.GetMesesDesdeUltimaResp() >= 6)
             {
                 preg.SetEstado(Inactiva.GetInstancia());
             }
