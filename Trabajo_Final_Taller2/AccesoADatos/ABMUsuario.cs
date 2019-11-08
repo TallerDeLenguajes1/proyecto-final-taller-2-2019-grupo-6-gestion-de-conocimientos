@@ -10,7 +10,7 @@ namespace AccesoADatos
     public class ABMUsuario
     {
         /// <summary>
-        /// 
+        /// Toma los datos de entrada de un nuevo usuario y los inserta a la base de datos
         /// </summary>
         void CargarUsuario()
         {
@@ -22,7 +22,7 @@ namespace AccesoADatos
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 /*NOTA: placeholders.*/
                 command.Parameters.AddWithValue("@nombre", txbnombre);
-                command.Parameters.AddWithValue("@apellido,"txbapellido);
+                command.Parameters.AddWithValue("@apellido",txbapellido);
                 command.Parameters.AddWithValue("@pais", txbpais);
                 command.Parameters.AddWithValue("@email", txbemail);
                 command.Parameters.AddWithValue("@contraseña", txbcontraseña);

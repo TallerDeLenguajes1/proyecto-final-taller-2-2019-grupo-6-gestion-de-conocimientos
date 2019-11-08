@@ -10,26 +10,23 @@ namespace Entidades
         public string UrlImagen { get; set; }
         public DateTime Fecha { get; set; }
         public int Likes { get; set; }
+        public Usuario usuario {get;set;}
+        public Pregunta pregunta {get;set;}
 
         public int GetLikes()
         {
-            return 0;
+            return Likes;
         }
         public void GenerarNotificacion()
         {
-
-        }
-        public Pregunta GetPregunta()
-        {
-
-        }
-        public Usuario GetUserResp()
-        {
-
+            if (pregunta.EmiteNotificacion == true)
+            {
+                Notificacion notif = new Notificacion();
+            }
         }
         public int GetIdRespuesta()
         {
-
+            return IdRespuesta;
         }
     }
 }
