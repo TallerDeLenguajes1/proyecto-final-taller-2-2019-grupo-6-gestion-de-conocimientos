@@ -8,13 +8,14 @@ namespace Entidades
 {
     public class Pregunta
     {
-        List<string> Tags { get; set; }
-        int IdSolucion { get; set; }
-        DateTime Fecha { get; set; }
-        string UrlImagen { get; set; }
-        string Descripcion { get; set; }
-        string Titulo { get; set; }
-        int IdPregunta { get; set; }
+        public List<string> Tags { get; set; }
+        public int IdSolucion { get; set; }
+        public DateTime Fecha { get; set; }
+        public string UrlImagen { get; set; }
+        public string Descripcion { get; set; }
+        public string Titulo { get; set; }
+        public int IdPregunta { get; set; }
+        
         Estado estado;
 
         public Usuario GetUserPregunta()
@@ -72,12 +73,12 @@ namespace Entidades
     }
     public class Respuesta
     {
-        int IdRespuesta { get; set; }
-        string Titulo { get; set; }
-        string Descripcion { get; set; }
-        string UrlImagen { get; set; }
-        DateTime Fecha { get; set; }
-        int Likes { get; set; }
+        public int IdRespuesta { get; set; }
+        public string Titulo { get; set; }
+        public string Descripcion { get; set; }
+        public string UrlImagen { get; set; }
+        public DateTime Fecha { get; set; }
+        public int Likes { get; set; }
 
         public int GetLikes()
         {
