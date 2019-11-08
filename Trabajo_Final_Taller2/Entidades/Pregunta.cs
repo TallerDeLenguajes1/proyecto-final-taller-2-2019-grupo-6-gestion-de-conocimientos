@@ -20,6 +20,7 @@ namespace Entidades
         public Estado GetEstado()
         {
             // SELECT columna de estado en la base de datos
+            
             return Activa.GetInstancia(); //return provisorio
         }
 

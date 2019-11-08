@@ -14,6 +14,7 @@ namespace Entidades
         public string PaisOrigen { get; set; }
         public string Email { get; set; }
         public string Contraseña { get; set; }
+        public DateTime FechaIngreso { get; set; }
 
         public void CrearPregunta(string titulo, string descripcion, string urlImagen)
         {

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace AccesoADatos
 {
-    class Conexion_Desconexion
+    public class Conexion_Desconexion
     {
 
         static readonly string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=nombreDB;"
