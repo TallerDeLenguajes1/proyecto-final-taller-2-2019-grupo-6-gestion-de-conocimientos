@@ -11,25 +11,16 @@ namespace Entidades
         public int IdPregunta { get; set; }
         public int IdSolucion { get; set; }
         public int IdUserPregunta { get; set; }
-        public List<string> Tags { get; set; }
         public DateTime Fecha { get; set; }
         public string UrlImagen { get; set; }
         public string Descripcion { get; set; }
         public string Titulo { get; set; }
-        public Usuario User_Pregunta { get; set; }
-        public List<Respuesta> Respuestas { get; set; }
-        public Respuesta Solucion { get; set; }
-        public Estado ElEstado { get; set; }
 
-        /// <summary>
-        /// Construye una Pregunta Activa con el dia actual y Solucion en null
-        /// </summary>
-        public Pregunta()
+
+        public Estado GetEstado()
         {
-            Solucion = null;
-            ElEstado = Activa.GetInstancia();
-            Fecha = DateTime.Today;
-            Respuestas = new List<Respuesta>();
+            // SELECT columna de estado en la base de datos
+            return Activa.GetInstancia(); //return provisorio
         }
 
         /// <summary>
@@ -38,7 +29,8 @@ namespace Entidades
         /// <returns></returns>
         public bool AdmiteRespuesta()
         {
-            return ElEstado.AdmiteRespuesta();
+
+            return GetEstado().AdmiteRespuesta();
         }
 
         /// <summary>
@@ -47,7 +39,7 @@ namespace Entidades
         /// <returns></returns>
         public bool EmiteNotificacion()
         {
-            return ElEstado.EmiteNotificacion();
+            return GetEstado().EmiteNotificacion();
         }
 
         /// <summary>
@@ -56,18 +48,18 @@ namespace Entidades
         /// <param name="respuesta"></param>
         public void RecibirRespuesta(Respuesta respuesta)
         {
-            Respuestas.Add(respuesta);
-            ElEstado.RecibirRespuesta(this);
+            // INSERT INTO tabla Respuestas la nueva respuesta
+            GetEstado().RecibirRespuesta(this);
         }
 
         /// <summary>
         /// Setea la solucion de la pregunta y cambia el estado a Solucionada
         /// </summary>
         /// <param name="respuesta"></param>
-        public void MarcarSolucionada(Respuesta respuesta)
+        public void MarcarConSolucion(Respuesta respuesta)
         {
-            Solucion = respuesta;
-            ElEstado.MarcarConSolucion(this);
+            //  INSERT INTO tabla respuestas la nueva solucion
+            GetEstado().MarcarConSolucion(this);
         }
 
         /// <summary>
@@ -75,7 +67,7 @@ namespace Entidades
         /// </summary>
         public void ChequearEstadoSegunUltimaResp()
         {
-            ElEstado.ChequearEstadoSegunUltimaResp(this);
+            GetEstado().ChequearEstadoSegunUltimaResp(this);
         }
 
         /// <summary>
@@ -83,7 +75,7 @@ namespace Entidades
         /// </summary>
         public void SuspenderPregunta()
         {
-            ElEstado.SuspenderPregunta(this);
+            GetEstado().SuspenderPregunta(this);
         }
 
         /// <summary>
@@ -92,7 +84,7 @@ namespace Entidades
         /// <returns></returns>
         public string GetTipoEstado()
         {
-            return ElEstado.GetTipoEstado();
+            return GetEstado().GetTipoEstado();
         }
 
         /// <summary>
@@ -101,6 +93,7 @@ namespace Entidades
         /// <returns></returns>
         public int GetMesesDesdeUltimaResp()
         {
+            // Consulta en base de datos para obtener la respuesta mas reciente
             int Meses;
             int DiasUltimaResp;
             float PorcentajeDias;
@@ -123,8 +116,7 @@ namespace Entidades
         /// <param name="estado"></param>
         public void SetEstado(Estado estado)
         {
-            ElEstado = estado;
-            // Update en la base de datos
+            // Update de estado de esta pregunta en la base de datos
         }
 
         /// <summary>
@@ -132,8 +124,7 @@ namespace Entidades
         /// </summary>
         public void OrdenarRespuestas()
         {
-            // Hacer un sort de la lista de Respuestas
-            // O bien que se haga con SQL
+            // SELECT de respuestas en la base de datos con ORDER BY fecha
         }
 
         /// <summary>
@@ -142,8 +133,13 @@ namespace Entidades
         /// <param name="tag"></param>
         public void AgregarTag(string tag)
         {
-            Tags.Add(tag);
             // Insert en la base de datos
+        }
+
+        public List<string> GetTags()
+        {
+            // SELECT de tags en la base de datos
+            return new List<string>(); // return provisorio
         }
     }
 }
