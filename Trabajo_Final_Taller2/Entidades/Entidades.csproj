@@ -53,7 +53,8 @@
     <Compile Include="Estado.cs" />
     <Compile Include="Inactiva.cs" />
     <Compile Include="Notificacion.cs" />
-    <Compile Include="Pregunta-Respuesta.cs" />
+    <Compile Include="Pregunta.cs" />
+    <Compile Include="Respuesta.cs" />
     <Compile Include="Solucionada.cs" />
     <Compile Include="Suspendida.cs" />
     <Compile Include="Usuario.cs" />
