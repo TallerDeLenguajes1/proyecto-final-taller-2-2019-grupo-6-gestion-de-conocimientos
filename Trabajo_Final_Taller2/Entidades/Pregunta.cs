@@ -141,5 +141,17 @@ namespace Entidades
             // SELECT de tags en la base de datos
             return new List<string>(); // return provisorio
         }
+
+        public Usuario GetUserPregunta()
+        {
+            // Select del usuario que hizo la pregunta
+            return new Usuario();
+        }
+
+        public List<Respuesta> GetRespuestas()
+        {
+            // SELECT respuestas de esta pregunta en particular
+            return new List<Respuesta>(); // return provisorio
+        }
     }
 }
