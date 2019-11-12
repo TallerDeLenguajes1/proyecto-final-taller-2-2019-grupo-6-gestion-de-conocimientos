@@ -23,24 +23,24 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Selecciona las preguntas del usuario especifico en la base de datos
+        /// Selecciona las preguntas del usuario con el id especificado
         /// </summary>
+        /// <param name="idUser"></param>
         /// <returns></returns>
-        static public List<Pregunta> GetPreguntas(Usuario user)
+        static public List<Pregunta> GetPreguntas(int idUser)
         {
             List<Pregunta> preguntasDeUser = new List<Pregunta>();
 
-            int idUser = user.IdUsuario;
             // Hacer consulta en la base de datos usando el idUser y cargar la lista
 
             return preguntasDeUser;
         }
 
         /// <summary>
-        /// Elimina la pregunta de la base de datos
+        /// Elimina la pregunta con el id especificaco de la base de datos
         /// </summary>
-        /// <param name="preg"></param>
-        static public void BajaPregunta(Pregunta preg)
+        /// <param name="idPreg"></param>
+        static public void BajaPregunta(int idPreg)
         {
             // Hacer un DELETE de la pregunta en la base de datos
         }

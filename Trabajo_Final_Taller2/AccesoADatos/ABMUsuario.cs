@@ -51,15 +51,13 @@ namespace AccesoADatos
 
             return user;
         }
-    
-        /// <summary>
-        /// Elimina al usuario de la base de datos
-        /// </summary>
-        /// <param name="user"></param>
-        static public void BajaUsuario(Usuario user)
-        {
-            int id_user = user.IdUsuario;
 
+        /// <summary>
+        /// Elimina de la base de datos al usuario con el id especificado
+        /// </summary>
+        /// <param name="idUser"></param>
+        static public void BajaUsuario(int idUser)
+        {
             // Realizar consulta DELETE para la baja del usuario
         }
     }
