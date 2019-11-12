@@ -13,7 +13,7 @@ namespace AccesoADatos
         /// Selecciona todas las preguntas en la base de datos
         /// </summary>
         /// <returns></returns>
-        List<Pregunta> GetPreguntas()
+        static public List<Pregunta> GetPreguntas()
         {
             List<Pregunta> preguntas = new List<Pregunta>();
 
@@ -26,7 +26,7 @@ namespace AccesoADatos
         /// Selecciona las preguntas del usuario especifico en la base de datos
         /// </summary>
         /// <returns></returns>
-        List<Pregunta> GetPreguntas(Usuario user)
+        static public List<Pregunta> GetPreguntas(Usuario user)
         {
             List<Pregunta> preguntasDeUser = new List<Pregunta>();
 
@@ -36,6 +36,14 @@ namespace AccesoADatos
             return preguntasDeUser;
         }
 
+        /// <summary>
+        /// Carga la lista de respuestas al objeto pregunta 
+        /// </summary>
+        /// <param name="preg"></param>
+        static public void CargarListaRespuestas(Pregunta preg)
+        {
+            preg.Respuestas = ABMRespuesta.GetRespuestas(preg);
+        }
 
     }
 }

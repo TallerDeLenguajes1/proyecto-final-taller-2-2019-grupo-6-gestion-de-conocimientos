@@ -45,13 +45,21 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="preg"></param>
         /// <returns></returns>
-        List<Respuesta> GetRespuestas(Pregunta preg)
+        public static List<Respuesta> GetRespuestas(Pregunta preg)
         {
             List<Respuesta> respuestas = new List<Respuesta>();
 
             // Hacer consulta en la base de datos para obtener las respuestas de la pregunta
 
             return respuestas;
+        }
+        
+        /// <summary>
+        /// Carga el usuario al objeto respuesta
+        /// </summary>
+        public static void CargarUser(Respuesta resp)
+        {
+            resp.UserRespuesta = ABMUsuario.GetUsuario(resp.IdUserResp);
         }
     }
 }

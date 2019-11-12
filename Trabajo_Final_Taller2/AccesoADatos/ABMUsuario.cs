@@ -43,7 +43,7 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="id_user"></param>
         /// <returns></returns>
-        Usuario GetUsuario(int id_user)
+        static public Usuario GetUsuario(int id_user)
         {
             Usuario user = new Usuario();
 
@@ -53,30 +53,21 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Obtiene las notificaciones correspondientes del usuario 
-        /// </summary>
-        /// <param name="id_user"></param>
-        /// <returns></returns>
-        List<Notificacion> GetNotificaciones(Usuario user)
-        {
-            List<Notificacion> notificaciones = new List<Notificacion>();
-
-            int id_user = user.IdUsuario;
-
-            // Realizar consulta en la tabla de notificaciones usando id_user
-
-            return notificaciones;
-        }
-
-
-        /// <summary>
-        /// Carga las listas de notificaciones y preguntas al objeto usuario 
+        /// Carga la lista de preguntas al objeto usuario 
         /// </summary>
         /// <param name="user"></param>
-        void CargarListas(Usuario user)
+        static public void CargarListaPreguntas(Usuario user)
         {
-            user.Notificaciones = GetNotificaciones(user);
-            user.Preguntas = GetPreguntas(user);
+            user.Preguntas = ABMPregunta.GetPreguntas(user);
+        }
+
+        /// <summary>
+        /// Carga la lista de notificaciones al objeto usuario 
+        /// </summary>
+        /// <param name="user"></param>
+        static public void CargarListaNotificaciones(Usuario user)
+        {
+            user.Notificaciones = ABMNotificacion.GetNotificaciones(user);
         }
     }
 }
