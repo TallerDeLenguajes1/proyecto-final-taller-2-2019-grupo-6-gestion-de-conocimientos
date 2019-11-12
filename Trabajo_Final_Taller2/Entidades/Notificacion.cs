@@ -9,17 +9,7 @@ namespace Entidades
     public class Notificacion
     {
         public int IdUserPregunta { get; set; }
-        public int IdRespuesta { get; set; }
-
-        public Usuario GetUserPregunta()
-        {
-            // Select del usuario que recibe la notificacion
-            return new Usuario(); // return provisorio
-        }
-        public Respuesta GetRespuesta()
-        {
-            // Select de la respuesta recibida
-            return new Respuesta(); // return provisorio
-        }
+        public int IdPregunta { get; set; }
+        public int IdNotificacion { get; set; }
     }
 }
