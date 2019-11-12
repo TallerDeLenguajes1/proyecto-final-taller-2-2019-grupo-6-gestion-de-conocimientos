@@ -11,5 +11,9 @@ namespace Entidades
         public int IdUserPregunta { get; set; }
         public int IdPregunta { get; set; }
         public int IdNotificacion { get; set; }
+        public Usuario UsuarioPregunta { get; set; }
+        public Pregunta PreguntaNotif { get; set; }
+        public DateTime FechaRespuesta { get; set; }
+
     }
 }
