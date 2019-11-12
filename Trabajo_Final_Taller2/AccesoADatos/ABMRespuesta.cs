@@ -10,10 +10,9 @@ namespace AccesoADatos
 {
     public class ABMRespuesta
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        void CargarRespuesta(int idUser, int idPregunta, string titulo, string descripcion, string urlImg, DateTime fecha, int likes)
+
+        // TO-DO: MOVER DEFINICION AL METODO CORRECTO
+        void AltaRespuesta(int idUser, int idPregunta, string titulo, string descripcion, DateTime fecha, int likes)
         {
             try
             {
@@ -60,6 +59,18 @@ namespace AccesoADatos
         public static void CargarUser(Respuesta resp)
         {
             resp.UserRespuesta = ABMUsuario.GetUsuario(resp.IdUserResp);
+        }
+
+        /// <summary>
+        /// Crea una nueva respuesta y la inserta en la base de datos
+        /// </summary>
+        /// <param name="userResp"></param>
+        /// <param name="tituloResp"></param>
+        /// <param name="descripcionResp"></param>
+        /// <param name="urlImg"></param>
+        static public void AltaRespuesta(Usuario userResp, string tituloResp, string descripcionResp, string urlImg)
+        {
+            // Realizar INSERT INTO en la tabla de respuestas
         }
     }
 }

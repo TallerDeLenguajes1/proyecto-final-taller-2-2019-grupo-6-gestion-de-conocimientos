@@ -45,5 +45,9 @@ namespace AccesoADatos
             preg.Respuestas = ABMRespuesta.GetRespuestas(preg);
         }
 
+        static public void BajaPregunta(Pregunta preg)
+        {
+            // Hacer un DELETE de la pregunta en la base de datos
+        }
     }
 }

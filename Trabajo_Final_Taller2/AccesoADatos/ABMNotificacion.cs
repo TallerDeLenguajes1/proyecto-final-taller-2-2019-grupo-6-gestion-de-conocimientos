@@ -12,7 +12,7 @@ namespace AccesoADatos
         /// <summary>
         /// Obtiene las notificaciones correspondientes del usuario 
         /// </summary>
-        /// <param name="id_user"></param>
+        /// <param name="user"></param>
         /// <returns></returns>
         static public List<Notificacion> GetNotificaciones(Usuario user)
         {
