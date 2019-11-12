@@ -41,13 +41,17 @@ namespace AccesoADatos
         /// <summary>
         /// Realiza una consulta a la base de datos para obtener un usuario con el id especificado
         /// </summary>
-        /// <param name="id_user"></param>
+        /// <param name="idUser"></param>
         /// <returns></returns>
-        static public Usuario GetUsuario(int id_user)
+        static public Usuario GetUsuario(int idUser)
         {
             Usuario user = new Usuario();
 
             // Consulta para obtener el usuario
+
+            string query = @"SELECT * FROM Usuarios WHERE id_user = " + idUser.ToString();
+
+            //
 
             return user;
         }
@@ -59,6 +63,31 @@ namespace AccesoADatos
         static public void BajaUsuario(int idUser)
         {
             // Realizar consulta DELETE para la baja del usuario
+
+            string query = @"DELETE FROM Usuarios WHERE id_user = " + idUser.ToString();
         }
+
+        /// <summary>
+        /// Chequea si existe un usuario dado su id
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
+        static public bool ExisteUser(int idUser)
+        {
+            string query = @"SELECT * FROM Usuarios WHERE id_user = " + idUser.ToString();
+
+        }
+
+        /// <summary>
+        /// Chequea si existe un usuario dado su email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        static public bool ExisteUser(string email)
+        {
+            string query = @"SELECT * FROM Usuarios WHERE id_user = " + email;
+
+        }
+
     }
 }

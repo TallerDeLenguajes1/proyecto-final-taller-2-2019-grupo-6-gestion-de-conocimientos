@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using Entidades;
 
 namespace AccesoADatos
 {
@@ -13,14 +10,17 @@ namespace AccesoADatos
         /// <summary>
         /// Selecciona las respuestas de la pregunta con el id especificado
         /// </summary>
-        /// <param name="id_pregunta"></param>
+        /// <param name="idPregunta"></param>
         /// <returns></returns>
-        public static List<Respuesta> GetRespuestas(int id_pregunta)
+        public static List<Respuesta> GetRespuestas(int idPregunta)
         {
             List<Respuesta> respuestas = new List<Respuesta>();
 
             // Hacer consulta en la base de datos para obtener las respuestas de la pregunta
 
+            string query = @"SELECT * FROM Respuestas WHERE id_pregunta = " + idPregunta.ToString();
+
+            //
             return respuestas;
         }
 
@@ -58,6 +58,12 @@ namespace AccesoADatos
                 //Nloggear
                 throw;
             }
+        }
+
+        static public void BajaRespuesta(int idRespuesta)
+        {
+            string query = @"DELETE FROM Respuestas WHERE id_respuesta = " + idRespuesta.ToString();
+
         }
     }
 }
