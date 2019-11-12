@@ -53,13 +53,6 @@ namespace AccesoADatos
             return respuestas;
         }
         
-        /// <summary>
-        /// Carga el usuario al objeto respuesta
-        /// </summary>
-        public static void CargarUser(Respuesta resp)
-        {
-            resp.UserRespuesta = ABMUsuario.GetUsuario(resp.IdUserResp);
-        }
 
         /// <summary>
         /// Crea una nueva respuesta y la inserta en la base de datos

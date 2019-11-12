@@ -37,14 +37,9 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Carga la lista de respuestas al objeto pregunta 
+        /// Elimina la pregunta de la base de datos
         /// </summary>
         /// <param name="preg"></param>
-        static public void CargarListaRespuestas(Pregunta preg)
-        {
-            preg.Respuestas = ABMRespuesta.GetRespuestas(preg);
-        }
-
         static public void BajaPregunta(Pregunta preg)
         {
             // Hacer un DELETE de la pregunta en la base de datos

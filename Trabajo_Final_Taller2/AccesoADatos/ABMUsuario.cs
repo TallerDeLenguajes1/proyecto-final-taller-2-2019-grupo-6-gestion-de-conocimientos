@@ -51,25 +51,11 @@ namespace AccesoADatos
 
             return user;
         }
-
+    
         /// <summary>
-        /// Carga la lista de preguntas al objeto usuario 
+        /// Elimina al usuario de la base de datos
         /// </summary>
         /// <param name="user"></param>
-        static public void CargarListaPreguntas(Usuario user)
-        {
-            user.Preguntas = ABMPregunta.GetPreguntas(user);
-        }
-
-        /// <summary>
-        /// Carga la lista de notificaciones al objeto usuario 
-        /// </summary>
-        /// <param name="user"></param>
-        static public void CargarListaNotificaciones(Usuario user)
-        {
-            user.Notificaciones = ABMNotificacion.GetNotificaciones(user);
-        }
-
         static public void BajaUsuario(Usuario user)
         {
             int id_user = user.IdUsuario;
