@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Entidades;
 
 namespace AccesoADatos
 {
@@ -37,6 +38,20 @@ namespace AccesoADatos
                 //Nloggear
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Selecciona las respuestas de la pregunta especificada en la base de datos
+        /// </summary>
+        /// <param name="preg"></param>
+        /// <returns></returns>
+        List<Respuesta> GetRespuestas(Pregunta preg)
+        {
+            List<Respuesta> respuestas = new List<Respuesta>();
+
+            // Hacer consulta en la base de datos para obtener las respuestas de la pregunta
+
+            return respuestas;
         }
     }
 }
