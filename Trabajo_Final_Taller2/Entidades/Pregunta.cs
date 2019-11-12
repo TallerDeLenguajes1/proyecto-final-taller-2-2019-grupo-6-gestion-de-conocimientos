@@ -18,23 +18,36 @@ namespace Entidades
         public Usuario UserPregunta { get; set; }
         public string Estado { get; set; }
 
+        /// <summary>
+        /// Calcula los meses transcurridos desde la ultima respuesta a esta pregunta
+        /// , o los meses desde que se hizo la pregunta si no tiene respuestas
+        /// </summary>
+        /// <returns></returns>
         public int GetMesesDesdeUltimaResp()
         {
-            // Consulta en base de datos para obtener la respuesta mas reciente
-            int Meses;
-            int DiasUltimaResp;
-            float PorcentajeDias;
-            //Tomo la cantidad de dias que hay en el mes actual en el año actual
-            int DiasHoy = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
-            //Tomo la fecha de la ultima respuesta cargada
-            DateTime ultimaResp = Respuestas.Last().Fecha;
-            //Tomo la cantidad de dias que hay en el mes de la ultima respuesta
-            DiasUltimaResp = DateTime.DaysInMonth(ultimaResp.Year, ultimaResp.Month);
-            //Calculo la diferenicia entre los meses
-            Meses = Math.Abs(12 * (DateTime.Today.Year - ultimaResp.Year) + DateTime.Today.Month - ultimaResp.Month) - 1;
-            //Calculo el porcentaje de los dias entre los dos meses
-            PorcentajeDias = ((DiasHoy - DateTime.Today.Day) / DiasHoy) + (ultimaResp.day / DiasUltimaResp);
-            return Meses + PorcentajeDias;
+            int mesesTranscurridos = 0;
+
+
+            // Obtener la fecha mas reciente
+
+            DateTime fechaMasReciente = this.Fecha;
+            foreach (var resp in Respuestas)
+            {
+                if (resp.Fecha > fechaMasReciente)
+                {
+                    fechaMasReciente = resp.Fecha;
+                }
+            }
+
+            // Calcular los meses transcurridos
+
+            mesesTranscurridos = ((fechaMasReciente.Year - this.Fecha.Year) - 1) * 12;
+
+            mesesTranscurridos += 12 - this.Fecha.Month;
+
+            mesesTranscurridos += fechaMasReciente.Month;
+
+            return mesesTranscurridos;
         }
     }
 }
