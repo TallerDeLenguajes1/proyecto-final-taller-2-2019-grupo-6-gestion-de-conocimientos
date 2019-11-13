@@ -66,6 +66,7 @@ namespace AccesoADatos
                 user.PaisOrigen = reader.GetString(3);
                 user.Email = reader.GetString(4);
                 user.Password = reader.GetString(5);
+                user.FechaIngreso = reader.GetDateTime(6);
                 //Desconecto la base de datos
                 Conexion_Desconexion.Desconnect();
 	        }
@@ -95,6 +96,7 @@ namespace AccesoADatos
         /// <returns></returns>
         static public bool ExisteUser(int idUser)
         {
+           int count;
            try 
 	        {
                 //Armo la conexion a la base de datos
@@ -106,7 +108,7 @@ namespace AccesoADatos
                 //Paso el id por parametro codificado
                 command.Parameters.AddWithValue("@idUser", idUser);
                 //Verifico la cantidad de veces que aparece el id en la base de datos y lo guardo
-                int count = Convert.ToInt32(command.ExecuteScalar());
+                count = Convert.ToInt32(command.ExecuteScalar());
                 //Cierro la conexion a la base de datos
                 Conexion_Desconexion.Desconnect();
 	        }
@@ -126,6 +128,7 @@ namespace AccesoADatos
         /// <returns></returns>
         static public bool ExisteUser(string email)
         {
+            int count;
             try 
 	        {
                 //Armo la conexion a la base de datos
@@ -137,7 +140,7 @@ namespace AccesoADatos
                 //Paso el email por parametro codificado
                 command.Parameters.AddWithValue("@email", email);
                 //Verifico la cantidad de veces que aparece el email en la base de datos y lo guardo
-                int count = Convert.ToInt32(command.ExecuteScalar());
+                count = Convert.ToInt32(command.ExecuteScalar());
                 //Cierro la conexion a la base de datos
                 Conexion_Desconexion.Desconnect();
 	        }

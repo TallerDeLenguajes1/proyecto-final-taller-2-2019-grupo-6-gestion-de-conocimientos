@@ -15,8 +15,6 @@ namespace AccesoADatos
         public static List<Respuesta> GetRespuestas(int idPregunta)
         {
             List<Respuesta> respuestas = new List<Respuesta>();
-            Respuesta resp = new Respuesta();
-            
             try 
 	        {
                 //Hago la conexion a la base de datos
@@ -31,7 +29,8 @@ namespace AccesoADatos
                 SqlDataReader reader = command.ExecuteReader();
                 //Mientras voy leyendo los datos, los tomo y armo una respuesta que luego agrego a la lista de respuestas
                 while (reader.Read())
-	            {
+                {
+                    Respuesta resp = new Respuesta();
                     resp.IdUserResp = reader.GetInt16(0);
                     resp.IdPregunta = reader.GetInt16(1);
                     resp.IdRespuesta = reader.GetInt16(2);

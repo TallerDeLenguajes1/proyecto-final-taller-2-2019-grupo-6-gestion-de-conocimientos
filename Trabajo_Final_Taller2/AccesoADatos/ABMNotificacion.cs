@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,6 @@ namespace AccesoADatos
         static public List<Notificacion> GetNotificaciones(int idUser)
         {
             List<Notificacion> notificaciones = new List<Notificacion>();
-            Notificiacion notif = new Notificiacion();
             try
             {
                 //Hago la conexion a la base de datos
@@ -33,6 +33,7 @@ namespace AccesoADatos
                 //Mientras voy leyendo los datos, los tomo y armo una notificacion que luego agrego a la lista de notificaciones
                 while (reader.Read())
                 {
+                    Notificacion notif = new Notificacion();
                     //Completar los campos y agregar a la Bd
                 }
                 //Cierro la conexion a la Bd
@@ -46,7 +47,6 @@ namespace AccesoADatos
             //Finalmente devuelvo la lista de notificaciones
             return notificaciones;
         }
-    }
 
         /// <summary>
         /// Inserta una nueva notificacion en la base de datos
