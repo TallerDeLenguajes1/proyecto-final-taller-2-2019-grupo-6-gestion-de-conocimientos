@@ -46,13 +46,35 @@ namespace AccesoADatos
         static public Usuario GetUsuario(int idUser)
         {
             Usuario user = new Usuario();
+            try 
+	        {	
+                //Hago la conexion a la base de datos
+                Conexion_Desconexion.Connection();
+                //Armo mi query para buscar un usuario especifico
+                string query = @"SELECT * FROM Usuarios WHERE id_user = @idUser";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query,Conexion_Desconexion.Con);
+                //Paso como parametro codificado el id del usuario que busco
+                command.Parameters.AddWithValue("@idUser",idUser);
+                //Creo un reader que ejecute el query
+                SqlDataReader reader =  command.ExecuteReader();
+                //Utilizo el reader para leer los datos del usuario y cargarlos a user
+                reader.Read();
+                user.IdUsuario = reader.GetInt16(0);
+                user.Nombre = reader.GetString(1);
+                user.Apellido = reader.GetString(2);
+                user.PaisOrigen = reader.GetString(3);
+                user.Email = reader.GetString(4);
+                user.Password = reader.GetString(5);
+                //Desconecto la base de datos
+                Conexion_Desconexion.Desconnect();
+	        }
+	        catch (Exception)
+	        {
 
-            // Consulta para obtener el usuario
-
-            string query = @"SELECT * FROM Usuarios WHERE id_user = " + idUser.ToString();
-
-            //
-
+		        throw;
+        	}
+            //Devuelvo el alumno cargado
             return user;
         }
 
@@ -63,7 +85,6 @@ namespace AccesoADatos
         static public void BajaUsuario(int idUser)
         {
             // Realizar consulta DELETE para la baja del usuario
-
             string query = @"DELETE FROM Usuarios WHERE id_user = " + idUser.ToString();
         }
 
@@ -74,8 +95,28 @@ namespace AccesoADatos
         /// <returns></returns>
         static public bool ExisteUser(int idUser)
         {
-            string query = @"SELECT * FROM Usuarios WHERE id_user = " + idUser.ToString();
-
+           try 
+	        {
+                //Armo la conexion a la base de datos
+                Conexion_Desconexion.Connection();
+                //Armo el query para verificar que existe el usuario segun su id
+                string query = @"SELECT COUNT(*) FROM Usuarios WHERE id_user = @idUser";
+                //Armo el command con el query
+                SqlCommand command = new SqlCommand(query,Conexion_Desconexion.Con);
+                //Paso el id por parametro codificado
+                command.Parameters.AddWithValue("@idUser", idUser);
+                //Verifico la cantidad de veces que aparece el id en la base de datos y lo guardo
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                //Cierro la conexion a la base de datos
+                Conexion_Desconexion.Desconnect();
+	        }
+	        catch (Exception)
+	        {
+                //Nloggear
+        		throw;
+	        }
+            //Devuelve true/false segun exista o no el user con ese id
+            return count == 0;
         }
 
         /// <summary>
@@ -85,8 +126,28 @@ namespace AccesoADatos
         /// <returns></returns>
         static public bool ExisteUser(string email)
         {
-            string query = @"SELECT * FROM Usuarios WHERE id_user = " + email;
-
+            try 
+	        {
+                //Armo la conexion a la base de datos
+                Conexion_Desconexion.Connection();
+                //Armo el query para verificar que existe el usuario segun su email
+                string query = @"SELECT COUNT(*) FROM Usuarios WHERE email = @email";
+                //Armo el command con el query
+                SqlCommand command = new SqlCommand(query,Conexion_Desconexion.Con);
+                //Paso el email por parametro codificado
+                command.Parameters.AddWithValue("@email", email);
+                //Verifico la cantidad de veces que aparece el email en la base de datos y lo guardo
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                //Cierro la conexion a la base de datos
+                Conexion_Desconexion.Desconnect();
+	        }
+	        catch (Exception)
+	        {
+                //Nloggear
+        		throw;
+	        }
+            //Devuelve true/false segun exista o no el user con ese email
+            return count == 0;
         }
 
     }

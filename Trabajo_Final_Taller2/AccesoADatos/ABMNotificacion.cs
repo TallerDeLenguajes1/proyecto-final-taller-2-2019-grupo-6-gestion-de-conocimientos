@@ -17,14 +17,36 @@ namespace AccesoADatos
         static public List<Notificacion> GetNotificaciones(int idUser)
         {
             List<Notificacion> notificaciones = new List<Notificacion>();
-
-            // Realizar consulta en la tabla de notificaciones usando idUser
-
-            string query = @"SELECT * FROM Notificaciones WHERE id_user = " + idUser.ToString();
-
-            //
+            Notificiacion notif = new Notificiacion();
+            try
+            {
+                //Hago la conexion a la base de datos
+                Conexion_Desconexion.Connection();
+                //Armo el query para seleccionar todas las notificaciones segun el id
+                string query = @"SELECT * FROM Notificaciones WHERE id_user = @idUser";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso como parametro codificado el id del usuario
+                command.Parameters.AddWithValue("@idUser", idUser);
+                //Ejecuto un reader que va a tomar toda la informacion de la tabla correspondiendo a la condicion impuesta en el query
+                SqlDataReader reader = command.ExecuteReader();
+                //Mientras voy leyendo los datos, los tomo y armo una notificacion que luego agrego a la lista de notificaciones
+                while (reader.Read())
+                {
+                    //Completar los campos y agregar a la Bd
+                }
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
+                //Nloggear
+                throw;
+            }
+            //Finalmente devuelvo la lista de notificaciones
             return notificaciones;
         }
+    }
 
         /// <summary>
         /// Inserta una nueva notificacion en la base de datos
@@ -48,7 +70,6 @@ namespace AccesoADatos
         /// <param name="idNotificacion"></param>
         static public void BajaNotificacion(int idNotificacion)
         {
-
             string query = @"DELETE FROM Notificaciones WHERE id_notificacion = " + idNotificacion.ToString();
         }
     }

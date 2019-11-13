@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -13,7 +17,6 @@ namespace Entidades
         public DateTime Fecha { get; set; }
         public int Likes { get; set; }
         public Usuario UserRespuesta { get; set; }
-        public Pregunta PregRespondida { get; set; }
-
+        public Pregunta PregRespuesta { get; set; }
     }
 }

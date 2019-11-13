@@ -9,7 +9,6 @@ namespace AccesoADatos
 {
     class Conexion_Desconexion
     {
-
         static readonly string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=nombreDB;"
      + "Integrated Security=true";
         static readonly SqlConnection con = new SqlConnection(connectionString);
