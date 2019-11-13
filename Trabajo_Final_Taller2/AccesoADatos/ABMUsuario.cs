@@ -46,18 +46,18 @@ namespace AccesoADatos
         static public Usuario GetUsuario(int idUser)
         {
             Usuario user = new Usuario();
-            try 
-	        {	
+            try
+            {
                 //Hago la conexion a la base de datos
                 Conexion_Desconexion.Connection();
                 //Armo mi query para buscar un usuario especifico
                 string query = @"SELECT * FROM Usuarios WHERE id_user = @idUser";
                 //Armo el command con el query y la conexion
-                SqlCommand command = new SqlCommand(query,Conexion_Desconexion.Con);
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 //Paso como parametro codificado el id del usuario que busco
-                command.Parameters.AddWithValue("@idUser",idUser);
+                command.Parameters.AddWithValue("@idUser", idUser);
                 //Creo un reader que ejecute el query
-                SqlDataReader reader =  command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
                 //Utilizo el reader para leer los datos del usuario y cargarlos a user
                 reader.Read();
                 user.IdUsuario = reader.GetInt16(0);
@@ -69,12 +69,53 @@ namespace AccesoADatos
                 user.FechaIngreso = reader.GetDateTime(6);
                 //Desconecto la base de datos
                 Conexion_Desconexion.Desconnect();
-	        }
-	        catch (Exception)
-	        {
+            }
+            catch (Exception)
+            {
 
-		        throw;
-        	}
+                throw;
+            }
+            //Devuelvo el alumno cargado
+            return user;
+        }
+
+        /// <summary>
+        /// Realiza una consulta a la base de datos para obtener un usuario con el id especificado
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
+        static public Usuario GetUsuario(string email)
+        {
+            Usuario user = new Usuario();
+            try
+            {
+                //Hago la conexion a la base de datos
+                Conexion_Desconexion.Connection();
+                //Armo mi query para buscar un usuario especifico
+                string query = @"SELECT * FROM Usuarios WHERE emial = @email";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso como parametro codificado el id del usuario que busco
+                command.Parameters.AddWithValue("@email", email);
+                //Creo un reader que ejecute el query
+                SqlDataReader reader = command.ExecuteReader();
+                //Utilizo el reader para leer los datos del usuario y cargarlos a user
+                reader.Read();
+                user.IdUsuario = reader.GetInt16(0);
+                user.Nombre = reader.GetString(1);
+                user.Apellido = reader.GetString(2);
+                user.PaisOrigen = reader.GetString(3);
+                user.Email = reader.GetString(4);
+                user.Password = reader.GetString(5);
+                user.FechaIngreso = reader.GetDateTime(6);
+                //Desconecto la base de datos
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             //Devuelvo el alumno cargado
             return user;
         }
