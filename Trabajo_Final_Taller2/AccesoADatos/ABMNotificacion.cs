@@ -34,7 +34,10 @@ namespace AccesoADatos
                 while (reader.Read())
                 {
                     Notificacion notif = new Notificacion();
-                    //Completar los campos y agregar a la Bd
+                    notif.IdUserPregunta = reader.GetInt16(0);
+                    notif.IdPregunta = reader.GetInt16(1);
+                    notif.IdNotificacion = reader.GetInt16(2);
+                    notificaciones.Add(notif);
                 }
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
@@ -55,11 +58,27 @@ namespace AccesoADatos
         /// <param name="idPregunta"></param>
         static public void AltaNotificacion(int idUserPregunta, int idPregunta)
         {
-
-            string query = @"INSERT INTO Notificaciones(id_user, id_pregunta) VALUES(@id_user, @id_pregunta)";
-
-
-            // Reemplazar parametros
+            try
+            {
+                //Hago la conexion a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query para el command
+                string query = @"INSERT INTO Notificaciones(id_user, id_pregunta) VALUES(@id_user, @id_pregunta)";
+                //Armo mi command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso los ids codificados por parametro
+                command.Parameters.AddWithValue("@id_user",idUserPregunta);
+                command.Parameters.AddWithValue("@id_pregunta", idPregunta);
+                //Ejecuto el query
+                command.ExecuteNonQuery();
+                //Desconecto la base de datos
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception ex)
+            {
+                //Nloggear
+                throw;
+            }
 
         }
 
@@ -70,7 +89,27 @@ namespace AccesoADatos
         /// <param name="idNotificacion"></param>
         static public void BajaNotificacion(int idNotificacion)
         {
-            string query = @"DELETE FROM Notificaciones WHERE id_notificacion = " + idNotificacion.ToString();
+            try
+            {
+                //Hago la conexion a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"DELETE FROM Notificaciones WHERE id_notificacion = @idNotif";
+                //Genero el command
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso el id de la notif como parametro
+                command.Parameters.AddWithValue("idNotif",idNotificacion);
+                //Ejecuto el query
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+
+            }
+            catch (Exception ex)
+            {
+                //Nloggear
+                throw;
+            }
         }
     }
 }

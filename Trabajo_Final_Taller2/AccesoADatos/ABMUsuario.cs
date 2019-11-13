@@ -85,8 +85,27 @@ namespace AccesoADatos
         /// <param name="idUser"></param>
         static public void BajaUsuario(int idUser)
         {
-            // Realizar consulta DELETE para la baja del usuario
-            string query = @"DELETE FROM Usuarios WHERE id_user = " + idUser.ToString();
+            try
+            {
+                //Hago la conexion a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"DELETE FROM Usuarios WHERE id_user = @id_user";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query,Conexion_Desconexion.Con);
+                //Paso el id del usuario como parametro
+                command.Parameters.AddWithValue("@id_user",idUser);
+                //Ejecuto el command
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception ex)
+            {
+                //Nloggear
+                throw;
+            }
+
         }
 
         /// <summary>

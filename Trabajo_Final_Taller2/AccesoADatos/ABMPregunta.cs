@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +17,45 @@ namespace AccesoADatos
         static public List<Pregunta> GetPreguntas()
         {
             List<Pregunta> preguntas = new List<Pregunta>();
-
-            // Hacer consulta en la base de datos y cargar la lista
-
-            string query = @"SELECT * FROM Preguntas";
-
-            //
-
+            try
+            {
+                //Me conecto a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"SELECT * FROM Preguntas";
+                //Armo el command con el query y conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Creo un reader que ejecute el query
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    //Armo una nueva pregunta con los datos que toma el reader y la cargo a la lista
+                    Pregunta preg = new Pregunta();
+                    preg.IdPregunta = reader.GetInt16(0);
+                    preg.IdUserPregunta = reader.GetInt16(1);
+                    if (reader[2] == DBNull.Value)
+                    {
+                        preg.IdSolucion = -1;
+                    }
+                    else
+                    {
+                        preg.IdSolucion = reader.GetInt16(2);
+                    }
+                    preg.Titulo = reader.GetString(3);
+                    preg.Descripcion = reader.GetString(4);
+                    preg.UrlImagen = reader.GetString(5);
+                    preg.Fecha = reader.GetDateTime(6);
+                    preg.Estado = reader.GetString(7);
+                    preguntas.Add(preg);
+                }
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception ex)
+            {
+                //Nloggear
+                throw;
+            }
             return preguntas;
         }
 
@@ -34,12 +67,48 @@ namespace AccesoADatos
         static public List<Pregunta> GetPreguntas(int idUser)
         {
             List<Pregunta> preguntasDeUser = new List<Pregunta>();
+            try
+            {
+                //Hago la conexion a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"SELECT * FROM Preguntas WHERE id_user = @idUser";
+                //Armo el command con el query y la conexion 
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso el id del usuario por parametro
+                command.Parameters.AddWithValue("@idUser", idUser);
+                //Armo un reader que ejecute el query
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    //Armo una nueva pregunta con los datos que toma el reader y la cargo a la lista
+                    Pregunta preg = new Pregunta();
+                    preg.IdPregunta = reader.GetInt16(0);
+                    preg.IdUserPregunta = reader.GetInt16(1);
+                    //Si el valor del campo solucion es nulo, tomo id solucion como -1
+                    if (reader[2] == DBNull.Value)
+                    {
+                        preg.IdSolucion = -1;
+                    }
+                    else
+                    {
+                        preg.IdSolucion = reader.GetInt16(2);
+                    }
+                    preg.Titulo = reader.GetString(3);
+                    preg.Descripcion = reader.GetString(4);
+                    preg.UrlImagen = reader.GetString(5);
+                    preg.Fecha = reader.GetDateTime(6);
+                    preg.Estado = reader.GetString(7);
+                    preguntasDeUser.Add(preg);
+                }
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
 
-            // Hacer consulta en la base de datos usando el idUser y cargar la lista
-
-            string query = @"SELECT * FROM Preguntas WHERE id_user = " + idUser.ToString();
-
-            //
+                throw;
+            }
             return preguntasDeUser;
         }
 
@@ -47,11 +116,28 @@ namespace AccesoADatos
         /// Elimina la pregunta con el id especificaco de la base de datos
         /// </summary>
         /// <param name="idPreg"></param>
-        static public void BajaPregunta(int idPreg)
+        static public void BajaPregunta(int idPregunta)
         {
-            // Hacer un DELETE de la pregunta en la base de datos
-
-            string query = @"DELETE FROM Preguntas WHERE id_pregunta = " + idPreg.ToString();
+            try
+            {
+                //Hago la conexion a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"DELETE FROM Preguntas WHERE id_pregunta = @idPreg";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso el id de la pregunta por parametro
+                command.Parameters.AddWithValue("@idPreg", idPregunta);
+                //Ejecuto el query con el command
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception ex)
+            {
+                //Nloggear
+                throw;
+            }
         }
 
         /// <summary>
@@ -63,9 +149,29 @@ namespace AccesoADatos
         /// <param name="urlImagen"></param>
         static public void AltaPregunta(int idUser, string tituloPreg, string descripcionPreg, string urlImagen)
         {
-            string query = @"INSERT INTO Preguntas(id_user, titulo, descripcion, url_imagen) VALUES(@id_user, @titulo, @descripcion, @url_imagen)";
+            try
+            {
+                //Conecto a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"INSERT INTO Preguntas(id_user, titulo, descripcion, url_imagen) VALUES(@id_user, @titulo, @descripcion, @url_imagen)";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso todos los valores por parametros
+                command.Parameters.AddWithValue("@id_user",idUser);
+                command.Parameters.AddWithValue("@titulo", idUser);
+                command.Parameters.AddWithValue("@descripcion", idUser);
+                command.Parameters.AddWithValue("@url_imagen", idUser);
+                //Ejecuto el comando
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
 
-            // Reemplazar parametros
+                throw;
+            }
         }
     }
 }
