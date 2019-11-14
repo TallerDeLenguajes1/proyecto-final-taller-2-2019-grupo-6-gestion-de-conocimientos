@@ -23,5 +23,23 @@ namespace Trabajo_Final_Taller2.vistas
         {
             InitializeComponent();
         }
+
+        private void Btn_borrarNotificacion_Click(object sender, RoutedEventArgs e)
+        {
+            var pregunta = lbx_notificaciones.SelectedItem;
+            //cambiar estado o algo
+        }
+
+        private void Btn_irAPregunta_Click(object sender, RoutedEventArgs e)
+        {
+            var pregunta = lbx_notificaciones.SelectedItem;
+            //en teoria pregunta deberia retornar el objeto contenido en la opcion seleccionada.
+            //habria que separarlo y hacer pasaje de parametros a vistaPregunta.
+        }
+
+        private void Btn_atrasNotificaciones_Click(object sender, RoutedEventArgs e)
+        {
+            //como se obtiene la ventana anterior?
+        }
     }
 }

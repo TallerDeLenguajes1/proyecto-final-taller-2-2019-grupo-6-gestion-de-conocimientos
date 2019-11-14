@@ -24,5 +24,10 @@ namespace Trabajo_Final_Taller2
         {
             InitializeComponent();
         }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

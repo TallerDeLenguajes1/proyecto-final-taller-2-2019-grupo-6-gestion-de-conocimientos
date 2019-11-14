@@ -23,5 +23,29 @@ namespace Trabajo_Final_Taller2.vistas
         {
             InitializeComponent();
         }
+
+        private void preguntar_Click(object sender, RoutedEventArgs e)
+        {
+            //obtener id user
+            int iduser = 1;
+            string titulo = tituloPreg.Text;
+            string descripcion = tituloPreg.Text;
+            //aun no se 100% como se va a manejar la imagen asi que por el momento lo dejo como un string...
+            string imagen = null;
+            if (imagen)
+            {
+                AccesoADatos.ABMPregunta.AltaPregunta(iduser, titulo, descripcion, imagen);
+            }
+            else
+            {
+                AccesoADatos.ABMPregunta.AltaPregunta(iduser, titulo, descripcion);
+            }
+          
+        }
+
+        private void cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
