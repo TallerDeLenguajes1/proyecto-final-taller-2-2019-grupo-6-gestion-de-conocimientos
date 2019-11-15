@@ -59,6 +59,7 @@ namespace AccesoADatos
             foreach (Respuesta r in preg.Respuestas)
             {
                 r.PregRespuesta = preg;
+                ABMUsuario.GetUsuario(r.IdUserResp); // Cargar usuario que hizo la respuesta
             }
         }
 
@@ -105,44 +106,106 @@ namespace AccesoADatos
             }
         }
 
+        /// <summary>
+        /// Crea una nueva pregunta en la base de datos y recarga la lista de preguntas del usuario
+        /// </summary>
+        /// <param name="userPregunta"></param>
+        /// <param name="tituloPreg"></param>
+        /// <param name="descripcionPreg"></param>
+        /// <param name="urlImagen"></param>
         public static void HacerPregunta(Usuario userPregunta, string tituloPreg, string descripcionPreg, string urlImagen)
         {
-            // TO DO
+            // Alta en base de datos
+            ABMPregunta.AltaPregunta(userPregunta.IdUsuario, tituloPreg, descripcionPreg, urlImagen);
+
+            // Recarga la lista de preguntas
+            CargarListaPreguntas(userPregunta);
         }
 
+        /// <summary>
+        /// Crea una nueva respuesta en la base de datos y una notificacion si es necesaria, 
+        /// y recarga la lista de respuestas de la pregunta
+        /// </summary>
+        /// <param name="userRespuesta"></param>
+        /// <param name="preg"></param>
+        /// <param name="idPregunta"></param>
+        /// <param name="tituloResp"></param>
+        /// <param name="descripcionResp"></param>
+        /// <param name="urlImg"></param>
         public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, int idPregunta, string tituloResp, string descripcionResp, string urlImg)
         {
-            // TO DO
+            ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp, urlImg);
+
+            CargarListaRespuestas(preg);
         }
 
+        /// <summary>
+        /// Actualiza el valor de los likes en la base de datos
+        /// y en la respuesta
+        /// </summary>
+        /// <param name="userLike"></param>
+        /// <param name="resp"></param>
         public static void DarLike(Usuario userLike, Respuesta resp)
         {
-            // TO DO
+            ABMRespuesta.UpdateLikes(resp.IdRespuesta, resp.Likes + 1);
+            resp.Likes++;
         }
 
+        /// <summary>
+        /// Elimina una pregunta de la base de datos
+        /// y la quita de la lista de preguntas del usuario
+        /// </summary>
+        /// <param name="preg"></param>
         public static void EliminarPregunta(Pregunta preg)
         {
-            // TO DO
+            ABMPregunta.BajaPregunta(preg.IdPregunta);
+            preg.UserPregunta.Preguntas.Remove(preg);
         }
 
+        /// <summary>
+        /// Elimina una respuesta de la base de datos
+        /// y la quita de la lista de respuestas de la pregunta
+        /// </summary>
+        /// <param name="resp"></param>
         public static void EliminarRespuesta(Respuesta resp)
         {
-            // TO DO
+            ABMRespuesta.BajaRespuesta(resp.IdRespuesta);
+            resp.PregRespuesta.Respuestas.Remove(resp);
         }
 
+        /// <summary>
+        /// Elimina una notificacion de la base de datos 
+        /// y la quita de la lista de notificaciones del usuario
+        /// </summary>
+        /// <param name="notif"></param>
         public static void EliminarNotificacion(Notificacion notif)
         {
-            // TO DO
+            ABMNotificacion.BajaNotificacion(notif.IdNotificacion);
+            notif.UsuarioPregunta.Notificaciones.Remove(notif);
         }
 
+
+        /// <summary>
+        /// Elimina al usuario de la base de datos
+        /// </summary>
+        /// <param name="user"></param>
         public static void EliminarCuenta(Usuario user)
         {
-            // TO DO
+            ABMUsuario.BajaUsuario(user.IdUsuario);
         }
 
+        /// <summary>
+        /// Actualiza la base de datos en la pregunta
+        /// con la respuesta seleccionada
+        /// y vincula la referencia a la solucion en la pregunta
+        /// </summary>
+        /// <param name="resp"></param>
+        /// <param name="preg"></param>
         public static void SolucionarPregunta(Respuesta resp, Pregunta preg)
         {
-            // TO DO
+            ABMPregunta.UpdateSolucionPregunta(preg.IdPregunta, resp.IdRespuesta);
+            preg.Solucion = resp;
+            preg.IdSolucion = resp.IdRespuesta;
         }
     }
 }

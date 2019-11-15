@@ -173,5 +173,16 @@ namespace AccesoADatos
                 throw;
             }
         }
+
+        /// <summary>
+        /// Realiza un UPDATE del campo solucion de la pregunta especificada
+        /// con el id de la respuesta especificada
+        /// </summary>
+        /// <param name="idPregunta"></param>
+        /// <param name="idRespuesta"></param>
+        static public void UpdateSolucionPregunta(int idPregunta, int idRespuesta)
+        {
+            // TO DO
+        }
     }
 }
