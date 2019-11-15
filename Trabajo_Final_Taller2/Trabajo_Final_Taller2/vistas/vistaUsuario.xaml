@@ -10,7 +10,7 @@
         <Button x:Name="btn_verNotificacion" Content="Ver notificaciones" HorizontalAlignment="Left" Margin="15,50,0,0" VerticalAlignment="Top" Width="105"/>
         <Button x:Name="btn_hacerPregunta" Content="Hacer pregunta" HorizontalAlignment="Left" Margin="130,50,0,0" VerticalAlignment="Top" Width="110"/>
         <Button x:Name="btn_verPreguntas" Content="ver todas las preguntas" HorizontalAlignment="Left" Margin="376,50,0,0" VerticalAlignment="Top" Width="133"/>
-        <Button x:Name="btn_verMisPreguntas" Content="Ver mis preguntas" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top" Width="115"/>
+        <Button x:Name="btn_verMisPreguntas" Content="Ver mis preguntas" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top" Width="115" Click="btn_verMisPreguntas_Click_1"/>
         <Button x:Name="btn_salir" Content="salir" HorizontalAlignment="Left" Margin="15,258,0,0" VerticalAlignment="Top" Width="105" Click="button_Copy3_Click"/>
 
     </Grid>

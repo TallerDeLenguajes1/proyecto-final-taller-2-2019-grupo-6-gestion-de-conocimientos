@@ -42,7 +42,7 @@ namespace Trabajo_Final_Taller2.vistas
             this.Close();
         }
 
-        private void Btn_verMisPreguntas_Click(object sender, RoutedEventArgs e)
+        private void btn_verMisPreguntas_Click_1(object sender, RoutedEventArgs e)
         {
             //las preguntas se ven en la misma ventana, habria que ver como manejar esto...
             var vistaMPreg = new VistaPregunta();
@@ -60,6 +60,11 @@ namespace Trabajo_Final_Taller2.vistas
         private void salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void button_Copy3_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
