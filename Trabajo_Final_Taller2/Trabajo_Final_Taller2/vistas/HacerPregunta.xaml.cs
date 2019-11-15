@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using AccesoADatos;
 namespace Trabajo_Final_Taller2.vistas
 {
     /// <summary>
@@ -22,6 +22,35 @@ namespace Trabajo_Final_Taller2.vistas
         public HacerPregunta()
         {
             InitializeComponent();
+        }
+
+        private void preguntar_Click(object sender, RoutedEventArgs e)
+        {
+            //obtener id user
+            int iduser = 1;
+            string titulo = tituloPreg.Text;
+            string descripcion = tituloPreg.Text;
+            //aun no se 100% como se va a manejar la imagen asi que por el momento lo dejo como un string...
+            string imagen = null;
+            if (imagen != null)
+            {
+                ABMPregunta.AltaPregunta(iduser, titulo, descripcion, imagen);
+            }
+            else
+            {
+                ABMPregunta.AltaPregunta(iduser, titulo, descripcion);
+            }
+          
+        }
+
+        private void cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tituloPreg_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

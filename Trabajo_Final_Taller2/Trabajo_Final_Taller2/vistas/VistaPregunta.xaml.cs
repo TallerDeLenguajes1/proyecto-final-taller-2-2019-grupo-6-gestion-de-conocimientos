@@ -23,5 +23,10 @@ namespace Trabajo_Final_Taller2.vistas
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

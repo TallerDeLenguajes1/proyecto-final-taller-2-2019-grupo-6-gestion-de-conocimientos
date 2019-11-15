@@ -5,16 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
         mc:Ignorable="d"
-        Title="HacerPregunta" Height="391" Width="604">
+        Title="HacerPregunta" Height="391" Width="544.5">
     <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="25,56,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="64" Margin="25,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="505"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="80,186,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="235"/>
-        <Button x:Name="button" Content="Cancelar" HorizontalAlignment="Left" Margin="25,286,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button1" Content="Preguntar" HorizontalAlignment="Left" Margin="185,286,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="label" Content="Título" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="45"/>
-        <Label x:Name="label1" Content="Imagen" HorizontalAlignment="Left" Margin="25,184,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Descripción" HorizontalAlignment="Left" Margin="25,84,0,0" VerticalAlignment="Top"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="tituloPreg" HorizontalAlignment="Left" Height="23" Margin="25,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" TextChanged="tituloPreg_TextChanged"/>
+        <TextBox x:Name="Descripcion" HorizontalAlignment="Left" Height="64" Margin="25,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="505"/>
+        <TextBox x:Name="imagen" HorizontalAlignment="Left" Height="23" Margin="80,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Button x:Name="cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="25,286,0,0" VerticalAlignment="Top" Width="75" Click="cancelar_Click" Height="22"/>
+        <Button x:Name="preguntar" Content="Preguntar" HorizontalAlignment="Left" Margin="185,286,0,0" VerticalAlignment="Top" Width="75" Click="preguntar_Click" Height="22"/>
+        <Label x:Name="label" Content="Pregunta&#xD;&#xA;" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+        <Label x:Name="label1" Content="Imagen" HorizontalAlignment="Left" Margin="25,184,0,0" VerticalAlignment="Top" Height="26" Width="50"/>
+        <Label x:Name="label2" Content="Descripción" HorizontalAlignment="Left" Margin="25,84,0,0" VerticalAlignment="Top" Height="26" Width="72"/>
 
     </Grid>
 </Window>

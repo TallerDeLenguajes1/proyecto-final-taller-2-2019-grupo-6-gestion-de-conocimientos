@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace AccesoADatos
 {
-    class Conexion_Desconexion
+    public class Conexion_Desconexion
     {
         static readonly string DBconfigDir = @"..\..\..\AccesoADatos\DBconfig.txt";
         static string DBconfig = File.ReadAllText(DBconfigDir);    
