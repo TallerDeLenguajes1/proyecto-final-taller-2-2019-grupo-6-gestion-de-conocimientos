@@ -33,6 +33,14 @@ namespace Trabajo_Final_Taller2.vistas
             if (op.ShowDialog() == true)
             {
                 imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+               
+                string fileName = op.SafeFileName;
+                string source = op.FileName;
+                string target = @"..\..\..\img";
+                string destFile = System.IO.Path.Combine(target, fileName);
+                System.IO.File.Copy(source, destFile, true);
+
+                //destFile es lo que hay que guardar en la DB
             }
         }
     }

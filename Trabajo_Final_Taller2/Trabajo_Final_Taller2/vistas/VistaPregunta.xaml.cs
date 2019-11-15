@@ -28,5 +28,10 @@ namespace Trabajo_Final_Taller2.vistas
         {
 
         }
+
+        private void irARespuesta_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
