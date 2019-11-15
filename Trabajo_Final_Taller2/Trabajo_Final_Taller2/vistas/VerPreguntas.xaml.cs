@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,20 @@ namespace Trabajo_Final_Taller2.vistas
     /// </summary>
     public partial class VerPreguntas : Window
     {
-        public VerPreguntas()
+        Usuario usuario;
+        List<Pregunta> preguntas;
+
+        public VerPreguntas(Usuario user, List<Pregunta> pregs)
         {
             InitializeComponent();
+            usuario = user;
+            preguntas = pregs;
         }
+     
 
-        private void Btn_IrAPregunta_Click(object sender, RoutedEventArgs e)
+        private void btn_Regresar_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

@@ -14,7 +14,7 @@
         <Label x:Name="label4" Content="Respuestas" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="129" Margin="10,186,0,0" VerticalAlignment="Top" Width="260"/>
         <Button x:Name="irARespuesta" Content="Ir a respuesta" HorizontalAlignment="Left" Margin="10,333,0,0" VerticalAlignment="Top" Width="92" Click="irARespuesta_Click"/>
-        <Button x:Name="button1" Content="Regresar" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click"/>
 
     </Grid>
 </Window>

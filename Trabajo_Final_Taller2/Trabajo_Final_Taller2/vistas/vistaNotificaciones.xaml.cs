@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace Trabajo_Final_Taller2.vistas
 
         private void Btn_irAPregunta_Click(object sender, RoutedEventArgs e)
         {
-            var pregunta = lbx_notificaciones.SelectedItem;
+            Pregunta pregunta = (Pregunta)lbx_notificaciones.SelectedItem;
             //en teoria pregunta deberia retornar el objeto contenido en la opcion seleccionada.
             //habria que separarlo y hacer pasaje de parametros a vistaPregunta.
         }

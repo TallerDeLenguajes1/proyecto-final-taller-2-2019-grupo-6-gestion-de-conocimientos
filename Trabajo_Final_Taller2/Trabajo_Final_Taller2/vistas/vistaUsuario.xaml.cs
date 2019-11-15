@@ -21,16 +21,14 @@ namespace Trabajo_Final_Taller2.vistas
     /// </summary>
     public partial class vistaUsuarios : Window
     {
+        Usuario usuario;
         public vistaUsuarios(Usuario user)
         {
             InitializeComponent();
-            lbl_name.Content = user.Nombre + "Está en sesión.";
+            lbl_name.Content = user.Nombre + " está en sesión.";
+            usuario = user;
         }
-
-        private void button_Copy3_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        
         /// <summary>
         /// cada boton hace practicamente lo mismo
         /// cierra esta ventana y abre la ventana necesaria.
@@ -38,31 +36,28 @@ namespace Trabajo_Final_Taller2.vistas
         private void Btn_verNotificacion_Click(object sender, RoutedEventArgs e)
         {
             var vistaNotis = new vistaNotificaciones();
-            vistaNotis.Show();
-            this.Close();
+            vistaNotis.ShowDialog();
         }
 
         private void Btn_hacerPregunta_Click(object sender, RoutedEventArgs e)
         {
-            var vistaHP = new HacerPregunta();
-            vistaHP.Show();
-            this.Close();
+            var vistaHP = new HacerPregunta(usuario);
+            vistaHP.ShowDialog();
         }
 
         private void Btn_verMisPreguntas_Click(object sender, RoutedEventArgs e)
         {
             //las preguntas se ven en la misma ventana, habria que ver como manejar esto...
-            var vistaMPreg = new VistaPregunta();
-            vistaMPreg.Show();
-            this.Close();
+            var vistaMPreg = new VerPreguntas(usuario, usuario.Preguntas);
+            vistaMPreg.ShowDialog();
         }
 
         private void Btn_verPreguntas_Click(object sender, RoutedEventArgs e)
         {
-            //las preguntas se ven en la misma ventana, habria que ver como manejar esto...
-            var vistaMPreg = new VistaPregunta();
-            vistaMPreg.Show();
-            this.Close();
+            // Hacer consulta para obtener las preguntas
+            List<Pregunta> preguntas = ABMPregunta.GetPreguntas();
+            var vistaMPreg = new VerPreguntas(usuario, preguntas);
+            vistaMPreg.ShowDialog();
         }
         private void salir_Click(object sender, RoutedEventArgs e)
         {
