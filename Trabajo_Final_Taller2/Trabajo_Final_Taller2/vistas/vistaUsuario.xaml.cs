@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AccesoADatos;
+using Entidades;
 
 namespace Trabajo_Final_Taller2.vistas
 {
@@ -19,9 +21,10 @@ namespace Trabajo_Final_Taller2.vistas
     /// </summary>
     public partial class vistaUsuarios : Window
     {
-        public vistaUsuarios()
+        public vistaUsuarios(Usuario user)
         {
             InitializeComponent();
+            lbl_name.Content = user.Nombre + "Está en sesión.";
         }
     }
 }

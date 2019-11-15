@@ -92,7 +92,7 @@ namespace AccesoADatos
                 //Hago la conexion a la base de datos
                 Conexion_Desconexion.Connection();
                 //Armo mi query para buscar un usuario especifico
-                string query = @"SELECT * FROM Usuarios WHERE emial = @email";
+                string query = @"SELECT * FROM Usuarios WHERE email = @email";
                 //Armo el command con el query y la conexion
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 //Paso como parametro codificado el id del usuario que busco
