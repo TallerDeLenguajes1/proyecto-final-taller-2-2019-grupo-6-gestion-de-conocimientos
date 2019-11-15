@@ -40,7 +40,7 @@ namespace Trabajo_Final_Taller2.vistas
 
         private void Btn_atrasNotificaciones_Click(object sender, RoutedEventArgs e)
         {
-            //como se obtiene la ventana anterior?
+            this.Close();
         }
     }
 }

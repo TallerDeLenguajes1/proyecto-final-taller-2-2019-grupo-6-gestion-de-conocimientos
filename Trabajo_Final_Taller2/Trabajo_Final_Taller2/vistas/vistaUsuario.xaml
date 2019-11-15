@@ -11,7 +11,7 @@
         <Button x:Name="btn_hacerPregunta" Content="Hacer pregunta" HorizontalAlignment="Left" Margin="130,50,0,0" VerticalAlignment="Top" Width="110" Click="Btn_hacerPregunta_Click"/>
         <Button x:Name="btn_verPreguntas" Content="ver todas las preguntas" HorizontalAlignment="Left" Margin="376,50,0,0" VerticalAlignment="Top" Width="133" Click="Btn_verPreguntas_Click"/>
         <Button x:Name="btn_verMisPreguntas" Content="Ver mis preguntas" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top" Width="115" Click="Btn_verMisPreguntas_Click"/>
-        <Button x:Name="btn_salir" Content="salir" HorizontalAlignment="Left" Margin="15,258,0,0" VerticalAlignment="Top" Width="105" Click="salir_Click"/>
+        <Button x:Name="btn_salir" Content="Cerrar sesion" HorizontalAlignment="Left" Margin="15,258,0,0" VerticalAlignment="Top" Width="105" Click="salir_Click"/>
         <Label x:Name="lbl_name" Content="" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
