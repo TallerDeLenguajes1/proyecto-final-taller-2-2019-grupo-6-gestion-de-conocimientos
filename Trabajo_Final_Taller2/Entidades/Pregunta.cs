@@ -10,6 +10,8 @@ namespace Entidades
     {
         public int IdPregunta { get; set; }
         public int IdUserPregunta { get; set; }
+        public int IdSolucion { get; set; }
+        public Respuesta Solucion { get; set; }
         public DateTime Fecha { get; set; }
         public string UrlImagen { get; set; }
         public string Descripcion { get; set; }

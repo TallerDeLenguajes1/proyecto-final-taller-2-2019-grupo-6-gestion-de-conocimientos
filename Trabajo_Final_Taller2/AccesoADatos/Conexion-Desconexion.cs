@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
@@ -9,9 +10,10 @@ namespace AccesoADatos
 {
     class Conexion_Desconexion
     {
-
-        static readonly string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=nombreDB;"
-     + "Integrated Security=true";
+        static readonly string DBconfigDir = @"C:\Temp\Data\DBconfig.txt";
+        static string DBconfig = File.ReadAllText(DBconfigDir);    
+        static readonly string connectionString = DBconfig;
+        //agregar try catch?
         static readonly SqlConnection con = new SqlConnection(connectionString);
 
         public static SqlConnection Con
