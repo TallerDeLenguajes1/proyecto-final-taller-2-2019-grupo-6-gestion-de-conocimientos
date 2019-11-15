@@ -21,10 +21,11 @@ namespace Trabajo_Final_Taller2.vistas
     /// </summary>
     public partial class vistaUsuarios : Window
     {
+
         public vistaUsuarios(Usuario user)
         {
             InitializeComponent();
-            lbl_name.Content = user.Nombre + "Está en sesión.";
+            lbl_name.Content = user.Nombre + " está en sesión.";
         }
 
         private void button_Copy3_Click(object sender, RoutedEventArgs e)
