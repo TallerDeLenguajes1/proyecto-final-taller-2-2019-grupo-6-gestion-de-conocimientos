@@ -115,5 +115,17 @@ namespace AccesoADatos
             
 
         }
+
+        /// <summary>
+        /// Realiza un UPDATE de los likes de la respuesta con el id especificado
+        /// </summary>
+        /// <param name="idRespuesta"></param>
+        /// <param name="likes"></param>
+        static public void UpdateLikes(int idRespuesta,int likes)
+        {
+            // TO DO
+        }
+
+
     }
 }
