@@ -26,5 +26,10 @@ namespace Trabajo_Final_Taller2.vistas
             InitializeComponent();
             lbl_name.Content = user.Nombre + "Está en sesión.";
         }
+
+        private void button_Copy3_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

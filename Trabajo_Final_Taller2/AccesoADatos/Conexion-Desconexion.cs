@@ -10,7 +10,7 @@ namespace AccesoADatos
 {
     class Conexion_Desconexion
     {
-        static readonly string DBconfigDir = @"C:\Temp\Data\DBconfig.txt";
+        static readonly string DBconfigDir = @"..\..\..\AccesoADatos\DBconfig.txt";
         static string DBconfig = File.ReadAllText(DBconfigDir);    
         static readonly string connectionString = DBconfig;
         //agregar try catch?
