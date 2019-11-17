@@ -62,7 +62,7 @@ namespace AccesoADatos
 
 
         /// <summary>
-        /// Crea una nueva respuesta y la inserta en la base de datos
+        /// Crea una nueva respuesta con imagen y la inserta en la base de datos
         /// </summary>
         /// <param name="idUserResp"></param>
         /// <param name="idPregunta"></param>
@@ -94,7 +94,39 @@ namespace AccesoADatos
                 throw;
             }
         }
-        
+
+        /// <summary>
+        /// Crea una nueva respuesta sin imagen y la inserta en la base de datos
+        /// </summary>
+        /// <param name="idUserResp"></param>
+        /// <param name="idPregunta"></param>
+        /// <param name="tituloResp"></param>
+        /// <param name="descripcionResp"></param>
+        static public void AltaRespuesta(int idUserResp, int idPregunta, string tituloResp, string descripcionResp)
+        {
+            // Realizar INSERT INTO en la tabla de respuestas
+            try
+            {
+                //Hacer conexion a la base de datos
+                Conexion_Desconexion.Connection();
+                string query = @"INSERT INTO Respuestas(id_user,id_pregunta,titulo,descripcion,url_imagen) VALUES(@id_user,@id_pregunta,@titulo,@descripcion,@url_imagen)";
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                /*NOTA: placeholders.*/
+                command.Parameters.AddWithValue("@id_user", idUserResp);
+                command.Parameters.AddWithValue("@id_pregunta", idPregunta);
+                command.Parameters.AddWithValue("@titulo", tituloResp);
+                command.Parameters.AddWithValue("@descripcion", descripcionResp);
+                command.ExecuteNonQuery();
+                //Desconectar
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception ex)
+            {
+                //Nloggear
+                throw;
+            }
+        }
+
         /// <summary>
         /// Elimina una respuesta de la base de datos
         /// </summary>
