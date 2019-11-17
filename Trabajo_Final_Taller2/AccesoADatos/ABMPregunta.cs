@@ -45,7 +45,7 @@ namespace AccesoADatos
                     preg.Descripcion = reader.GetString(4);
                     if (reader[5] == DBNull.Value)
                     {
-                        preg.UrlImagen = "";
+                        preg.UrlImagen = null;
                     }
                     else
                     {

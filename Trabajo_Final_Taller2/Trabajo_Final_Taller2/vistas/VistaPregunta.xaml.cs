@@ -27,7 +27,7 @@ namespace Trabajo_Final_Taller2.vistas
             InitializeComponent();
             usuario = user;
             this.pregunta = pregunta;
-            lbxRespuestas.ItemsSource = this.pregunta.Respuestas;
+            CargarComponentes();
         }
 
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
@@ -37,7 +37,32 @@ namespace Trabajo_Final_Taller2.vistas
 
         private void btnIrARespuesta_Click(object sender, RoutedEventArgs e)
         {
+            if (lbxRespuestas.SelectedIndex != -1)
+            {
+                Respuesta respuestaSelec = (Respuesta)lbxRespuestas.SelectedItem;
+                VistaRespuesta vRespuesta = new VistaRespuesta(usuario, respuestaSelec);
 
+                vRespuesta.ShowDialog();
+            }
+        }
+
+        private void CargarComponentes()
+        {
+            lblTitulo.Content = pregunta.Titulo;
+            tbkDescripcion.Text = pregunta.Descripcion;
+
+            if (pregunta.UrlImagen == null)
+            {
+                btnVerImagen.IsEnabled = false;
+            }
+            else
+            {
+                btnVerImagen.IsEnabled = true;
+                // TO DO
+                // Vincular boton con la imagen
+            }
+
+            lbxRespuestas.ItemsSource = pregunta.Respuestas;
         }
     }
 }

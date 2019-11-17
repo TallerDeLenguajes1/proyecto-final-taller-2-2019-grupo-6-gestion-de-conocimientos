@@ -7,14 +7,13 @@
         mc:Ignorable="d"
         Title="VistaPregunta" Height="501" Width="499">
     <Grid>
-        <Label x:Name="label" Content="Título pregunta" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Descripcion" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="{}{Contenido descripcion}" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="Imagen" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label4" Content="Respuestas" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTitulo" Content="[Título pregunta]" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Respuestas" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="lbxRespuestas" HorizontalAlignment="Left" Height="129" Margin="10,186,0,0" VerticalAlignment="Top" Width="260"/>
         <Button x:Name="btnIrARespuesta" Content="Ir a respuesta" HorizontalAlignment="Left" Margin="10,333,0,0" VerticalAlignment="Top" Width="92" Click="btnIrARespuesta_Click"/>
         <Button x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click"/>
+        <TextBlock x:Name="tbkDescripcion" HorizontalAlignment="Left" Margin="11,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="75" Width="369"><Run Text="["/><Run Text="TextBlock"/><Run Text=" descripcion"/><Run Text="]"/></TextBlock>
+        <Button x:Name="btnVerImagen" Content="Ver Imagen" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
