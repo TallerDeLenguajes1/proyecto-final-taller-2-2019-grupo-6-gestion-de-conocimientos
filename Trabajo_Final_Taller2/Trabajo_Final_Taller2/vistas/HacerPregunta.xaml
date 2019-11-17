@@ -11,14 +11,14 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="tituloPreg" HorizontalAlignment="Left" Height="23" Margin="25,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" TextChanged="tituloPreg_TextChanged"/>
-        <TextBox x:Name="Descripcion" HorizontalAlignment="Left" Height="64" Margin="25,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="505"/>
-        <Button x:Name="cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="25,286,0,0" VerticalAlignment="Top" Width="75" Click="cancelar_Click" Height="22"/>
-        <Button x:Name="preguntar" Content="Preguntar" HorizontalAlignment="Left" Margin="185,286,0,0" VerticalAlignment="Top" Width="75" Click="preguntar_Click" Height="22"/>
-        <Label x:Name="label" Content="Pregunta&#xD;&#xA;" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
-        <Label x:Name="label1" Content="Imagen" HorizontalAlignment="Left" Margin="25,184,0,0" VerticalAlignment="Top" Height="26" Width="50"/>
-        <Label x:Name="label2" Content="Descripción" HorizontalAlignment="Left" Margin="25,84,0,0" VerticalAlignment="Top" Height="26" Width="72"/>
-        <Button x:Name="subirImg" Content="subir&#xD;&#xA;" HorizontalAlignment="Left" Margin="80,188,0,0" VerticalAlignment="Top" Width="75" Click="subirImg_Click" Height="22"/>
+        <TextBox x:Name="txbTitulo" HorizontalAlignment="Left" Height="23" Margin="25,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263"/>
+        <TextBox x:Name="txbDescripcion" HorizontalAlignment="Left" Height="64" Margin="25,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="505"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="25,286,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click" Height="22"/>
+        <Button x:Name="btnPreguntar" Content="Preguntar" HorizontalAlignment="Left" Margin="185,286,0,0" VerticalAlignment="Top" Width="75" Click="btnPreguntar_Click" Height="22"/>
+        <Label Content="Título" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+        <Label Content="Subir imagen:" HorizontalAlignment="Left" Margin="25,184,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+        <Label Content="Descripción" HorizontalAlignment="Left" Margin="25,84,0,0" VerticalAlignment="Top" Height="26" Width="72"/>
+        <Button x:Name="btnExaminar" Content="Examinar&#xA;" HorizontalAlignment="Left" Margin="116,188,0,0" VerticalAlignment="Top" Width="74" Click="btnExaminar_Click" Height="22"/>
 
     </Grid>
 </Window>

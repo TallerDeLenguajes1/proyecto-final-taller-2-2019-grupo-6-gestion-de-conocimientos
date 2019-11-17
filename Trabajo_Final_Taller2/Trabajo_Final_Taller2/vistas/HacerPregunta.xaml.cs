@@ -29,12 +29,10 @@ namespace Trabajo_Final_Taller2.vistas
             this.user = user;
         }
         string imagenFinal = null;
-        private void preguntar_Click(object sender, RoutedEventArgs e)
+        private void btnPreguntar_Click(object sender, RoutedEventArgs e)
         {
-            //obtener id user
-            int iduser = user.IdUsuario;
-            string titulo = tituloPreg.Text;
-            string descripcion = tituloPreg.Text;
+            string titulo = txbTitulo.Text;
+            string descripcion = txbDescripcion.Text;
             //aun no se 100% como se va a manejar la imagen asi que por el momento lo dejo como un string...
             string imagen = imagenFinal;
             if (imagen != null)
@@ -47,17 +45,11 @@ namespace Trabajo_Final_Taller2.vistas
                 // TO DO
                 // HelperABM.HacerPregunta();
             }
-
         }
 
-        private void cancelar_Click(object sender, RoutedEventArgs e)
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void tituloPreg_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
         /// <summary>
         /// Lo que hace este metodo es, al hacer click se abre un cuadro para seleccionar imagen; se usan unos parametros para especificar 
@@ -65,7 +57,7 @@ namespace Trabajo_Final_Taller2.vistas
         /// despues se obtiene el nombre del archivo, la ruta + el nombre, a donde se quiere copiar el archivo y destFile que va a ser la nueva ruta + el nombre dek archivo
         /// luego se copia la imagen en la carpeta de imagenes del proyecto.
         /// </summary>
-        private void subirImg_Click(object sender, RoutedEventArgs e)
+        private void btnExaminar_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Seleccionar imagen";

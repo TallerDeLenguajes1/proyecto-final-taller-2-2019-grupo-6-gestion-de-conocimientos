@@ -73,6 +73,9 @@
     <Compile Include="vistas\VerPreguntas.xaml.cs">
       <DependentUpon>VerPreguntas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vistas\VistaCrearRespuesta.xaml.cs">
+      <DependentUpon>VistaCrearRespuesta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vistas\vistaNotificaciones.xaml.cs">
       <DependentUpon>vistaNotificaciones.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="vistas\VerPreguntas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistas\VistaCrearRespuesta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
