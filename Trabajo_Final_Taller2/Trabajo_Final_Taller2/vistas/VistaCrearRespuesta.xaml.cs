@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,20 @@ namespace Trabajo_Final_Taller2.vistas
     /// </summary>
     public partial class VistaCrearRespuesta : Window
     {
-        public VistaCrearRespuesta()
+        Usuario usuario;
+        Pregunta pregunta;
+
+        public VistaCrearRespuesta(Usuario usuario, Pregunta pregunta)
         {
             InitializeComponent();
+
+            this.usuario = usuario;
+            this.pregunta = pregunta;
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

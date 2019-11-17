@@ -64,5 +64,11 @@ namespace Trabajo_Final_Taller2.vistas
 
             lbxRespuestas.ItemsSource = pregunta.Respuestas;
         }
+
+        private void btnResponder_Click(object sender, RoutedEventArgs e)
+        {
+            VistaCrearRespuesta vCrearRespuesta = new VistaCrearRespuesta(usuario, pregunta);
+            vCrearRespuesta.ShowDialog();
+        }
     }
 }
