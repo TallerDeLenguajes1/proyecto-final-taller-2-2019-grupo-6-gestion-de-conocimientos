@@ -31,14 +31,21 @@ namespace AccesoADatos
                 while (reader.Read())
                 {
                     Respuesta resp = new Respuesta();
-                    resp.IdUserResp = reader.GetInt16(0);
-                    resp.IdPregunta = reader.GetInt16(1);
-                    resp.IdRespuesta = reader.GetInt16(2);
+                    resp.IdUserResp = reader.GetInt32(0);
+                    resp.IdPregunta = reader.GetInt32(1);
+                    resp.IdRespuesta = reader.GetInt32(2);
                     resp.Titulo = reader.GetString(3);
                     resp.Descripcion = reader.GetString(4);
-                    resp.UrlImagen = reader.GetString(5);
+                    if (reader[5] == DBNull.Value)
+                    {
+                        resp.UrlImagen = null;
+                    }
+                    else
+                    {
+                        resp.UrlImagen = reader.GetString(5);
+                    }
                     resp.Fecha = reader.GetDateTime(6);
-                    resp.Likes = reader.GetInt16(7);
+                    resp.Likes = reader.GetInt32(7);
                     respuestas.Add(resp);
             	}
                 //Cierro la conexion a la Bd

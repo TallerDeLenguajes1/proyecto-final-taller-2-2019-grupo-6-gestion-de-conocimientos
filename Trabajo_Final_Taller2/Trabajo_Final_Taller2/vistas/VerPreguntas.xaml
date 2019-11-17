@@ -15,7 +15,7 @@
         <Label x:Name="label4" Content="Ha preguntado" HorizontalAlignment="Left" Margin="325,101,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label5" Content="{}{Titulo pregunta}" HorizontalAlignment="Left" Margin="325,132,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2" Content="el {fecha pregunta}" HorizontalAlignment="Left" Margin="325,163,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnIrAPregunta" Content="Ir a la pregunta" Margin="13,251,363,88"/>
+        <Button x:Name="btnIrAPregunta" Content="Ir a la pregunta" Margin="13,251,363,88" Click="btnIrAPregunta_Click"/>
 
     </Grid>
 </Window>

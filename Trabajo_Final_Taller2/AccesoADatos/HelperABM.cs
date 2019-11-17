@@ -207,5 +207,16 @@ namespace AccesoADatos
             preg.Solucion = resp;
             preg.IdSolucion = resp.IdRespuesta;
         }
+
+        /// <summary>
+        /// Retorna una lista de preguntas con sus listas de respuestas cargadas
+        /// </summary>
+        /// <returns></returns>
+        public static List<Pregunta> ObtenerTodasLasPreguntas()
+        {
+            List<Pregunta> todasLasPreguntas = ABMPregunta.GetPreguntas();
+            todasLasPreguntas.ForEach(p => CargarListaRespuestas(p));
+            return todasLasPreguntas;
+        }
     }
 }

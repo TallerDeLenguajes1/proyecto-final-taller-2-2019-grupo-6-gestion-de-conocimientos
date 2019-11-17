@@ -60,7 +60,7 @@ namespace AccesoADatos
                 SqlDataReader reader = command.ExecuteReader();
                 //Utilizo el reader para leer los datos del usuario y cargarlos a user
                 reader.Read();
-                user.IdUsuario = reader.GetInt16(0);
+                user.IdUsuario = reader.GetInt32(0);
                 user.Nombre = reader.GetString(1);
                 user.Apellido = reader.GetString(2);
                 user.PaisOrigen = reader.GetString(3);

@@ -55,7 +55,7 @@ namespace Trabajo_Final_Taller2.vistas
         private void Btn_verPreguntas_Click(object sender, RoutedEventArgs e)
         {
             // Hacer consulta para obtener las preguntas
-            List<Pregunta> preguntas = ABMPregunta.GetPreguntas();
+            List<Pregunta> preguntas = HelperABM.ObtenerTodasLasPreguntas();
             var vistaMPreg = new VerPreguntas(usuario, preguntas);
             vistaMPreg.ShowDialog();
         }

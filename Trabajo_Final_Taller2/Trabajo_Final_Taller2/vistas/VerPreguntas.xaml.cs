@@ -28,12 +28,24 @@ namespace Trabajo_Final_Taller2.vistas
             InitializeComponent();
             usuario = user;
             preguntas = pregs;
+            lbx_Preguntas.ItemsSource = pregs;
         }
      
 
         private void btn_Regresar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnIrAPregunta_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbx_Preguntas.SelectedIndex != -1)
+            {
+                // Pregunta seleccionada
+                Pregunta preguntaSelec = (Pregunta)lbx_Preguntas.SelectedItem;
+                VistaPregunta vistaPregunta = new VistaPregunta(usuario, preguntaSelec);
+                vistaPregunta.ShowDialog();
+            }
         }
     }
 }

@@ -21,10 +21,13 @@ namespace Trabajo_Final_Taller2.vistas
     public partial class VistaPregunta : Window
     {
         Usuario usuario;
-        public VistaPregunta(Usuario user)
+        Pregunta pregunta;
+        public VistaPregunta(Usuario user, Pregunta pregunta)
         {
             InitializeComponent();
             usuario = user;
+            this.pregunta = pregunta;
+            lbxRespuestas.ItemsSource = this.pregunta.Respuestas;
         }
 
         private void btnRegresar_Click(object sender, RoutedEventArgs e)

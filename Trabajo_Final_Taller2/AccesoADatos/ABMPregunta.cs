@@ -90,8 +90,8 @@ namespace AccesoADatos
                 {
                     //Armo una nueva pregunta con los datos que toma el reader y la cargo a la lista
                     Pregunta preg = new Pregunta();
-                    preg.IdPregunta = reader.GetInt16(0);
-                    preg.IdUserPregunta = reader.GetInt16(1);
+                    preg.IdPregunta = reader.GetInt32(0);
+                    preg.IdUserPregunta = reader.GetInt32(1);
                     //Si el valor del campo solucion es nulo, tomo id solucion como -1
                     if (reader[2] == DBNull.Value)
                     {
@@ -99,11 +99,18 @@ namespace AccesoADatos
                     }
                     else
                     {
-                        preg.IdSolucion = reader.GetInt16(2);
+                        preg.IdSolucion = reader.GetInt32(2);
                     }
                     preg.Titulo = reader.GetString(3);
                     preg.Descripcion = reader.GetString(4);
-                    preg.UrlImagen = reader.GetString(5);
+                    if (reader[5] == DBNull.Value)
+                    {
+                        preg.UrlImagen = null;
+                    }
+                    else
+                    {
+                        preg.UrlImagen = reader.GetString(5);
+                    }
                     preg.Fecha = reader.GetDateTime(6);
                     preg.Estado = reader.GetString(7);
                     preguntasDeUser.Add(preg);
