@@ -178,7 +178,7 @@ namespace AccesoADatos
         		throw;
 	        }
             //Devuelve true/false segun exista o no el user con ese id
-            return count == 0;
+            return count != 0;
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace AccesoADatos
         		throw;
 	        }
             //Devuelve true/false segun exista o no el user con ese email
-            return count == 0;
+            return count != 0;
         }
 
     }

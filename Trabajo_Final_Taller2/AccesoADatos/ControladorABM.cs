@@ -10,7 +10,7 @@ namespace AccesoADatos
     /// <summary>
     /// Clase helper para manejar el acceso a la base de datos
     /// </summary>
-    static public class HelperABM
+    static public class ControladorABM
     {
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace AccesoADatos
         public static Usuario LoguearUsuario(string email, string password)
         {
             // Chequear si existe el usuario en la base de datos
-            if (ABMUsuario.ExisteUser(email))
+            if (ABMUsuario.ExisteUser(email) == false)
             {
                 return null;
             }
@@ -107,7 +107,7 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Crea una nueva pregunta en la base de datos y recarga la lista de preguntas del usuario
+        /// Crea una nueva pregunta con imagen en la base de datos y recarga la lista de preguntas del usuario
         /// </summary>
         /// <param name="userPregunta"></param>
         /// <param name="tituloPreg"></param>
@@ -123,7 +123,23 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Crea una nueva respuesta en la base de datos y una notificacion si es necesaria, 
+        /// Crea una nueva pregunta sin imagen en la base de datos y recarga la lista de preguntas del usuario
+        /// </summary>
+        /// <param name="userPregunta"></param>
+        /// <param name="tituloPreg"></param>
+        /// <param name="descripcionPreg"></param>
+        /// <param name="urlImagen"></param>
+        public static void HacerPregunta(Usuario userPregunta, string tituloPreg, string descripcionPreg)
+        {
+            // Alta en base de datos
+            ABMPregunta.AltaPregunta(userPregunta.IdUsuario, tituloPreg, descripcionPreg);
+
+            // Recarga la lista de preguntas
+            CargarListaPreguntas(userPregunta);
+        }
+
+        /// <summary>
+        /// Crea una nueva respuesta con imagen en la base de datos y una notificacion si es necesaria, 
         /// y recarga la lista de respuestas de la pregunta
         /// </summary>
         /// <param name="userRespuesta"></param>
@@ -135,6 +151,23 @@ namespace AccesoADatos
         public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, int idPregunta, string tituloResp, string descripcionResp, string urlImg)
         {
             ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp, urlImg);
+
+            CargarListaRespuestas(preg);
+        }
+
+        /// <summary>
+        /// Crea una nueva respuesta  sin imagen en la base de datos y una notificacion si es necesaria, 
+        /// y recarga la lista de respuestas de la pregunta
+        /// </summary>
+        /// <param name="userRespuesta"></param>
+        /// <param name="preg"></param>
+        /// <param name="idPregunta"></param>
+        /// <param name="tituloResp"></param>
+        /// <param name="descripcionResp"></param>
+        /// <param name="urlImg"></param>
+        public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, int idPregunta, string tituloResp, string descripcionResp)
+        {
+            ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp);
 
             CargarListaRespuestas(preg);
         }

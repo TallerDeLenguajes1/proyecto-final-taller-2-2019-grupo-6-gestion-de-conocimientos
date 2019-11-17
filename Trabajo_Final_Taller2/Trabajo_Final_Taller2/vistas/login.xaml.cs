@@ -35,10 +35,10 @@ namespace Trabajo_Final_Taller2
             if (ControlDatos.Verificaremail(txb_email.Text) == true)
             {
                 //Si el email es correcto llamo al metodo loguear usuario y verifico si el usuario que busca existe
-                if (HelperABM.LoguearUsuario(txb_email.Text, psb_pass.Password.ToString()) != null)
+                if (ControladorABM.LoguearUsuario(txb_email.Text, psb_pass.Password.ToString()) != null)
                 {
                     //Si se devuelve un usuario lo guardo en la variable user y genero la siguiente vista que será vista usuarios
-                    user = HelperABM.LoguearUsuario(txb_email.Text, psb_pass.Password.ToString());
+                    user = ControladorABM.LoguearUsuario(txb_email.Text, psb_pass.Password.ToString());
                     vistas.vistaUsuarios vistaUsuarios = new vistas.vistaUsuarios(user);
                     //Cierro la vista del login y muestro la vista del usuario
                     this.Close();

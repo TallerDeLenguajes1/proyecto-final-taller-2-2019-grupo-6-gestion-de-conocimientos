@@ -38,12 +38,12 @@ namespace Trabajo_Final_Taller2.vistas
             if (imagen != null)
             {
                 // TO DO
-                // HelperABM.HacerPregunta();
+                // ControladorABM.HacerPregunta();
             }
             else
             {
                 // TO DO
-                // HelperABM.HacerPregunta();
+                // ControladorABM.HacerPregunta();
             }
         }
 

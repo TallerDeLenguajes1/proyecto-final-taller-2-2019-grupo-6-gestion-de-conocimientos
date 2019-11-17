@@ -55,7 +55,7 @@
     <Compile Include="ABMUsuario.cs" />
     <Compile Include="Conexion-Desconexion.cs" />
     <Compile Include="ControlDatos.cs" />
-    <Compile Include="HelperABM.cs" />
+    <Compile Include="ControladorABM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
