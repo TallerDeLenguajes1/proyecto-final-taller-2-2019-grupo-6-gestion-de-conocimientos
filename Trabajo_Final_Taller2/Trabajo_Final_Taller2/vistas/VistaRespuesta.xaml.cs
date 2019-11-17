@@ -16,28 +16,23 @@ using System.Windows.Shapes;
 namespace Trabajo_Final_Taller2.vistas
 {
     /// <summary>
-    /// Lógica de interacción para VistaPregunta.xaml
+    /// Interaction logic for VistaRespuesta.xaml
     /// </summary>
-    public partial class VistaPregunta : Window
+    public partial class VistaRespuesta : Window
     {
         Usuario usuario;
-        Pregunta pregunta;
-        public VistaPregunta(Usuario user, Pregunta pregunta)
+        Respuesta respuesta;
+        public VistaRespuesta(Usuario usuario, Respuesta respuesta)
         {
             InitializeComponent();
-            usuario = user;
-            this.pregunta = pregunta;
-            lbxRespuestas.ItemsSource = this.pregunta.Respuestas;
+
+            this.usuario = usuario;
+            this.respuesta = respuesta;
         }
 
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void btnIrARespuesta_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
