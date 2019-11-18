@@ -23,28 +23,42 @@ namespace Trabajo_Final_Taller2.vistas
     public partial class HacerPregunta : Window
     {
         Usuario user;
+        string imagenFinal = null;
         public HacerPregunta(Usuario user)
         {
             InitializeComponent();
             this.user = user;
         }
-        string imagenFinal = null;
         private void btnPreguntar_Click(object sender, RoutedEventArgs e)
         {
-            string titulo = txbTitulo.Text;
-            string descripcion = txbDescripcion.Text;
+            string titulo;
+            string descripcion;
+
             //aun no se 100% como se va a manejar la imagen asi que por el momento lo dejo como un string...
             string imagen = imagenFinal;
-            if (imagen != null)
+
+            // Validacion de campos
+            if (string.IsNullOrWhiteSpace(txbTitulo.Text) 
+               || string.IsNullOrWhiteSpace(txbDescripcion.Text))
             {
-                // TO DO
-                // ControladorABM.HacerPregunta();
+                MessageBox.Show("Campos invalidos");
+                return;
             }
             else
             {
-                // TO DO
-                // ControladorABM.HacerPregunta();
+                titulo = txbTitulo.Text;
+                descripcion = txbDescripcion.Text;
             }
+
+            if (imagen != null)
+            {
+                ControladorABM.HacerPregunta(user, titulo, descripcion, imagen);
+            }
+            else
+            {
+                ControladorABM.HacerPregunta(user, titulo, descripcion);
+            }
+            this.Close();
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -74,5 +88,5 @@ namespace Trabajo_Final_Taller2.vistas
                 imagenFinal = destFile;
             }
         }
-}
+    }
 }
