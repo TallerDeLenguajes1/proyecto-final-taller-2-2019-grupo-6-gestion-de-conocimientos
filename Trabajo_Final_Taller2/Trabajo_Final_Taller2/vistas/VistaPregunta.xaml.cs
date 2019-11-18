@@ -63,6 +63,15 @@ namespace Trabajo_Final_Taller2.vistas
             }
 
             lbxRespuestas.ItemsSource = pregunta.Respuestas;
+
+            if (pregunta.AdmiteRespuesta())
+            {
+                btnResponder.IsEnabled = true;
+            }
+            else
+            {
+                btnResponder.IsEnabled = false;
+            }
         }
 
         private void btnResponder_Click(object sender, RoutedEventArgs e)

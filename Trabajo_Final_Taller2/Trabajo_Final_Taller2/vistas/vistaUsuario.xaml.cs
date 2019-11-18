@@ -35,7 +35,7 @@ namespace Trabajo_Final_Taller2.vistas
         /// </summary>
         private void Btn_verNotificacion_Click(object sender, RoutedEventArgs e)
         {
-            var vistaNotis = new vistaNotificaciones();
+            var vistaNotis = new vistaNotificaciones(usuario);
             vistaNotis.ShowDialog();
         }
 

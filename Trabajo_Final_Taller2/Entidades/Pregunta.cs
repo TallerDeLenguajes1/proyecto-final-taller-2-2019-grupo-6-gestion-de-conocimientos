@@ -20,6 +20,12 @@ namespace Entidades
         public Usuario UserPregunta { get; set; }
         public string Estado { get; set; }
 
+        public Pregunta()
+        {
+            Respuestas = new List<Respuesta>();
+        }
+
+
         /// <summary>
         /// Calcula los meses transcurridos desde la ultima respuesta a esta pregunta
         /// , o los meses desde que se hizo la pregunta si no tiene respuestas
@@ -63,6 +69,75 @@ namespace Entidades
         public override string ToString()
         {
             return Titulo;
+        }
+
+        public bool EmiteNotificacion()
+        {
+            if (Estado == "Activa" || Estado == "Inactiva")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool AdmiteRespuesta()
+        {
+            if (Estado == "Activa" || Estado == "Inactiva" || Estado == "Suspendida")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Controla el estado de la pregunta y lo cambia si es necesario
+        /// </summary>
+        public void ChequearEstado()
+        {
+            if (Estado == "Activa")
+            {
+                if (this.GetMesesDesdeUltimaResp() >= 6)
+                {
+                    Estado = "Inactiva";
+                }
+            }
+            else if (Estado == "Inactiva")
+            {
+                if (this.GetMesesDesdeUltimaResp() < 6)
+                {
+                    Estado = "Activa";
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Retorna true si la pregunta pertenece al usuario especificado,
+        /// false de lo contrario
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool PerteneceAUsuario(Usuario user)
+        {
+            if (this.IdUserPregunta == user.IdUsuario)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool EstaSolucionada()
+        {
+            return Estado == "Solucionada";
         }
     }
 }

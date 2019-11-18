@@ -34,9 +34,9 @@ namespace AccesoADatos
                 while (reader.Read())
                 {
                     Notificacion notif = new Notificacion();
-                    notif.IdUserPregunta = reader.GetInt16(0);
-                    notif.IdPregunta = reader.GetInt16(1);
-                    notif.IdNotificacion = reader.GetInt16(2);
+                    notif.IdUserPregunta = reader.GetInt32(0);
+                    notif.IdPregunta = reader.GetInt32(1);
+                    notif.IdNotificacion = reader.GetInt32(2);
                     notificaciones.Add(notif);
                 }
                 //Cierro la conexion a la Bd

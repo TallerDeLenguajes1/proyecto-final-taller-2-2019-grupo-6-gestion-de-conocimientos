@@ -21,6 +21,19 @@ namespace AccesoADatos
         {
             user.Preguntas = ABMPregunta.GetPreguntas(user.IdUsuario);
 
+            foreach (Pregunta p in user.Preguntas)
+            {
+                string estadoInicial = p.Estado;
+                p.ChequearEstado();
+                string estadoFinal = p.Estado;
+
+                if (estadoInicial != estadoFinal)
+                {
+                    // Se debe cambiar el estado de la pregunta en la base de datos
+                    ABMPregunta.ActualizarEstado(p.IdPregunta, estadoFinal);
+                }
+            }
+
             // Asignar la referencia al user para cada una de sus preguntas
             // y cargar sus listas de respuestas
             foreach (Pregunta p in user.Preguntas)
@@ -150,12 +163,21 @@ namespace AccesoADatos
         public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, string tituloResp, string descripcionResp, string urlImg)
         {
             ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp, urlImg);
-
             CargarListaRespuestas(preg);
+
+
+            if (preg.EmiteNotificacion() == true)
+            {
+                // Si responde a su propia pregunta no emite notificacion
+                if (userRespuesta.IdUsuario != preg.IdUserPregunta)
+                {
+                    ABMNotificacion.AltaNotificacion(preg.IdUserPregunta, preg.IdPregunta);
+                }
+            }
         }
 
         /// <summary>
-        /// Crea una nueva respuesta  sin imagen en la base de datos y una notificacion si es necesaria, 
+        /// Crea una nueva respuesta sin imagen en la base de datos y una notificacion si es necesaria, 
         /// y recarga la lista de respuestas de la pregunta
         /// </summary>
         /// <param name="userRespuesta"></param>
@@ -164,9 +186,20 @@ namespace AccesoADatos
         /// <param name="descripcionResp"></param>
         public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, string tituloResp, string descripcionResp)
         {
-            ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp);
+            if (preg.AdmiteRespuesta())
+            {
+                ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp);
+                CargarListaRespuestas(preg);
 
-            CargarListaRespuestas(preg);
+                if (preg.EmiteNotificacion() == true)
+                {
+                    // Si responde a su propia pregunta no emite notificacion
+                    if (userRespuesta.IdUsuario != preg.IdUserPregunta)
+                    {
+                        ABMNotificacion.AltaNotificacion(preg.IdUserPregunta, preg.IdPregunta);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -251,9 +284,13 @@ namespace AccesoADatos
         /// <param name="preg"></param>
         public static void SolucionarPregunta(Respuesta resp, Pregunta preg)
         {
-            ABMPregunta.UpdateSolucionPregunta(preg.IdPregunta, resp.IdRespuesta);
-            preg.Solucion = resp;
-            preg.IdSolucion = resp.IdRespuesta;
+            if (preg.EstaSolucionada() == false)
+            {
+                ABMPregunta.UpdateSolucionPregunta(preg.IdPregunta, resp.IdRespuesta);
+                preg.Solucion = resp;
+                preg.IdSolucion = resp.IdRespuesta;
+                preg.Estado = "Solucionada";
+            }
         }
 
         /// <summary>
@@ -263,6 +300,21 @@ namespace AccesoADatos
         public static List<Pregunta> ObtenerTodasLasPreguntas()
         {
             List<Pregunta> todasLasPreguntas = ABMPregunta.GetPreguntas();
+
+
+            foreach (Pregunta p in todasLasPreguntas)
+            {
+                string estadoInicial = p.Estado;
+                p.ChequearEstado();
+                string estadoFinal = p.Estado;
+
+                if (estadoInicial != estadoFinal)
+                {
+                    // Se debe cambiar el estado de la pregunta en la base de datos
+                    ABMPregunta.ActualizarEstado(p.IdPregunta, estadoFinal);
+                }
+            }
+
             todasLasPreguntas.ForEach(p => CargarListaRespuestas(p));
             return todasLasPreguntas;
         }

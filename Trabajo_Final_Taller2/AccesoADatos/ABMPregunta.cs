@@ -232,11 +232,36 @@ namespace AccesoADatos
                 //Conecto a la Bd
                 Conexion_Desconexion.Connection();
                 //Armo el query
-                string query = @"UPDATE Preguntas SET id_solucion = @idRespuesta WHERE id_pregunta = @idPregunta";
+                string query = @"UPDATE Preguntas SET id_solucion = @idRespuesta, estado = 'Solucionada' WHERE id_pregunta = @idPregunta";
                 //Armo el command con el query y la conexion
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 //Paso todos los valores por parametros
                 command.Parameters.AddWithValue("@idRespuesta", idRespuesta);
+                command.Parameters.AddWithValue("@idPregunta", idPregunta);
+                //Ejecuto el comando
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        static public void ActualizarEstado(int idPregunta, string nuevoEstado)
+        {
+            try
+            {
+                //Conecto a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"UPDATE Preguntas SET estado = @nuevoEstado WHERE id_pregunta = @idPregunta";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso todos los valores por parametros
+                command.Parameters.AddWithValue("@nuevoEstado", nuevoEstado);
                 command.Parameters.AddWithValue("@idPregunta", idPregunta);
                 //Ejecuto el comando
                 command.ExecuteNonQuery();
