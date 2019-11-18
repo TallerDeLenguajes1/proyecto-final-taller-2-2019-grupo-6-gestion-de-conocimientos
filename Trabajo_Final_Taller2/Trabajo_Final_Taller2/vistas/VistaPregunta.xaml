@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
         mc:Ignorable="d"
-        Title="VistaPregunta" Height="501" Width="499">
+        Title="VistaPregunta" Height="501" Width="499" Background="#FFF1EFEF">
     <Grid>
         <Label x:Name="lblTitulo" Content="[Título pregunta]" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Respuestas" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="lbxRespuestas" HorizontalAlignment="Left" Height="129" Margin="10,186,0,0" VerticalAlignment="Top" Width="260"/>
-        <Button x:Name="btnIrARespuesta" Content="Ir a respuesta" HorizontalAlignment="Left" Margin="10,333,0,0" VerticalAlignment="Top" Width="92" Click="btnIrARespuesta_Click"/>
-        <Button x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click"/>
+        <Label FontFamily="Global Sans Serif" Content="Respuestas" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="lbxRespuestas" HorizontalAlignment="Left" Height="129" Margin="10,186,0,0" VerticalAlignment="Top" Width="420"/>
+        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnIrARespuesta" Content="Ir a respuesta" HorizontalAlignment="Left" Margin="10,333,0,0" VerticalAlignment="Top" Width="92" Click="btnIrARespuesta_Click"/>
+        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click"/>
         <TextBlock x:Name="tbkDescripcion" HorizontalAlignment="Left" Margin="11,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="75" Width="369"><Run Text="["/><Run Text="TextBlock"/><Run Text=" descripcion"/><Run Text="]"/></TextBlock>
-        <Button x:Name="btnVerImagen" Content="Ver Imagen" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnResponder" Content="Responder" HorizontalAlignment="Left" Margin="11,377,0,0" VerticalAlignment="Top" Width="75" Click="btnResponder_Click"/>
+        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnVerImagen" Content="Ver Imagen" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnResponder" Content="Responder" HorizontalAlignment="Left" Margin="11,377,0,0" VerticalAlignment="Top" Width="75" Click="btnResponder_Click"/>
 
     </Grid>
 </Window>

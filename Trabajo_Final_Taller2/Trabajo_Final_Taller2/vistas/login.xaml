@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2"
         mc:Ignorable="d"
-        Title="Login" Height="265" Width="520" Background="#FFE0E0E0">
+        Title="Login" Height="265" Width="520" Background="#FFF1EFEF">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="394*"/>
+            <ColumnDefinition Width="119*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btn_login" Content="Ingresar" Margin="194,0,0,10" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Left" Width="139" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold"/>
-        <TextBox x:Name="txb_email" HorizontalAlignment="Left" Height="23" Margin="181,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" AutomationProperties.HelpText="Nombre de usuario"/>
+        <Button x:Name="btn_login" Content="Ingresar" Margin="194,0,0,10" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Left" Width="139" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1"/>
+        <TextBox x:Name="txb_email" HorizontalAlignment="Left" Height="23" Margin="181,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" AutomationProperties.HelpText="Nombre de usuario" BorderThickness="1" SnapsToDevicePixels="True"/>
         <Label x:Name="label" Content="Email" HorizontalAlignment="Left" Margin="178,83,0,0" VerticalAlignment="Top" Width="120" FontSize="15" FontFamily="Global Sans Serif" FontWeight="Bold" Height="26"/>
         <Label x:Name="label_Copy" Content="Contraseña" HorizontalAlignment="Left" Margin="177,140,0,0" VerticalAlignment="Top" Width="120" FontFamily="Global Sans Serif" FontSize="15" FontWeight="Bold" Height="24"/>
         <PasswordBox x:Name="psb_pass" HorizontalAlignment="Left" Margin="181,164,0,0" VerticalAlignment="Top" Width="146" Height="23"/>
-        <Image Margin="55,0,0,146" Source="/Trabajo_Final_Taller2;component/yajuOverflowLogo.png" Stretch="Fill" HorizontalAlignment="Left" Width="406"/>
+        <Image Margin="55,0,0,146" Source="/Trabajo_Final_Taller2;component/yajuOverflowLogo.png" Stretch="Fill" HorizontalAlignment="Left" Width="406" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
