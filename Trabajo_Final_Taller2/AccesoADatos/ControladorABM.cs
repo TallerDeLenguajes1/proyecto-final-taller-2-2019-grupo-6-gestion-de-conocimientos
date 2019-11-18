@@ -144,11 +144,10 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="userRespuesta"></param>
         /// <param name="preg"></param>
-        /// <param name="idPregunta"></param>
         /// <param name="tituloResp"></param>
         /// <param name="descripcionResp"></param>
         /// <param name="urlImg"></param>
-        public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, int idPregunta, string tituloResp, string descripcionResp, string urlImg)
+        public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, string tituloResp, string descripcionResp, string urlImg)
         {
             ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp, urlImg);
 
@@ -164,7 +163,7 @@ namespace AccesoADatos
         /// <param name="idPregunta"></param>
         /// <param name="tituloResp"></param>
         /// <param name="descripcionResp"></param>
-        public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, int idPregunta, string tituloResp, string descripcionResp)
+        public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, string tituloResp, string descripcionResp)
         {
             ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp);
 
