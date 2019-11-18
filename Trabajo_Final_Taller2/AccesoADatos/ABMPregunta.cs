@@ -218,37 +218,6 @@ namespace AccesoADatos
                 throw;
             }
         }
-        /// <summary>
-        /// Inserta una nueva pregunta sin imagen en la base de datos
-        /// </summary>
-        /// <param name="idUser"></param>
-        /// <param name="tituloPreg"></param>
-        /// <param name="descripcionPreg"></param>
-        static public void AltaPregunta(int idUser, string tituloPreg, string descripcionPreg)
-        {
-            try
-            {
-                //Conecto a la Bd
-                Conexion_Desconexion.Connection();
-                //Armo el query
-                string query = @"INSERT INTO Preguntas(id_user, titulo, descripcion, url_imagen) VALUES(@id_user, @titulo, @descripcion, @url_imagen)";
-                //Armo el command con el query y la conexion
-                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
-                //Paso todos los valores por parametros
-                command.Parameters.AddWithValue("@id_user", idUser);
-                command.Parameters.AddWithValue("@titulo", idUser);
-                command.Parameters.AddWithValue("@descripcion", idUser);
-                //Ejecuto el comando
-                command.ExecuteNonQuery();
-                //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
 
         /// <summary>
         /// Realiza un UPDATE del campo solucion de la pregunta especificada

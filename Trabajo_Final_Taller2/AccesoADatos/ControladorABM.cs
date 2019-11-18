@@ -60,6 +60,7 @@ namespace AccesoADatos
             {
                 r.PregRespuesta = preg;
                 ABMUsuario.GetUsuario(r.IdUserResp); // Cargar usuario que hizo la respuesta
+                r.IdsUsuariosLike = ABMRespuesta.GetIdsUsuariosLike(r.IdRespuesta);
             }
         }
 
@@ -128,7 +129,6 @@ namespace AccesoADatos
         /// <param name="userPregunta"></param>
         /// <param name="tituloPreg"></param>
         /// <param name="descripcionPreg"></param>
-        /// <param name="urlImagen"></param>
         public static void HacerPregunta(Usuario userPregunta, string tituloPreg, string descripcionPreg)
         {
             // Alta en base de datos
@@ -164,7 +164,6 @@ namespace AccesoADatos
         /// <param name="idPregunta"></param>
         /// <param name="tituloResp"></param>
         /// <param name="descripcionResp"></param>
-        /// <param name="urlImg"></param>
         public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, int idPregunta, string tituloResp, string descripcionResp)
         {
             ABMRespuesta.AltaRespuesta(userRespuesta.IdUsuario, preg.IdPregunta, tituloResp, descripcionResp);
@@ -173,15 +172,33 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Actualiza el valor de los likes en la base de datos
+        /// Actualiza los likes de una respuesta en la base de datos y en el objeto
         /// y en la respuesta
         /// </summary>
         /// <param name="userLike"></param>
         /// <param name="resp"></param>
         public static void DarLike(Usuario userLike, Respuesta resp)
         {
-            ABMRespuesta.UpdateLikes(resp.IdRespuesta, resp.Likes + 1);
-            resp.Likes++;
+            if (resp.DioLike(userLike) == false)
+            {
+                ABMRespuesta.AltaLike(resp.IdRespuesta, userLike.IdUsuario);
+                resp.IdsUsuariosLike.Add(userLike.IdUsuario);
+            }
+        }
+
+        /// <summary>
+        /// Actualiza los likes de una respuesta en la base de datos y en el objeto
+        /// y en la respuesta
+        /// </summary>
+        /// <param name="userLike"></param>
+        /// <param name="resp"></param>
+        public static void DarDisike(Usuario userLike, Respuesta resp)
+        {
+            if (resp.DioLike(userLike))
+            {
+                ABMRespuesta.BajaLike(resp.IdRespuesta, userLike.IdUsuario);
+                resp.IdsUsuariosLike.Remove(userLike.IdUsuario);
+            }
         }
 
         /// <summary>

@@ -45,7 +45,6 @@ namespace AccesoADatos
                         resp.UrlImagen = reader.GetString(5);
                     }
                     resp.Fecha = reader.GetDateTime(6);
-                    resp.Likes = reader.GetInt32(7);
                     respuestas.Add(resp);
             	}
                 //Cierro la conexion a la Bd
@@ -156,24 +155,20 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Realiza un UPDATE de los likes de la respuesta con el id especificado
+        /// Realiza un INSERT en la tabla likes
+        /// con el id del user y el id de la respuesta
         /// </summary>
         /// <param name="idRespuesta"></param>
         /// <param name="likes"></param>
-        static public void UpdateLikes(int idRespuesta,int likes)
+        static public void AltaLike(int idRespuesta, int idUser)
         {
             try
             {
-                //Conecto a la base de datos
                 Conexion_Desconexion.Connection();
-                //Tomo la cadena sql para hacer el Delete
-                string query = @"UPDATE Respuestas SET likes = @likes WHERE id_respuesta = @idResp";
-                //Armo el command con mi query y la conexion
+                string query = @"INSERT INTO Likes(id_respuesta, id_user) VALUES(@idResp, @idUser)";
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
-                //Paso como parametro codificado el id de la respuesta
                 command.Parameters.AddWithValue("@idResp", idRespuesta);
-                command.Parameters.AddWithValue("@likes", likes);
-                //Ejecuto el Delete y cierro la conexion
+                command.Parameters.AddWithValue("@idUser", idUser);
                 command.ExecuteNonQuery();
                 Conexion_Desconexion.Desconnect();
             }
@@ -182,6 +177,56 @@ namespace AccesoADatos
                 //Nloggear
                 throw;
             }
+        }
+
+
+        /// <summary>
+        /// Realiza un DELETE en la tabla likes
+        /// con el id del user y el id de la respuesta
+        /// </summary>
+        /// <param name="idRespuesta"></param>
+        /// <param name="likes"></param>
+        static public void BajaLike(int idRespuesta, int idUser)
+        {
+            try
+            {
+                Conexion_Desconexion.Connection();
+                string query = @"DELETE FROM Likes WHERE id_repsuesta= @idResp AND id_user = @idUser)";
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                command.Parameters.AddWithValue("@idResp", idRespuesta);
+                command.Parameters.AddWithValue("@idUser", idUser);
+                command.ExecuteNonQuery();
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
+                //Nloggear
+                throw;
+            }
+        }
+
+        static public List<int> GetIdsUsuariosLike(int idRespuesta)
+        {
+            List<int> IdsUsers = new List<int>();
+            try { 
+                Conexion_Desconexion.Connection();
+                string query = @"SELECT id_user FROM Likes WHERE id_respuesta = @idRespuesta";
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                command.Parameters.AddWithValue("@idRespuesta", idRespuesta);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    IdsUsers.Add(reader.GetInt32(0));
+                }
+                Conexion_Desconexion.Desconnect();
+
+            }
+            catch (Exception ex)
+            {
+                //Nloggear
+                throw;
+            }
+            return IdsUsers;
         }
     }
 }
