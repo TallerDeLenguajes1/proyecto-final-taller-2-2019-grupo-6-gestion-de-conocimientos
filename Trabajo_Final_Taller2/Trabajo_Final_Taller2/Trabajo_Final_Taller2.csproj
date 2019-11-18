@@ -89,7 +89,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="vistas\login.xaml">
+    <Page Include="vistas\VistaLogin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -97,8 +97,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="vistas\login.xaml.cs">
-      <DependentUpon>login.xaml</DependentUpon>
+    <Compile Include="vistas\VistaLogin.xaml.cs">
+      <DependentUpon>VistaLogin.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="vistas\VerPreguntas.xaml">

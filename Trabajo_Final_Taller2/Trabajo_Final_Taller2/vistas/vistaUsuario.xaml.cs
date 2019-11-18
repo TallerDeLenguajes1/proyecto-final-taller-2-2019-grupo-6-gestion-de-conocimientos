@@ -61,6 +61,8 @@ namespace Trabajo_Final_Taller2.vistas
         }
         private void salir_Click(object sender, RoutedEventArgs e)
         {
+            VistaLogin vistaLogin = new VistaLogin();
+            vistaLogin.Show();
             this.Close();
         }
     }

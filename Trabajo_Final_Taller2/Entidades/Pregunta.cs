@@ -28,18 +28,7 @@ namespace Entidades
         public int GetMesesDesdeUltimaResp()
         {
             int mesesTranscurridos = 0;
-
-
-            // Obtener la fecha mas reciente
-
-            DateTime fechaMasReciente = this.Fecha;
-            foreach (var resp in Respuestas)
-            {
-                if (resp.Fecha > fechaMasReciente)
-                {
-                    fechaMasReciente = resp.Fecha;
-                }
-            }
+            DateTime fechaMasReciente = FechaDeUltimaRespuesta();
 
             // Calcular los meses transcurridos
 
@@ -50,6 +39,30 @@ namespace Entidades
             mesesTranscurridos += fechaMasReciente.Month;
 
             return mesesTranscurridos;
+        }
+
+        /// <summary>
+        /// Obtiene la fecha de la respuesta mas reciente,
+        /// o la fecha de la pregunta si no tiene respuestas
+        /// </summary>
+        /// <returns></returns>
+        public DateTime FechaDeUltimaRespuesta()
+        {
+            DateTime fechaMasReciente = this.Fecha;
+            foreach (var resp in Respuestas)
+            {
+                if (resp.Fecha > fechaMasReciente)
+                {
+                    fechaMasReciente = resp.Fecha;
+                }
+            }
+            return fechaMasReciente;
+        }
+
+
+        public override string ToString()
+        {
+            return Titulo;
         }
     }
 }

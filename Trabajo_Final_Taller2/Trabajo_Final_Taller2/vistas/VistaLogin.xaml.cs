@@ -21,10 +21,10 @@ namespace Trabajo_Final_Taller2
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class VistaLogin : Window
     {
         Usuario user;
-        public MainWindow()
+        public VistaLogin()
         {
             InitializeComponent();
         }
