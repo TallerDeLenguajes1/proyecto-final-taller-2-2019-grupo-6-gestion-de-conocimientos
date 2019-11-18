@@ -160,7 +160,6 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="userRespuesta"></param>
         /// <param name="preg"></param>
-        /// <param name="idPregunta"></param>
         /// <param name="tituloResp"></param>
         /// <param name="descripcionResp"></param>
         public static void ResponderPregunta(Usuario userRespuesta, Pregunta preg, string tituloResp, string descripcionResp)

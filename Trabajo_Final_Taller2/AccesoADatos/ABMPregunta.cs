@@ -31,8 +31,8 @@ namespace AccesoADatos
                 {
                     //Armo una nueva pregunta con los datos que toma el reader y la cargo a la lista
                     Pregunta preg = new Pregunta();
-                    preg.IdPregunta = reader.GetInt32(0);
-                    preg.IdUserPregunta = reader.GetInt32(1);
+                    preg.IdUserPregunta = reader.GetInt32(0);
+                    preg.IdPregunta = reader.GetInt32(1);
                     if (reader[2] == DBNull.Value)
                     {
                         preg.IdSolucion = -1;
@@ -90,8 +90,8 @@ namespace AccesoADatos
                 {
                     //Armo una nueva pregunta con los datos que toma el reader y la cargo a la lista
                     Pregunta preg = new Pregunta();
-                    preg.IdPregunta = reader.GetInt32(0);
-                    preg.IdUserPregunta = reader.GetInt32(1);
+                    preg.IdUserPregunta = reader.GetInt32(0);
+                    preg.IdPregunta = reader.GetInt32(1);
                     //Si el valor del campo solucion es nulo, tomo id solucion como -1
                     if (reader[2] == DBNull.Value)
                     {
