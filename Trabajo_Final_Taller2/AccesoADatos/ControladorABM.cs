@@ -72,7 +72,7 @@ namespace AccesoADatos
             foreach (Respuesta r in preg.Respuestas)
             {
                 r.PregRespuesta = preg;
-                ABMUsuario.GetUsuario(r.IdUserResp); // Cargar usuario que hizo la respuesta
+                r.UserRespuesta = ABMUsuario.GetUsuario(r.IdUserResp); // Cargar usuario que hizo la respuesta
                 r.IdsUsuariosLike = ABMRespuesta.GetIdsUsuariosLike(r.IdRespuesta);
             }
         }

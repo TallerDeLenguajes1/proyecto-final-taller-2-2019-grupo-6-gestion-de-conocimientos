@@ -43,6 +43,7 @@ namespace Trabajo_Final_Taller2.vistas
                 VistaRespuesta vRespuesta = new VistaRespuesta(usuario, respuestaSelec);
 
                 vRespuesta.ShowDialog();
+                CargarComponentes();
             }
         }
 
@@ -72,6 +73,8 @@ namespace Trabajo_Final_Taller2.vistas
             {
                 btnResponder.IsEnabled = false;
             }
+
+            // Cargar labels
         }
 
         private void btnResponder_Click(object sender, RoutedEventArgs e)

@@ -191,7 +191,7 @@ namespace AccesoADatos
             try
             {
                 Conexion_Desconexion.Connection();
-                string query = @"DELETE FROM Likes WHERE id_repsuesta= @idResp AND id_user = @idUser)";
+                string query = @"DELETE FROM Likes WHERE id_respuesta= @idResp AND id_user = @idUser";
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 command.Parameters.AddWithValue("@idResp", idRespuesta);
                 command.Parameters.AddWithValue("@idUser", idUser);
