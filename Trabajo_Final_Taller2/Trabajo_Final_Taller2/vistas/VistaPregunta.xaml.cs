@@ -84,5 +84,10 @@ namespace Trabajo_Final_Taller2.vistas
             lbxRespuestas.ItemsSource = pregunta.Respuestas;
             lbxRespuestas.Items.Refresh();
         }
+
+        private void verImg_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("mes");
+        }
     }
 }

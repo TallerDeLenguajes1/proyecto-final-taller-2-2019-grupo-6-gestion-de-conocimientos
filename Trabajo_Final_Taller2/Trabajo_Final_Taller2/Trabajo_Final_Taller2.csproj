@@ -73,6 +73,9 @@
     <Compile Include="vistas\VistaCrearRespuesta.xaml.cs">
       <DependentUpon>VistaCrearRespuesta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vistas\VistaImagen.xaml.cs">
+      <DependentUpon>VistaImagen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vistas\vistaNotificaciones.xaml.cs">
       <DependentUpon>vistaNotificaciones.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
       <DependentUpon>vistaUsuario.xaml</DependentUpon>
     </Compile>
     <Page Include="vistas\HacerPregunta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistas\VistaImagen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
