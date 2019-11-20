@@ -28,8 +28,18 @@ namespace Trabajo_Final_Taller2
         {
             InitializeComponent();
         }
-
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                login();
+            }
+        }
         private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            login();
+        }
+        public void login()
         {
             //Verifico que el email sea correcto
             if (ControlDatos.Verificaremail(txb_email.Text) == true)
