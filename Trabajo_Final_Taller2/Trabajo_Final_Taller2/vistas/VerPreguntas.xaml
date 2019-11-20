@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="VerPreguntas" Height="391" Width="494">
     <Grid>
-        <ListBox x:Name="lbx_Preguntas" HorizontalAlignment="Left" Height="175" Margin="10,60,0,0" VerticalAlignment="Top" Width="270"/>
+        <ListBox x:Name="lbx_Preguntas" HorizontalAlignment="Left" Height="175" Margin="10,60,0,0" VerticalAlignment="Top" Width="246" SelectionChanged="Lbx_Preguntas_SelectionChanged"/>
         <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_Regresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top" Width="75" Click="btn_Regresar_Click"/>
         <Label FontFamily="Global Sans Serif" x:Name="label" Content="Preguntas" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>
-        <Label FontFamily="Global Sans Serif"  x:Name="label1" Content="Info Pregunta &#xD;&#xA;seleccionada" HorizontalAlignment="Left" Margin="325,23,0,0" VerticalAlignment="Top"/>
-        <Label FontFamily="Global Sans Serif" x:Name="label3" Content="{}{User}" HorizontalAlignment="Left" Margin="325,70,0,0" VerticalAlignment="Top"/>
-        <Label FontFamily="Global Sans Serif"  x:Name="label4" Content="Ha preguntado" HorizontalAlignment="Left" Margin="325,101,0,0" VerticalAlignment="Top"/>
-        <Label FontFamily="Global Sans Serif" x:Name="label5" Content="{}{Titulo pregunta}" HorizontalAlignment="Left" Margin="325,132,0,0" VerticalAlignment="Top"/>
-        <Label FontFamily="Global Sans Serif" x:Name="label2" Content="el {fecha pregunta}" HorizontalAlignment="Left" Margin="325,163,0,0" VerticalAlignment="Top"/>
+        <Label FontFamily="Global Sans Serif"  x:Name="label1" Content="Resumen de la pregunta seleccionada" HorizontalAlignment="Left" Margin="263,37,0,0" VerticalAlignment="Top" Width="223"/>
+        <Label FontFamily="Global Sans Serif" x:Name="lbl_user" Content="{}{User}" HorizontalAlignment="Left" Margin="263,70,0,0" VerticalAlignment="Top" Width="205"/>
+        <Label FontFamily="Global Sans Serif"  x:Name="label4" Content="Ha preguntado:" HorizontalAlignment="Left" Margin="263,101,0,0" VerticalAlignment="Top" Width="155"/>
+        <Label FontFamily="Global Sans Serif" x:Name="lbl_titulo" Content="{}{Titulo pregunta}" HorizontalAlignment="Left" Margin="263,132,0,0" VerticalAlignment="Top" Width="205"/>
+        <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" Content="el {fecha pregunta}" HorizontalAlignment="Left" Margin="263,163,0,0" VerticalAlignment="Top" Width="205"/>
         <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnIrAPregunta" Content="Ir a la pregunta" Margin="13,251,363,88" Click="btnIrAPregunta_Click"/>
 
     </Grid>

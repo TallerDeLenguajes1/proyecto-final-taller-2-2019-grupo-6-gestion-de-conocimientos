@@ -36,7 +36,6 @@ namespace Trabajo_Final_Taller2.vistas
         {
             this.Close();
         }
-
         private void btnIrAPregunta_Click(object sender, RoutedEventArgs e)
         {
             if (lbx_Preguntas.SelectedIndex != -1)
@@ -46,6 +45,14 @@ namespace Trabajo_Final_Taller2.vistas
                 VistaPregunta vistaPregunta = new VistaPregunta(usuario, preguntaSelec);
                 vistaPregunta.ShowDialog();
             }
+        }
+
+        private void Lbx_Preguntas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Pregunta preguntaSelec = (Pregunta)lbx_Preguntas.SelectedItem;
+            lbl_user.Content ="El usuario: "+ preguntaSelec.UserPregunta.Nombre;
+            lbl_titulo.Content = preguntaSelec.Titulo;
+            lbl_fecha.Content = "El día: "+preguntaSelec.Fecha;
         }
     }
 }
