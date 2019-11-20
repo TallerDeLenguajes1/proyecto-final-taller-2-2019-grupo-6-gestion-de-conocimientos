@@ -9,10 +9,13 @@
     <Grid>
         <Grid.ColumnDefinitions>
 
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+
         </Grid.ColumnDefinitions>
-        <Image Margin="12,12,16,71" Name="img_imagen" Stretch="Fill" Grid.Column="1" />
-       
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,389,0,0" Click="Button_Click"/>
+        <Image Margin="12,12,16,71" Name="img_imagen" Stretch="Fill" />
+
+        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Content="Button" HorizontalAlignment="Left" Width="75" Margin="10,389,0,10" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -35,7 +35,7 @@ namespace Trabajo_Final_Taller2.vistas
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            img_imagen.Source = new BitmapImage(new Uri(url, UriKind.Relative));
+            this.Close();
         }
     }
 }
