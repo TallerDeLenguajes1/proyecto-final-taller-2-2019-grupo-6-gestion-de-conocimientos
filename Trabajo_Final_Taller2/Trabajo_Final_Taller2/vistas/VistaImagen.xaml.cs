@@ -22,11 +22,11 @@ namespace Trabajo_Final_Taller2.vistas
     public partial class VistaImagen : Window
     {
         string url; 
-        public VistaImagen(Pregunta preg)
+        public VistaImagen(string imgUrl)
         {
 
             InitializeComponent();
-            url = preg.UrlImagen;
+            url = imgUrl;
             MessageBox.Show(url);
             img_imagen.Source = new BitmapImage(new Uri(url,UriKind.Relative));
 

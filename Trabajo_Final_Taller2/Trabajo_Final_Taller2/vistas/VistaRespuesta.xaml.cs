@@ -101,5 +101,12 @@ namespace Trabajo_Final_Taller2.vistas
                 CargarComponentes();
             }
         }
+
+        private void BtnVerImagen_Click(object sender, RoutedEventArgs e)
+        {
+            string imgUrl = respuesta.UrlImagen;
+            var vistaImg = new VistaImagen(imgUrl);
+            vistaImg.ShowDialog();
+        }
     }
 }

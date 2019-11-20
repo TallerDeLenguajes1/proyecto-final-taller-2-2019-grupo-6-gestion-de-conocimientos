@@ -87,7 +87,8 @@ namespace Trabajo_Final_Taller2.vistas
 
         private void verImg_Click(object sender, RoutedEventArgs e)
         {
-            var vistaImg = new VistaImagen(pregunta);
+            string imgUrl = pregunta.UrlImagen;
+            var vistaImg = new VistaImagen(imgUrl);
             vistaImg.ShowDialog();
         }
     }

@@ -14,7 +14,7 @@
         <Label x:Name="lblTitulo" Content="[Titulo Respuesta]" HorizontalAlignment="Left" Margin="35,27,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label FontFamily="Global Sans Serif" x:Name="lblNombre" Content="[Nombre User]" HorizontalAlignment="Left" Margin="35,58,0,0" VerticalAlignment="Top"/>
         <Label FontFamily="Global Sans Serif" x:Name="lblFecha" Content="[fecha de respuesta]" HorizontalAlignment="Left" Margin="35,89,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnVerImagen" Content="Ver imagen" HorizontalAlignment="Left" Margin="35,194,0,0" VerticalAlignment="Top" Width="75" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
+        <Button x:Name="btnVerImagen" Content="Ver imagen" HorizontalAlignment="Left" Margin="35,194,0,0" VerticalAlignment="Top" Width="75" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="BtnVerImagen_Click"/>
         <Button x:Name="btnLike" Content="Like" HorizontalAlignment="Left" Margin="35,230,0,0" VerticalAlignment="Top" Width="75" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="btnLike_Click"/>
         <Button x:Name="btnSolucion" Content="Seleccionar como solucion" HorizontalAlignment="Left" Margin="35,268,0,0" VerticalAlignment="Top" Width="153" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="btnSolucion_Click"/>
         <Button x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click" Grid.Row="1" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
