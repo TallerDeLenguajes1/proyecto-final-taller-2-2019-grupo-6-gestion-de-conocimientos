@@ -50,17 +50,28 @@ namespace Trabajo_Final_Taller2.vistas
         {
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Seleccionar imagen";
-            op.Filter = "Tipos de archivo|*.jpg;*jpeg;*png|" + "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" + "Portable Network Graphic (*.png)|*.png";
+            op.Filter = "Tipos de archivo|*.jpg;*png|" + "JPEG (*.jpg)|*.jpg;|" + "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
                 //imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
                 string fileName = op.SafeFileName;
                 string source = op.FileName;
                 string target = @"..\..\..\img";
-                string destFile = System.IO.Path.Combine(target, fileName);
+                int strLength = fileName.Length;
+                //La idea era usar dateTime, pero como lo que devuelve tiene caracteres no aptos para nombres de archivos, 
+                //simplemente le doy un numero random
+                Random rnd = new Random();
+                int num = rnd.Next(1, 999999);
+
+                string newName = fileName.Insert(strLength - 4, num.ToString());
+
+                //MessageBox.Show(newName);
+                string destFile = System.IO.Path.Combine(target, newName);
+
                 System.IO.File.Copy(source, destFile, true);
                 //destFile es lo que hay que guardar en la DB
                 imagenFinal = destFile;
+                //MessageBox.Show(destFile);
             }
         }
 
