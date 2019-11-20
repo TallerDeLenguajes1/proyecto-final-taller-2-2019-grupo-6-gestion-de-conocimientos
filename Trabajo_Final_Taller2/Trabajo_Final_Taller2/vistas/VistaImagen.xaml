@@ -10,7 +10,8 @@
         <Grid.ColumnDefinitions>
 
         </Grid.ColumnDefinitions>
-        <Image x:Name="img_imagen" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="523" Margin="10,10,0,0"/>
+        <Image Margin="12,12,16,71" Name="img_imagen" Stretch="Fill" Grid.Column="1" />
+       
         <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,389,0,0" Click="Button_Click"/>
 
     </Grid>

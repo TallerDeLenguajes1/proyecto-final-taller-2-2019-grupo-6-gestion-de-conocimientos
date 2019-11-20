@@ -24,16 +24,18 @@ namespace Trabajo_Final_Taller2.vistas
         string url; 
         public VistaImagen(Pregunta preg)
         {
+
             InitializeComponent();
             url = preg.UrlImagen;
-            //MessageBox.Show(url);
-            img_imagen.Source = new BitmapImage(new Uri(url));
+            MessageBox.Show(url);
+            img_imagen.Source = new BitmapImage(new Uri(url,UriKind.Relative));
+
         }
         
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            img_imagen.Source = new BitmapImage(new Uri(url, UriKind.Relative));
         }
     }
 }
