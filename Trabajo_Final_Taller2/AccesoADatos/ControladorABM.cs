@@ -314,7 +314,7 @@ namespace AccesoADatos
                     ABMPregunta.ActualizarEstado(p.IdPregunta, estadoFinal);
                 }
             }
-
+            todasLasPreguntas.ForEach(p => p.UserPregunta = ABMUsuario.GetUsuario(p.IdUserPregunta));
             todasLasPreguntas.ForEach(p => CargarListaRespuestas(p));
             return todasLasPreguntas;
         }
