@@ -14,7 +14,7 @@
         <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click"/>
         <TextBlock x:Name="tbkDescripcion" HorizontalAlignment="Left" Margin="11,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="75" Width="369"><Run Text="["/><Run Text="TextBlock"/><Run Text=" descripcion"/><Run Text="]"/></TextBlock>
         <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnResponder" Content="Responder" HorizontalAlignment="Left" Margin="11,377,0,0" VerticalAlignment="Top" Width="75" Click="btnResponder_Click"/>
-        <Button Content="ver imagen" HorizontalAlignment="Left" Margin="11,99,0,0" VerticalAlignment="Top" Width="75" Click="verImg_Click"/>
+        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnVerImagen" Content="ver imagen" HorizontalAlignment="Left" Margin="11,99,0,0" VerticalAlignment="Top" Width="75" Click="verImg_Click"/>
 
     </Grid>
 </Window>

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Trabajo_Final_Taller2.vistas
 {
@@ -24,12 +25,15 @@ namespace Trabajo_Final_Taller2.vistas
         public VistaImagen(Pregunta preg)
         {
             InitializeComponent();
-            url = preg.UrlImagen; 
+            url = preg.UrlImagen;
+            //MessageBox.Show(url);
+            img_imagen.Source = new BitmapImage(new Uri(url));
         }
         
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(url);
+            
         }
     }
 }
