@@ -50,7 +50,8 @@ namespace Trabajo_Final_Taller2.vistas
         private void Lbx_Preguntas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Pregunta preguntaSelec = (Pregunta)lbx_Preguntas.SelectedItem;
-            lbl_user.Content ="El usuario: "+ preguntaSelec.UserPregunta.Nombre;
+
+            lbl_user.Content =/*"El usuario: "+*/ preguntaSelec.UserPregunta.Nombre;
             lbl_titulo.Content = preguntaSelec.Titulo;
             lbl_fecha.Content = "El día: "+preguntaSelec.Fecha;
         }
