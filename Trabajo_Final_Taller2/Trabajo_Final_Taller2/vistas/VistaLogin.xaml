@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Login" Height="310" Width="520" Background="White" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -14,20 +15,28 @@
         </Grid.RowDefinitions>
         <Border Name="brd_border" Grid.Row="0" Background="DarkSlateBlue" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
             <Grid>
-                <Image Margin="42,0,0,0" Source="/Trabajo_Final_Taller2;component/yajuOverflowLogo.png" Stretch="Fill" Grid.Column="1" HorizontalAlignment="Left" Width="420" Height="80" VerticalAlignment="Top" Grid.ColumnSpan="2"></Image>
+                <Image Margin="42,0,0,0" Source="/Trabajo_Final_Taller2;component/yajuOverflowLogo.png" Stretch="Fill" HorizontalAlignment="Left" Width="420" Height="80" VerticalAlignment="Top"></Image>
                 <StackPanel HorizontalAlignment="Right">
-                    <Button Name="btn_close" Width="30" Height="30" Background="#FF0095FF" Foreground="White" Content="X" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" Click="Btn_close_Click"></Button>
+                    <Button Name="btn_close" Width="30" Height="30" Background="#FF077DD1" BorderBrush="#FF077DD1" Click="Btn_close_Click" Padding="0">
+                        <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
-        <Grid Grid.Row="1" Background="DarkSlateBlue">
-            <TextBox x:Name="txb_email" HorizontalAlignment="Center" Height="23" Margin="0,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" AutomationProperties.HelpText="Nombre de usuario" BorderThickness="1" SnapsToDevicePixels="True"/>
-            <Label x:Name="label" Content="Email" HorizontalAlignment="Center" Margin="0,5,90,0" VerticalAlignment="Top" Width="120" FontSize="15" FontFamily="Global Sans Serif" FontWeight="Bold" Height="26"/>
-            <Label x:Name="label_Copy" Content="Contraseña" HorizontalAlignment="Center" Margin="0,63,90,0" VerticalAlignment="Top" Width="120" FontFamily="Global Sans Serif" FontSize="15" FontWeight="Bold" Height="24"/>
-            <PasswordBox x:Name="psb_pass" HorizontalAlignment="Center" Margin="0,93,0,0" VerticalAlignment="Top" Width="210" Height="23" KeyDown="OnKeyDownHandler"/>
+        <Grid Grid.Row="1" Background="White">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin=" 0 20 0 0">
+                    <materialDesign:PackIcon Kind="At" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                    <TextBox x:Name="txb_email" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"  materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin=" 0 20 0 0">
+                    <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=psb_pass, Path=BorderBrush}" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                    <PasswordBox x:Name="psb_pass" HorizontalAlignment="Center" VerticalAlignment="Top" Width="210" KeyDown="OnKeyDownHandler" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5"/>
+                </StackPanel>
+            </StackPanel>
         </Grid>
-        <Grid Grid.Row="2" Background="DarkSlateBlue">
-            <Button x:Name="btn_login" Content="Ingresar" Margin="0 0 0 30" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Center" Width="139" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1"/>
+        <Grid Grid.Row="2" Background="White">
+            <Button x:Name="btn_login" Content="Ingresar" Margin="0 0 0 30" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Center" Width="139" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" materialDesign:ButtonAssist.CornerRadius="5"/>
         </Grid>
     </Grid>
 </Window>
