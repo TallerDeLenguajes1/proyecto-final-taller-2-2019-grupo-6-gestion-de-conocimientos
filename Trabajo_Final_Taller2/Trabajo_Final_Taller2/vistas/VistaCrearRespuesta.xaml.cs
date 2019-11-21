@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AccesoADatos;
+using Entidades;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,60 +14,32 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using AccesoADatos;
-using Microsoft.Win32;
-using Entidades;
 
 namespace Trabajo_Final_Taller2.vistas
 {
     /// <summary>
-    /// Lógica de interacción para HacerPregunta.xaml
+    /// Interaction logic for VistaCrearRespuesta.xaml
     /// </summary>
-    public partial class HacerPregunta : Window
+    public partial class VistaCrearRespuesta : Window
     {
-        Usuario user;
+        Usuario usuario;
+        Pregunta pregunta;
         string imagenFinal = null;
-        public HacerPregunta(Usuario user)
+
+        public VistaCrearRespuesta(Usuario usuario, Pregunta pregunta)
         {
             InitializeComponent();
-            this.user = user;
-        }
-        private void btnPreguntar_Click(object sender, RoutedEventArgs e)
-        {
-            string titulo;
-            string descripcion;
 
-            //aun no se 100% como se va a manejar la imagen asi que por el momento lo dejo como un string...
-            string imagen = imagenFinal;
-
-            // Validacion de campos
-            if (string.IsNullOrWhiteSpace(txbTitulo.Text) 
-               || string.IsNullOrWhiteSpace(txbDescripcion.Text))
-            {
-                MessageBox.Show("Campos invalidos");
-                return;
-            }
-            else
-            {
-                titulo = txbTitulo.Text;
-                descripcion = txbDescripcion.Text;
-            }
-
-            if (imagen != null)
-            {
-                ControladorABM.HacerPregunta(user, titulo, descripcion, imagen);
-            }
-            else
-            {
-                ControladorABM.HacerPregunta(user, titulo, descripcion);
-            }
-            this.Close();
+            this.usuario = usuario;
+            this.pregunta = pregunta;
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
+
         /// <summary>
         /// Lo que hace este metodo es, al hacer click se abre un cuadro para seleccionar imagen; se usan unos parametros para especificar 
         /// que tipo de imagenes se pueden subir
@@ -85,13 +60,10 @@ namespace Trabajo_Final_Taller2.vistas
                 int strLength = fileName.Length;
                 //La idea era usar dateTime, pero como lo que devuelve tiene caracteres no aptos para nombres de archivos, 
                 //simplemente le doy un numero random
+                Random rnd = new Random();
+                int num = rnd.Next(1, 999999);
 
-                var fecha = DateTime.Now.ToString("yyyy-MM-dd / HH:mm:ss:ms zzz");
-                Console.WriteLine(fecha);
-                var fechaMod = fecha.Replace("-", "").Replace(" ", "").Replace("/", "").Replace(":", "").Replace("+", "");
-                Console.WriteLine(fechaMod);
-
-                string newName = fileName.Insert(strLength - 4, fechaMod); 
+                string newName = fileName.Insert(strLength - 4, num.ToString());
 
                 //MessageBox.Show(newName);
                 string destFile = System.IO.Path.Combine(target, newName);
@@ -99,8 +71,40 @@ namespace Trabajo_Final_Taller2.vistas
                 System.IO.File.Copy(source, destFile, true);
                 //destFile es lo que hay que guardar en la DB
                 imagenFinal = destFile;
-               //MessageBox.Show(destFile);
+                //MessageBox.Show(destFile);
             }
+        }
+
+        private void btnResponder_Click(object sender, RoutedEventArgs e)
+        {
+            string titulo;
+            string descripcion;
+
+            //aun no se 100% como se va a manejar la imagen asi que por el momento lo dejo como un string...
+            string imagen = imagenFinal;
+
+            // Validacion de campos
+            if (string.IsNullOrWhiteSpace(txbTitulo.Text)
+               || string.IsNullOrWhiteSpace(txbDescripcion.Text))
+            {
+                MessageBox.Show("Campos invalidos");
+                return;
+            }
+            else
+            {
+                titulo = txbTitulo.Text;
+                descripcion = txbDescripcion.Text;
+            }
+
+            if (imagen != null)
+            {
+                ControladorABM.ResponderPregunta(usuario, pregunta, titulo, descripcion, imagen);
+            }
+            else
+            {
+                ControladorABM.ResponderPregunta(usuario, pregunta, titulo, descripcion);
+            }
+            this.Close();
         }
     }
 }

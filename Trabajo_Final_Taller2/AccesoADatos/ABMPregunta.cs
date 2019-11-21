@@ -31,19 +31,26 @@ namespace AccesoADatos
                 {
                     //Armo una nueva pregunta con los datos que toma el reader y la cargo a la lista
                     Pregunta preg = new Pregunta();
-                    preg.IdPregunta = reader.GetInt16(0);
-                    preg.IdUserPregunta = reader.GetInt16(1);
+                    preg.IdUserPregunta = reader.GetInt32(0);
+                    preg.IdPregunta = reader.GetInt32(1);
                     if (reader[2] == DBNull.Value)
                     {
                         preg.IdSolucion = -1;
                     }
                     else
                     {
-                        preg.IdSolucion = reader.GetInt16(2);
+                        preg.IdSolucion = reader.GetInt32(2);
                     }
                     preg.Titulo = reader.GetString(3);
                     preg.Descripcion = reader.GetString(4);
-                    preg.UrlImagen = reader.GetString(5);
+                    if (reader[5] == DBNull.Value)
+                    {
+                        preg.UrlImagen = null;
+                    }
+                    else
+                    {
+                        preg.UrlImagen = reader.GetString(5);
+                    }
                     preg.Fecha = reader.GetDateTime(6);
                     preg.Estado = reader.GetString(7);
                     preguntas.Add(preg);
@@ -83,8 +90,8 @@ namespace AccesoADatos
                 {
                     //Armo una nueva pregunta con los datos que toma el reader y la cargo a la lista
                     Pregunta preg = new Pregunta();
-                    preg.IdPregunta = reader.GetInt16(0);
-                    preg.IdUserPregunta = reader.GetInt16(1);
+                    preg.IdUserPregunta = reader.GetInt32(0);
+                    preg.IdPregunta = reader.GetInt32(1);
                     //Si el valor del campo solucion es nulo, tomo id solucion como -1
                     if (reader[2] == DBNull.Value)
                     {
@@ -92,11 +99,18 @@ namespace AccesoADatos
                     }
                     else
                     {
-                        preg.IdSolucion = reader.GetInt16(2);
+                        preg.IdSolucion = reader.GetInt32(2);
                     }
                     preg.Titulo = reader.GetString(3);
                     preg.Descripcion = reader.GetString(4);
-                    preg.UrlImagen = reader.GetString(5);
+                    if (reader[5] == DBNull.Value)
+                    {
+                        preg.UrlImagen = null;
+                    }
+                    else
+                    {
+                        preg.UrlImagen = reader.GetString(5);
+                    }
                     preg.Fecha = reader.GetDateTime(6);
                     preg.Estado = reader.GetString(7);
                     preguntasDeUser.Add(preg);
@@ -141,7 +155,7 @@ namespace AccesoADatos
         }
 
         /// <summary>
-        /// Inserta una nueva pregunta en la base de datos
+        /// Inserta una nueva pregunta con imagen en la base de datos
         /// </summary>
         /// <param name="idUser"></param>
         /// <param name="tituloPreg"></param>
@@ -158,10 +172,41 @@ namespace AccesoADatos
                 //Armo el command con el query y la conexion
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 //Paso todos los valores por parametros
-                command.Parameters.AddWithValue("@id_user",idUser);
-                command.Parameters.AddWithValue("@titulo", idUser);
-                command.Parameters.AddWithValue("@descripcion", idUser);
-                command.Parameters.AddWithValue("@url_imagen", idUser);
+                command.Parameters.AddWithValue("@id_user", idUser);
+                command.Parameters.AddWithValue("@titulo", tituloPreg);
+                command.Parameters.AddWithValue("@descripcion", descripcionPreg);
+                command.Parameters.AddWithValue("@url_imagen", urlImagen);
+                //Ejecuto el comando
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        /// <summary>
+        /// Inserta una nueva pregunta sin imagen en la base de datos
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <param name="tituloPreg"></param>
+        /// <param name="descripcionPreg"></param>
+        static public void AltaPregunta(int idUser, string tituloPreg, string descripcionPreg)
+        {
+            try
+            {
+                //Conecto a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"INSERT INTO Preguntas(id_user, titulo, descripcion) VALUES(@id_user, @titulo, @descripcion)";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso todos los valores por parametros
+                command.Parameters.AddWithValue("@id_user", idUser);
+                command.Parameters.AddWithValue("@titulo", tituloPreg);
+                command.Parameters.AddWithValue("@descripcion", descripcionPreg);
                 //Ejecuto el comando
                 command.ExecuteNonQuery();
                 //Cierro la conexion a la Bd
@@ -182,7 +227,52 @@ namespace AccesoADatos
         /// <param name="idRespuesta"></param>
         static public void UpdateSolucionPregunta(int idPregunta, int idRespuesta)
         {
-            // TO DO
+            try
+            {
+                //Conecto a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"UPDATE Preguntas SET id_solucion = @idRespuesta, estado = 'Solucionada' WHERE id_pregunta = @idPregunta";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso todos los valores por parametros
+                command.Parameters.AddWithValue("@idRespuesta", idRespuesta);
+                command.Parameters.AddWithValue("@idPregunta", idPregunta);
+                //Ejecuto el comando
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        static public void ActualizarEstado(int idPregunta, string nuevoEstado)
+        {
+            try
+            {
+                //Conecto a la Bd
+                Conexion_Desconexion.Connection();
+                //Armo el query
+                string query = @"UPDATE Preguntas SET estado = @nuevoEstado WHERE id_pregunta = @idPregunta";
+                //Armo el command con el query y la conexion
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso todos los valores por parametros
+                command.Parameters.AddWithValue("@nuevoEstado", nuevoEstado);
+                command.Parameters.AddWithValue("@idPregunta", idPregunta);
+                //Ejecuto el comando
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la Bd
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

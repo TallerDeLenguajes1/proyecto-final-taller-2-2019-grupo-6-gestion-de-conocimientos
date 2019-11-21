@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,76 @@ namespace Trabajo_Final_Taller2.vistas
     /// </summary>
     public partial class VistaPregunta : Window
     {
-        public VistaPregunta()
+        Usuario usuario;
+        Pregunta pregunta;
+        public VistaPregunta(Usuario user, Pregunta pregunta)
         {
             InitializeComponent();
+            usuario = user;
+            this.pregunta = pregunta;
+            CargarComponentes();
+        }
+
+        private void btnRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnIrARespuesta_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxRespuestas.SelectedIndex != -1)
+            {
+                Respuesta respuestaSelec = (Respuesta)lbxRespuestas.SelectedItem;
+                VistaRespuesta vRespuesta = new VistaRespuesta(usuario, respuestaSelec);
+
+                vRespuesta.ShowDialog();
+                CargarComponentes();
+            }
+        }
+
+        private void CargarComponentes()
+        {
+            lblTitulo.Content = pregunta.Titulo;
+            tbkDescripcion.Text = pregunta.Descripcion;
+
+            if (pregunta.UrlImagen == null)
+            {
+                btnVerImagen.IsEnabled = false;
+            }
+            else
+            {
+                btnVerImagen.IsEnabled = true;
+                // TO DO
+                // Vincular boton con la imagen
+            }
+
+            lbxRespuestas.ItemsSource = pregunta.Respuestas;
+
+            if (pregunta.AdmiteRespuesta())
+            {
+                btnResponder.IsEnabled = true;
+            }
+            else
+            {
+                btnResponder.IsEnabled = false;
+            }
+
+            // Cargar labels
+        }
+
+        private void btnResponder_Click(object sender, RoutedEventArgs e)
+        {
+            VistaCrearRespuesta vCrearRespuesta = new VistaCrearRespuesta(usuario, pregunta);
+            vCrearRespuesta.ShowDialog();
+            lbxRespuestas.ItemsSource = pregunta.Respuestas;
+            lbxRespuestas.Items.Refresh();
+        }
+
+        private void verImg_Click(object sender, RoutedEventArgs e)
+        {
+            string imgUrl = pregunta.UrlImagen;
+            var vistaImg = new VistaImagen(imgUrl);
+            vistaImg.ShowDialog();
         }
     }
 }

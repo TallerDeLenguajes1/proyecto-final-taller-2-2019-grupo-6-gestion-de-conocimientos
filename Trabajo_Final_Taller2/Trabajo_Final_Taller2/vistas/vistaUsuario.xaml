@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
         mc:Ignorable="d"
-        Title="vistaUsuarios" Height="331" Width="529">
+        Title="vistaUsuarios" Height="331" Width="529" Background="#FFF1EFEF">
     <Grid HorizontalAlignment="Left" Width="519" Height="296" VerticalAlignment="Top">
-        <Button x:Name="btn_verNotificacion" Content="Ver notificaciones" HorizontalAlignment="Left" Margin="15,50,0,0" VerticalAlignment="Top" Width="105"/>
-        <Button x:Name="btn_hacerPregunta" Content="Hacer pregunta" HorizontalAlignment="Left" Margin="130,50,0,0" VerticalAlignment="Top" Width="110"/>
-        <Button x:Name="btn_verPreguntas" Content="ver todas las preguntas" HorizontalAlignment="Left" Margin="376,50,0,0" VerticalAlignment="Top" Width="133"/>
-        <Button x:Name="btn_verMisPreguntas" Content="Ver mis preguntas" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top" Width="115"/>
-        <Button x:Name="btn_salir" Content="salir" HorizontalAlignment="Left" Margin="15,258,0,0" VerticalAlignment="Top" Width="105" Click="button_Copy3_Click"/>
+        <Button x:Name="btn_verNotificacion" Content="Ver notificaciones" HorizontalAlignment="Left" Margin="15,50,0,0" VerticalAlignment="Top" Width="105" Click="Btn_verNotificacion_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
+        <Button x:Name="btn_hacerPregunta" Content="Hacer pregunta" HorizontalAlignment="Left" Margin="130,50,0,0" VerticalAlignment="Top" Width="110" Click="Btn_hacerPregunta_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
+        <Button x:Name="btn_verPreguntas" Content="ver todas las preguntas" HorizontalAlignment="Left" Margin="376,50,0,0" VerticalAlignment="Top" Width="133" Click="Btn_verPreguntas_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
+        <Button x:Name="btn_verMisPreguntas" Content="Ver mis preguntas" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top" Width="115" Click="Btn_verMisPreguntas_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
+        <Button x:Name="btn_salir" Content="Cerrar sesion" HorizontalAlignment="Left" Margin="15,258,0,0" VerticalAlignment="Top" Width="105" Click="salir_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
+        <Label x:Name="lbl_name" Content="" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_reporte" Content="Crear reporte" HorizontalAlignment="Left" Margin="404,263,0,0" VerticalAlignment="Top" Width="105" Click="reporte_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
 
     </Grid>
 </Window>

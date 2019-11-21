@@ -1,1 +1,1 @@
-Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=nombreDB;"+ "Integrated Security=true
+Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Nacho\Documents\db.mdf;Integrated Security=True;Connect Timeout=30

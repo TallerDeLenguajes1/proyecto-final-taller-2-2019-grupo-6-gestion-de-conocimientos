@@ -60,7 +60,7 @@ namespace AccesoADatos
                 SqlDataReader reader = command.ExecuteReader();
                 //Utilizo el reader para leer los datos del usuario y cargarlos a user
                 reader.Read();
-                user.IdUsuario = reader.GetInt16(0);
+                user.IdUsuario = reader.GetInt32(0);
                 user.Nombre = reader.GetString(1);
                 user.Apellido = reader.GetString(2);
                 user.PaisOrigen = reader.GetString(3);
@@ -92,7 +92,7 @@ namespace AccesoADatos
                 //Hago la conexion a la base de datos
                 Conexion_Desconexion.Connection();
                 //Armo mi query para buscar un usuario especifico
-                string query = @"SELECT * FROM Usuarios WHERE emial = @email";
+                string query = @"SELECT * FROM Usuarios WHERE email = @email";
                 //Armo el command con el query y la conexion
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 //Paso como parametro codificado el id del usuario que busco
@@ -101,7 +101,7 @@ namespace AccesoADatos
                 SqlDataReader reader = command.ExecuteReader();
                 //Utilizo el reader para leer los datos del usuario y cargarlos a user
                 reader.Read();
-                user.IdUsuario = reader.GetInt16(0);
+                user.IdUsuario = reader.GetInt32(0);
                 user.Nombre = reader.GetString(1);
                 user.Apellido = reader.GetString(2);
                 user.PaisOrigen = reader.GetString(3);
@@ -178,7 +178,7 @@ namespace AccesoADatos
         		throw;
 	        }
             //Devuelve true/false segun exista o no el user con ese id
-            return count == 0;
+            return count != 0;
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace AccesoADatos
         		throw;
 	        }
             //Devuelve true/false segun exista o no el user con ese email
-            return count == 0;
+            return count != 0;
         }
 
     }

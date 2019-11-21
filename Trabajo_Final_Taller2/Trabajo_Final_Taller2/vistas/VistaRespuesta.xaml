@@ -1,0 +1,24 @@
+﻿<Window x:Class="Trabajo_Final_Taller2.vistas.VistaRespuesta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        mc:Ignorable="d"
+        Title="VistaRespuesta" Height="450" Width="386.94" Background="#FFF1EFEF">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="339*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="lblTitulo" Content="[Titulo Respuesta]" HorizontalAlignment="Left" Margin="35,27,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label FontFamily="Global Sans Serif" x:Name="lblNombre" Content="[Nombre User]" HorizontalAlignment="Left" Margin="35,58,0,0" VerticalAlignment="Top"/>
+        <Label FontFamily="Global Sans Serif" x:Name="lblFecha" Content="[fecha de respuesta]" HorizontalAlignment="Left" Margin="35,89,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnVerImagen" Content="Ver imagen" HorizontalAlignment="Left" Margin="35,194,0,0" VerticalAlignment="Top" Width="75" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="BtnVerImagen_Click"/>
+        <Button x:Name="btnLike" Content="Like" HorizontalAlignment="Left" Margin="35,230,0,0" VerticalAlignment="Top" Width="75" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="btnLike_Click"/>
+        <Button x:Name="btnSolucion" Content="Seleccionar como solucion" HorizontalAlignment="Left" Margin="35,268,0,0" VerticalAlignment="Top" Width="153" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="btnSolucion_Click"/>
+        <Button x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click" Grid.Row="1" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
+        <TextBlock x:Name="tbkDescripcion" HorizontalAlignment="Left" Margin="35,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="58" Width="260"><Run Text="TextBlock"/><Run Text=" d"/><Run Text="e descripcion"/></TextBlock>
+
+    </Grid>
+</Window>
