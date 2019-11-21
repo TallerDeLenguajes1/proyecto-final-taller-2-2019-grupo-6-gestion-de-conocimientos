@@ -5,20 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2"
         mc:Ignorable="d"
-        Title="Login" Height="312" Width="520" Background="#FFF1EFEF">
+        Title="Login" Height="310" Width="520" Background="White" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="btn_login" Content="Ingresar" Margin="187,0,0,10" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Left" Width="139" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" Grid.Column="1"/>
-        <TextBox x:Name="txb_email" HorizontalAlignment="Left" Height="23" Margin="116,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" AutomationProperties.HelpText="Nombre de usuario" BorderThickness="1" SnapsToDevicePixels="True" Grid.Column="1"/>
-        <Label x:Name="label" Content="Email" HorizontalAlignment="Left" Margin="113,83,0,0" VerticalAlignment="Top" Width="120" FontSize="15" FontFamily="Global Sans Serif" FontWeight="Bold" Height="26" Grid.Column="1"/>
-        <Label x:Name="label_Copy" Content="Contraseña" HorizontalAlignment="Left" Margin="112,140,0,0" VerticalAlignment="Top" Width="120" FontFamily="Global Sans Serif" FontSize="15" FontWeight="Bold" Height="24" Grid.Column="1"/>
-        <PasswordBox x:Name="psb_pass" HorizontalAlignment="Left" Margin="116,164,0,0" VerticalAlignment="Top" Width="146" Height="23" Grid.Column="1" KeyDown="OnKeyDownHandler" />
-        <Image Margin="42,0,0,0" Source="/Trabajo_Final_Taller2;component/yajuOverflowLogo.png" Stretch="Fill" Grid.Column="1" HorizontalAlignment="Left" Width="406" Height="83" VerticalAlignment="Top"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Border Name="brd_border" Grid.Row="0" Background="DarkSlateBlue" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
+            <Grid>
+                <Image Margin="42,0,0,0" Source="/Trabajo_Final_Taller2;component/yajuOverflowLogo.png" Stretch="Fill" Grid.Column="1" HorizontalAlignment="Left" Width="420" Height="80" VerticalAlignment="Top" Grid.ColumnSpan="2"></Image>
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Name="btn_close" Width="30" Height="30" Background="#FF0095FF" Foreground="White" Content="X" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" Click="Btn_close_Click"></Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" Background="DarkSlateBlue">
+            <TextBox x:Name="txb_email" HorizontalAlignment="Center" Height="23" Margin="0,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" AutomationProperties.HelpText="Nombre de usuario" BorderThickness="1" SnapsToDevicePixels="True"/>
+            <Label x:Name="label" Content="Email" HorizontalAlignment="Center" Margin="0,5,90,0" VerticalAlignment="Top" Width="120" FontSize="15" FontFamily="Global Sans Serif" FontWeight="Bold" Height="26"/>
+            <Label x:Name="label_Copy" Content="Contraseña" HorizontalAlignment="Center" Margin="0,63,90,0" VerticalAlignment="Top" Width="120" FontFamily="Global Sans Serif" FontSize="15" FontWeight="Bold" Height="24"/>
+            <PasswordBox x:Name="psb_pass" HorizontalAlignment="Center" Margin="0,93,0,0" VerticalAlignment="Top" Width="210" Height="23" KeyDown="OnKeyDownHandler"/>
+        </Grid>
+        <Grid Grid.Row="2" Background="DarkSlateBlue">
+            <Button x:Name="btn_login" Content="Ingresar" Margin="0 0 0 30" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Center" Width="139" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1"/>
+        </Grid>
     </Grid>
 </Window>

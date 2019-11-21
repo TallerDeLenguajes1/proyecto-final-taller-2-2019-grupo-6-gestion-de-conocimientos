@@ -57,14 +57,24 @@ namespace Trabajo_Final_Taller2
                 else
                 {
                     //El email no está en la Bd, o la combinacion de email y contraseña no coinciden
-                    MessageBox.Show("Tus credenciales de inicio de sesión no coinciden con una cuenta en nuestro sistema.");
+                    MessageBox.Show("Tus credenciales de inicio de sesión no coinciden con una cuenta en nuestro sistema.","Error");
                 }
             }
             else
             {
                 //El email ingresado es inválido
-                MessageBox.Show("Ingrese un email válido.");
+                MessageBox.Show("Ingrese un email válido.","Error");
             }
+        }
+
+        private void Btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Brd_border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }
