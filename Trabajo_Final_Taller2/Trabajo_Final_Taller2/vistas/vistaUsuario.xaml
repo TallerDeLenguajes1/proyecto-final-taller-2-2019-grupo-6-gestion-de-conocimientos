@@ -13,6 +13,7 @@
         <Button x:Name="btn_verMisPreguntas" Content="Ver mis preguntas" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top" Width="115" Click="Btn_verMisPreguntas_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
         <Button x:Name="btn_salir" Content="Cerrar sesion" HorizontalAlignment="Left" Margin="15,258,0,0" VerticalAlignment="Top" Width="105" Click="salir_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
         <Label x:Name="lbl_name" Content="" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_reporte" Content="Crear reporte" HorizontalAlignment="Left" Margin="404,263,0,0" VerticalAlignment="Top" Width="105" Click="reporte_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5"/>
 
     </Grid>
 </Window>

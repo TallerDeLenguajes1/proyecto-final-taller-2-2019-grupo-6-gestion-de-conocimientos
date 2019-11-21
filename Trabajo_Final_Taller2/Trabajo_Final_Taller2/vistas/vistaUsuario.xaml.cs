@@ -65,5 +65,10 @@ namespace Trabajo_Final_Taller2.vistas
             vistaLogin.Show();
             this.Close();
         }
+
+        private void reporte_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
