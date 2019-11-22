@@ -56,7 +56,7 @@ namespace Trabajo_Final_Taller2.vistas
                 //imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
                 string fileName = op.SafeFileName;
                 string source = op.FileName;
-                string target = @"..\..\..\img";
+                string target = @"img";
                 int strLength = fileName.Length;
                 //La idea era usar dateTime, pero como lo que devuelve tiene caracteres no aptos para nombres de archivos, 
                 //simplemente le doy un numero random

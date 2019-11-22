@@ -27,8 +27,10 @@ namespace Trabajo_Final_Taller2.vistas
 
             InitializeComponent();
             url = imgUrl;
-            MessageBox.Show(url);
-            img_imagen.Source = new BitmapImage(new Uri(url,UriKind.Relative));
+            
+            var ruta = new Uri(AppDomain.CurrentDomain.BaseDirectory +url, UriKind.Absolute);
+            img_imagen.Source = new BitmapImage(ruta);
+
 
         }
         
