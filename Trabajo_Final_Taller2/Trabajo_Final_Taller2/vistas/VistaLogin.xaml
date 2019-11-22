@@ -8,20 +8,26 @@
         mc:Ignorable="d"
         Title="Login" Height="310" Width="520" Background="White" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="150"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <Border Name="brd_border" Grid.Row="0" Background="DarkSlateBlue" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
-            <Grid>
-                <Image Margin="42,0,0,0" Source="/Trabajo_Final_Taller2;component/yajuOverflowLogo.png" Stretch="Fill" HorizontalAlignment="Left" Width="420" Height="80" VerticalAlignment="Top"></Image>
-                <StackPanel HorizontalAlignment="Right">
-                    <Button Name="btn_close" Width="30" Height="30" Background="#FF077DD1" BorderBrush="#FF077DD1" Click="Btn_close_Click" Padding="0">
-                        <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
-                    </Button>
-                </StackPanel>
-            </Grid>
+        <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <Grid>
+                    <Image Margin="42,0,0,0" Source="/Trabajo_Final_Taller2;component/yajuOverflowLogo.png" Stretch="Fill" HorizontalAlignment="Left" Width="420" Height="80" VerticalAlignment="Top"></Image>
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Name="btn_close" Width="30" Height="30" Background="#FF077DD1" BorderBrush="#FF077DD1" Click="Btn_close_Click" Padding="0">
+                            <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:ColorZone>
         </Border>
         <Grid Grid.Row="1" Background="White">
             <StackPanel Orientation="Vertical">
