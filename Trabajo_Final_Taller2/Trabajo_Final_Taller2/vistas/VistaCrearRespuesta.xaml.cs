@@ -58,12 +58,13 @@ namespace Trabajo_Final_Taller2.vistas
                 string source = op.FileName;
                 string target = @"img";
                 int strLength = fileName.Length;
-                //La idea era usar dateTime, pero como lo que devuelve tiene caracteres no aptos para nombres de archivos, 
-                //simplemente le doy un numero random
-                Random rnd = new Random();
-                int num = rnd.Next(1, 999999);
 
-                string newName = fileName.Insert(strLength - 4, num.ToString());
+                var fecha = DateTime.Now.ToString("yyyy-MM-dd / HH:mm:ss:ms zzz");
+                Console.WriteLine(fecha);
+                var fechaMod = fecha.Replace("-", "").Replace(" ", "").Replace("/", "").Replace(":", "").Replace("+", "");
+                Console.WriteLine(fechaMod);
+
+                string newName = fileName.Insert(strLength - 4, fechaMod);
 
                 //MessageBox.Show(newName);
                 string destFile = System.IO.Path.Combine(target, newName);
@@ -72,7 +73,8 @@ namespace Trabajo_Final_Taller2.vistas
                 //destFile es lo que hay que guardar en la DB
                 imagenFinal = destFile;
                 //MessageBox.Show(destFile);
-            }
+            
+        }
         }
 
         private void btnResponder_Click(object sender, RoutedEventArgs e)
