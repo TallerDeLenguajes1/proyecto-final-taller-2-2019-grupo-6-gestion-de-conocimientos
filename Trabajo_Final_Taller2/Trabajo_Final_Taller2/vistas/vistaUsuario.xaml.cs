@@ -70,5 +70,15 @@ namespace Trabajo_Final_Taller2.vistas
         {
 
         }
+
+        private void Brd_border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

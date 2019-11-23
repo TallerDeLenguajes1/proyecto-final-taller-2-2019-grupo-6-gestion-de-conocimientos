@@ -55,5 +55,15 @@ namespace Trabajo_Final_Taller2.vistas
             lbl_titulo.Content = preguntaSelec.Titulo;
             lbl_fecha.Content = "El día: "+preguntaSelec.Fecha;
         }
+
+        private void Brd_border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

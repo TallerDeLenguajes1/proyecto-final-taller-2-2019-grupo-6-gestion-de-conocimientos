@@ -4,18 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="VistaImagen" Height="450" Width="551.493">
+        Title="VistaImagen" Height="450" Width="551.493" WindowStyle="None" Background="White" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.ColumnDefinitions>
-
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-
-        </Grid.ColumnDefinitions>
-        <Image Margin="12,12,16,71" Name="img_imagen" Stretch="Fill" />
-
-        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Content="Button" HorizontalAlignment="Left" Width="75" Margin="10,389,0,10" Click="Button_Click"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Width="30" Height="30" Background="#FF077DD1" BorderBrush="#FF077DD1" Click="Btn_close_Click" Padding="0">
+                        <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Border>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <Image Name="img_imagen" Stretch="Fill" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Content="Cerrar" HorizontalAlignment="Left" Width="75" materialDesign:ButtonAssist.CornerRadius="5" Click="Button_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

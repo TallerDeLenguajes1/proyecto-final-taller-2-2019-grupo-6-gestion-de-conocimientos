@@ -4,20 +4,51 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="vistaNotificaciones" Height="391" Width="449" Background="#FFF1EFEF">
+        Title="vistaNotificaciones" Height="391" Width="449" Background="White" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <Grid>
-        <ListBox x:Name="lbx_notificaciones" HorizontalAlignment="Left" Height="200" Margin="10,45,0,0" VerticalAlignment="Top" Width="230"/>
-        <Label FontFamily="Global Sans Serif" x:Name="label" Content="Notificaciones" HorizontalAlignment="Left" Margin="70,20,0,0" VerticalAlignment="Top"/>
-        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_borrarNotificacion" Content="Borrar" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="75" Click="Btn_borrarNotificacion_Click"/>
-        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_irAPregunta" Content="Ir a pregunta" HorizontalAlignment="Left" Margin="165,265,0,0" VerticalAlignment="Top" Width="75" Click="Btn_irAPregunta_Click"/>
-        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_atrasNotificaciones" Content="Volver" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="75" Click="Btn_atrasNotificaciones_Click"/>
-        <Label FontFamily="Global Sans Serif" x:Name="label1" Content="Informacion:" HorizontalAlignment="Left" Margin="290,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="105"/>
-        <Label FontFamily="Global Sans Serif" x:Name="lbl_notificacionSelecionada" Content="notificacion seleccionada" HorizontalAlignment="Left" Margin="257,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="150"/>
-        <Label FontFamily="Global Sans Serif" x:Name="lbl_usuario" Content="user" HorizontalAlignment="Left" Margin="307,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="33"/>
-        <Label FontFamily="Global Sans Serif" x:Name="label1_Copy2" Content="Ha respondido tu pregunta" HorizontalAlignment="Left" Margin="249,128,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="162"/>
-        <Label FontFamily="Global Sans Serif" x:Name="lbl_tituloPregunta" Content="titulo pregunta" HorizontalAlignment="Left" Margin="249,156,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="162"/>
-        <Label FontFamily="Global Sans Serif" x:Name="label1_Copy4" Content="el" HorizontalAlignment="Left" Margin="249,182,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="41"/>
-        <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" Content="fecha" HorizontalAlignment="Left" Margin="275,182,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="120"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown" >
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Width="30" Height="30" Background="#FF077DD1" BorderBrush="#FF077DD1" Padding="0" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Border>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <Label FontFamily="Global Sans Serif" x:Name="label" Content="Notificaciones" HorizontalAlignment="Left"/>
+                    <ListBox x:Name="lbx_notificaciones" HorizontalAlignment="Left" Height="200" Width="230"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_notificacionSelecionada" Content="Notificacion seleccionada" HorizontalAlignment="Left" Width="150"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="label1" Content="Informacion:" HorizontalAlignment="Left" Width="105"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_usuario" Content="user" HorizontalAlignment="Left" Width="33"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="label1_Copy2" Content="Ha respondido tu pregunta" HorizontalAlignment="Left" Width="162"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_tituloPregunta" Content="titulo pregunta" HorizontalAlignment="Left" Width="162"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="label1_Copy4" Content="el" HorizontalAlignment="Left" Width="41"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" Content="fecha" HorizontalAlignment="Left" Width="120"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <StackPanel Orientation="Vertical" Margin="50 0 150 0">
+                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_irAPregunta" Content="Ir a pregunta" HorizontalAlignment="Left" Width="120" materialDesign:ButtonAssist.CornerRadius="5" Click="Btn_irAPregunta_Click"/>
+                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_borrarNotificacion" Content="Borrar" HorizontalAlignment="Left" Width="90" Margin="0 10 0 0" materialDesign:ButtonAssist.CornerRadius="5" Click="Btn_borrarNotificacion_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_atrasNotificaciones" Content="Volver" HorizontalAlignment="Left" Width="90" materialDesign:ButtonAssist.CornerRadius="5" Click="Btn_atrasNotificaciones_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

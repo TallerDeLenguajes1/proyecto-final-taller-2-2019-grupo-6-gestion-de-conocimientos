@@ -4,18 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="VerPreguntas" Height="391" Width="494">
+        Title="VerPreguntas" Height="391" Width="494" WindowStyle="None" Background="White" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListBox x:Name="lbx_Preguntas" HorizontalAlignment="Left" Height="175" Margin="10,60,0,0" VerticalAlignment="Top" Width="246" SelectionChanged="Lbx_Preguntas_SelectionChanged"/>
-        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_Regresar" Content="Regresar" HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top" Width="75" Click="btn_Regresar_Click"/>
-        <Label FontFamily="Global Sans Serif" x:Name="label" Content="Preguntas" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>
-        <Label FontFamily="Global Sans Serif"  x:Name="label1" Content="Resumen de la pregunta seleccionada" HorizontalAlignment="Left" Margin="263,37,0,0" VerticalAlignment="Top" Width="223"/>
-        <Label FontFamily="Global Sans Serif" x:Name="lbl_user" Content="{}{User}" HorizontalAlignment="Left" Margin="263,70,0,0" VerticalAlignment="Top" Width="205"/>
-        <Label FontFamily="Global Sans Serif"  x:Name="label4" Content="Ha preguntado:" HorizontalAlignment="Left" Margin="263,101,0,0" VerticalAlignment="Top" Width="155"/>
-        <Label FontFamily="Global Sans Serif" x:Name="lbl_titulo" Content="{}{Titulo pregunta}" HorizontalAlignment="Left" Margin="263,132,0,0" VerticalAlignment="Top" Width="205"/>
-        <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" Content="el {fecha pregunta}" HorizontalAlignment="Left" Margin="263,163,0,0" VerticalAlignment="Top" Width="205"/>
-        <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnIrAPregunta" Content="Ir a la pregunta" Margin="13,251,363,88" Click="btnIrAPregunta_Click"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="110"/>
+        </Grid.RowDefinitions>
+        <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Background="#FF077DD1" BorderBrush="#FF077DD1" Width="30" Height="30" Padding="0" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:ColorZone>
+        </Border>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FormatListBulleted" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Bottom" Height="25"></materialDesign:PackIcon>
+                        <Label FontFamily="Global Sans Serif" x:Name="label" Content="Preguntas" HorizontalAlignment="Left" Height="25"/>
+                    </StackPanel>
+                    <ListBox x:Name="lbx_Preguntas" HorizontalAlignment="Left" Height="175" Width="240" SelectionChanged="Lbx_Preguntas_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label FontFamily="Global Sans Serif"  x:Name="label1" Content="Resumen de la pregunta seleccionada" HorizontalAlignment="Left" />
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_user" Content="{}{User}" HorizontalAlignment="Left"/>
+                    <Label FontFamily="Global Sans Serif"  x:Name="label4" Content="Ha preguntado:" HorizontalAlignment="Left" />
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_titulo" Content="{}{Titulo pregunta}" HorizontalAlignment="Left"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" Content="el {fecha pregunta}" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnIrAPregunta" Content="Ir a la pregunta" Click="btnIrAPregunta_Click" Margin="30 0 200 0" materialDesign:ButtonAssist.CornerRadius="5"/>
+                <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btn_Regresar" Content="Regresar" HorizontalAlignment="Left" Width="90" Click="btn_Regresar_Click" materialDesign:ButtonAssist.CornerRadius="5"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
