@@ -62,5 +62,13 @@ namespace Trabajo_Final_Taller2.vistas
         {
             this.Close();
         }
+
+        private void Lbx_notificaciones_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Notificacion notifselec = (Notificacion)lbx_notificaciones.SelectedItem;
+            lbl_usuario.Content = notifselec.UsuarioPregunta.Nombre;
+            lbl_tituloPregunta.Content = notifselec.PreguntaNotif.Titulo;
+            lbl_fecha.Content = notifselec.PreguntaNotif.FechaDeUltimaRespuesta().ToShortDateString();
+        }
     }
 }

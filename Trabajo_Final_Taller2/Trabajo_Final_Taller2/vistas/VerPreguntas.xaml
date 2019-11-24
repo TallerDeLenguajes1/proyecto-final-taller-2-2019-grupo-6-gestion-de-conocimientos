@@ -35,10 +35,10 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label FontFamily="Global Sans Serif"  x:Name="label1" Content="Resumen de la pregunta seleccionada" HorizontalAlignment="Left" />
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_user" Content="{}{User}" HorizontalAlignment="Left"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_user" HorizontalAlignment="Left"/>
                     <Label FontFamily="Global Sans Serif"  x:Name="label4" Content="Ha preguntado:" HorizontalAlignment="Left" />
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_titulo" Content="{}{Titulo pregunta}" HorizontalAlignment="Left"/>
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" Content="el {fecha pregunta}" HorizontalAlignment="Left"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_titulo" HorizontalAlignment="Left"/>
+                    <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" HorizontalAlignment="Left"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
