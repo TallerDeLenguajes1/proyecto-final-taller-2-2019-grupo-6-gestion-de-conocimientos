@@ -85,9 +85,7 @@ namespace Trabajo_Final_Taller2.vistas
                 int strLength = fileName.Length;
 
                 var fecha = DateTime.Now.ToString("yyyy-MM-dd / HH:mm:ss:ms zzz");
-                Console.WriteLine(fecha);
                 var fechaMod = fecha.Replace("-", "").Replace(" ", "").Replace("/", "").Replace(":", "").Replace("+", "");
-                Console.WriteLine(fechaMod);
 
                 string newName = fileName.Insert(strLength - 4, fechaMod); 
 

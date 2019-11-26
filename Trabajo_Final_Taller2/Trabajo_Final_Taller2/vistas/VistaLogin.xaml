@@ -33,11 +33,11 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin=" 0 20 0 0">
                     <materialDesign:PackIcon Kind="At" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                    <TextBox x:Name="txb_email"   HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"  materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5" Text="anon@4chan.org"/>
+                    <TextBox x:Name="txb_email"   HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"  materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5" Text="ig@gmail.com"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin=" 0 20 0 0">
                     <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=psb_pass, Path=BorderBrush}" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                    <PasswordBox x:Name="psb_pass"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="210" KeyDown="OnKeyDownHandler" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5" Password="password"/>
+                    <PasswordBox x:Name="psb_pass"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="210" KeyDown="OnKeyDownHandler" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5" Password="pw"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
