@@ -92,14 +92,18 @@ namespace Trabajo_Final_Taller2.vistas
             xlsSheet["B1"].Value = "Preguntas";
             xlsSheet["C1"].Value = "Cantidad de respuestas";
             xlsSheet["D1"].Value = "Estado de la pregunta";
+            xlsSheet["E1"].Value = "Fecha";
+            int row = 2;
             foreach (var preg in usuario.Preguntas)
             {
-                int row = 2;
+                
                 xlsSheet["A" + row].Value = usuario.Nombre + " " + usuario.Apellido;
                 xlsSheet["B" + row].Value = preg.Titulo;
                 xlsSheet["C" + row].Value = preg.Respuestas.Count;
                 xlsSheet["D" + row].Value = preg.Estado;
+                xlsSheet["E" + row].Value = preg.Fecha;
                 row++;
+ 
             }
             //Save the excel file
             xlsxWorkbook.SaveAs(fileName + ".xlsx");
