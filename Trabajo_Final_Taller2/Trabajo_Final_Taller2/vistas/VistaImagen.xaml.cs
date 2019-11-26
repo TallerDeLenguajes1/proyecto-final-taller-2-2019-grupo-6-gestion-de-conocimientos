@@ -26,14 +26,37 @@ namespace Trabajo_Final_Taller2.vistas
         {
 
             InitializeComponent();
-            url = imgUrl;
+
             
-            var ruta = new Uri(AppDomain.CurrentDomain.BaseDirectory +url, UriKind.Absolute);
-            img_imagen.Source = new BitmapImage(ruta);
+            try
+            {
+                url = imgUrl;
+                var ruta = new Uri(AppDomain.CurrentDomain.BaseDirectory +url, UriKind.Absolute);
+                img_imagen.Source = new BitmapImage(ruta);
+            }
+            catch (System.IO.DirectoryNotFoundException)
+            {
+                CargarImagenDefault();
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                CargarImagenDefault();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
 
         }
         
+        private void CargarImagenDefault()
+        {
+            url = @"img\ImageNotFound.jpg";
+            var ruta = new Uri(AppDomain.CurrentDomain.BaseDirectory + url, UriKind.Absolute);
+            img_imagen.Source = new BitmapImage(ruta);
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

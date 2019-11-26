@@ -76,6 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HelperImagen.cs" />
     <Compile Include="vistas\HacerPregunta.xaml.cs">
       <DependentUpon>HacerPregunta.xaml</DependentUpon>
     </Compile>

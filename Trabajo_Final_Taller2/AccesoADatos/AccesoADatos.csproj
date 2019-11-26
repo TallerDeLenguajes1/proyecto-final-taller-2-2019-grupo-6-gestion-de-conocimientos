@@ -68,7 +68,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DBconfig.txt" />
+    <Content Include="DBconfig.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\ImageNotFound.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
