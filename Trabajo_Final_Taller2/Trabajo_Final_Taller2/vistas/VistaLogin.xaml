@@ -42,8 +42,8 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Background="White">
-            <Button x:Name="btn_login" Content="Ingresar" Margin="0,0,200,30" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Center" Width="138" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" materialDesign:ButtonAssist.CornerRadius="5"/>
-            <Button x:Name="btn_registro" Content="Registrarse" Margin="200,0,0,30" VerticalAlignment="Bottom" Height="31" HorizontalAlignment="Center" Width="140" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" materialDesign:ButtonAssist.CornerRadius="5" Click="btn_registro_Click"/>
+            <Button x:Name="btn_login" Content="Ingresar" Margin="301,0,81,30" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Center" Width="138" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" materialDesign:ButtonAssist.CornerRadius="5"/>
+            <Button x:Name="btn_registro" Content="Registrarse" Margin="84,0,296,30" VerticalAlignment="Bottom" Height="31" HorizontalAlignment="Center" Width="140" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" materialDesign:ButtonAssist.CornerRadius="5" Click="btn_registro_Click"/>
         </Grid>
     </Grid>
 </Window>

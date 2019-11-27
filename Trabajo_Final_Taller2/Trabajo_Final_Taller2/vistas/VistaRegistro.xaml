@@ -27,25 +27,25 @@
                 <StackPanel Orientation="Vertical" Margin="50 0 50 0">
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 20">
                         <materialDesign:PackIcon Kind="User" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                        <TextBox x:Name="txbNombre" HorizontalAlignment="Left" Height="35" Width="200" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True"/>
+                        <TextBox x:Name="txbNombre" HorizontalAlignment="Left" Height="40" Width="200" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Margin="0 0 0 20">
                         <materialDesign:PackIcon Kind="User" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                        <TextBox x:Name="txbApellido" HorizontalAlignment="Left" Width="200" Height="35" materialDesign:HintAssist.Hint="Apellido" materialDesign:HintAssist.IsFloating="True"/>
+                        <TextBox x:Name="txbApellido" HorizontalAlignment="Left" Width="200" Height="40" materialDesign:HintAssist.Hint="Apellido" materialDesign:HintAssist.IsFloating="True"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="City" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                        <TextBox x:Name="txbPais" HorizontalAlignment="Left" Width="200" Height="35" materialDesign:HintAssist.Hint="Pais" materialDesign:HintAssist.IsFloating="True"/>
+                        <TextBox x:Name="txbPais" HorizontalAlignment="Left" Width="200" Height="40" materialDesign:HintAssist.Hint="Pais" materialDesign:HintAssist.IsFloating="True"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 20">
                         <materialDesign:PackIcon Kind="Email" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                        <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Height="35" materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True"></TextBox>
+                        <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Height="40" materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True" Width="222"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Asterisk" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                        <PasswordBox x:Name="pwbPassword" HorizontalAlignment="Left" Width="120" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True"/>
+                        <PasswordBox x:Name="pwbPassword" HorizontalAlignment="Left" Width="134" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
