@@ -38,9 +38,9 @@ namespace Entidades
 
             // Calcular los meses transcurridos
 
-            mesesTranscurridos = ((fechaMasReciente.Year - this.Fecha.Year) - 1) * 12;
+            mesesTranscurridos = ((DateTime.Today.Year - fechaMasReciente.Year ) - 1) * 12;
 
-            mesesTranscurridos += 12 - this.Fecha.Month;
+            mesesTranscurridos += 12 - DateTime.Today.Month;
 
             mesesTranscurridos += fechaMasReciente.Month;
 
