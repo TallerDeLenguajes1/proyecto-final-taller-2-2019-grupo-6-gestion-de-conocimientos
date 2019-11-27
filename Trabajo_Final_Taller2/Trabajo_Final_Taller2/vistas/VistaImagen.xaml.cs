@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using System.IO;
+using NLog;
 
 namespace Trabajo_Final_Taller2.vistas
 {
@@ -21,18 +23,25 @@ namespace Trabajo_Final_Taller2.vistas
     /// </summary>
     public partial class VistaImagen : Window
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         string url; 
         public VistaImagen(string imgUrl)
         {
 
             InitializeComponent();
 
-            
             try
             {
-                url = imgUrl;
-                var ruta = new Uri(AppDomain.CurrentDomain.BaseDirectory +url, UriKind.Absolute);
-                img_imagen.Source = new BitmapImage(ruta);
+                if (File.Exists(imgUrl))
+                {
+                    url = imgUrl;
+                    var ruta = new Uri(AppDomain.CurrentDomain.BaseDirectory +url, UriKind.Absolute);
+                    img_imagen.Source = new BitmapImage(ruta);
+                }
+                else
+                {
+                    CargarImagenDefault();
+                }
             }
             catch (System.IO.DirectoryNotFoundException)
             {
@@ -42,9 +51,14 @@ namespace Trabajo_Final_Taller2.vistas
             {
                 CargarImagenDefault();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                // Log del error
+                string error = "Error en VistaImagen";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
 

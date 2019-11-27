@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,6 +11,7 @@ namespace AccesoADatos
 {
     public class ABMNotificacion
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Obtiene las notificaciones correspondientes del usuario con el id especificado
         /// </summary>
@@ -42,9 +44,14 @@ namespace AccesoADatos
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMNotificacion GetNotificaciones";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
             //Finalmente devuelvo la lista de notificaciones
@@ -76,7 +83,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMNotificacion AltaNotificacion";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
 
@@ -107,7 +119,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMNotificacion BajaNotificacion";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }

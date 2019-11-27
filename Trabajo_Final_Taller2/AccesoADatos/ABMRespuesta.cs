@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -7,6 +8,7 @@ namespace AccesoADatos
 {
     public class ABMRespuesta
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Selecciona las respuestas de la pregunta con el id especificado
         /// </summary>
@@ -50,10 +52,15 @@ namespace AccesoADatos
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
 	        }
-	        catch (Exception)
-	        {
-                //Nloggear
-		        throw;
+	        catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMRespuesta GetRespuestas";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
 	        }
             //Finalmente devuelvo la lista de respuestas
             return respuestas;
@@ -89,7 +96,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMRespuesta AltaRespuesta con imagen";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
@@ -121,7 +133,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMRespuesta AltaRespuesta sin imagen";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
@@ -145,10 +162,15 @@ namespace AccesoADatos
                 command.ExecuteNonQuery();
                 Conexion_Desconexion.Desconnect();
 	        }
-	        catch (Exception)
-	        {
-                //Nloggear
-          		throw;
+	        catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMRespuesta BajaRespuesta";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
 	        }
             
 
@@ -172,9 +194,14 @@ namespace AccesoADatos
                 command.ExecuteNonQuery();
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMRespuesta AltaLike";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
@@ -198,9 +225,14 @@ namespace AccesoADatos
                 command.ExecuteNonQuery();
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMRespuesta BajaLike";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
@@ -223,7 +255,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMRespuesta GetIdsUsuariosLike";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
             return IdsUsers;

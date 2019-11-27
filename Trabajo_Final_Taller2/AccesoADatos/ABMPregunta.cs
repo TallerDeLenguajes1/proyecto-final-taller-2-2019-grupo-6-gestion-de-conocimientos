@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,6 +11,7 @@ namespace AccesoADatos
 {
     public class ABMPregunta
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Selecciona todas las preguntas en la base de datos
         /// </summary>
@@ -60,7 +62,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMPregunta GetPreguntas (todas las preguntas del sistema)";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
             return preguntas;
@@ -118,8 +125,14 @@ namespace AccesoADatos
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                // Log del error
+                string error = "Error en ABMPregunta GetPreguntas con id (todas las preguntas de un user)";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
 
                 throw;
             }
@@ -149,7 +162,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMPregunta BajaPregunta";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
@@ -181,9 +199,14 @@ namespace AccesoADatos
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                // Log del error
+                string error = "Error en ABMPregunta AltaPregunta con imagen";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
@@ -212,9 +235,14 @@ namespace AccesoADatos
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                // Log del error
+                string error = "Error en ABMPregunta AltaPregunta sin imagen";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
@@ -243,8 +271,14 @@ namespace AccesoADatos
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                // Log del error
+                string error = "Error en ABMPregunta UpdateSolucionPregunta";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
 
                 throw;
             }
@@ -268,8 +302,14 @@ namespace AccesoADatos
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                // Log del error
+                string error = "Error en ABMPregunta ActualizarEstado";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
 
                 throw;
             }

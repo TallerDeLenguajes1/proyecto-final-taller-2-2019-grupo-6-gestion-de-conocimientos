@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Entidades;
+using NLog;
 
 namespace AccesoADatos
 {
     public class ABMUsuario
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Toma los datos de entrada de un nuevo usuario y los inserta a la base de datos
         /// </summary>
@@ -33,7 +35,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMUsuario AltaUsuario";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
@@ -70,9 +77,14 @@ namespace AccesoADatos
                 //Desconecto la base de datos
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex )
             {
-
+                // Log del error
+                string error = "Error en ABMUsuario GetUsuario con id";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
             //Devuelvo el alumno cargado
@@ -111,9 +123,14 @@ namespace AccesoADatos
                 //Desconecto la base de datos
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                // Log del error
+                string error = "Error en ABMUsuario GetUsuario con email";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
             //Devuelvo el alumno cargado
@@ -143,7 +160,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMUsuario BajaUsuario";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
 
@@ -172,10 +194,15 @@ namespace AccesoADatos
                 //Cierro la conexion a la base de datos
                 Conexion_Desconexion.Desconnect();
 	        }
-	        catch (Exception)
-	        {
-                //Nloggear
-        		throw;
+	        catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMUsuario ExisteUser con id";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
 	        }
             //Devuelve true/false segun exista o no el user con ese id
             return count != 0;
@@ -204,10 +231,15 @@ namespace AccesoADatos
                 //Cierro la conexion a la base de datos
                 Conexion_Desconexion.Desconnect();
 	        }
-	        catch (Exception)
-	        {
-                //Nloggear
-        		throw;
+	        catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMUsuario ExisteUser con email";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
 	        }
             //Devuelve true/false segun exista o no el user con ese email
             return count != 0;

@@ -5,16 +5,18 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using NLog;
 
 namespace AccesoADatos
 {
     public class Conexion_Desconexion
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         static readonly string DBconfigDir = @"DBconfig.txt";
         static string DBconfig = File.ReadAllText(DBconfigDir);    
         static readonly string connectionString = DBconfig;
-        //agregar try catch?
-        static readonly SqlConnection con = new SqlConnection(connectionString);
+        
+        readonly static SqlConnection con = new SqlConnection(connectionString);
 
         public static SqlConnection Con
         {
@@ -28,11 +30,18 @@ namespace AccesoADatos
         {
             try
             {
-                Con.Open();
+                con.Open();
                 return true;
             }
             catch (Exception ex)
             {
+                // Log del error
+                string error = "Error en la conexion a la base de datos";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+
                 return false;
             }
         }
@@ -40,11 +49,17 @@ namespace AccesoADatos
         {
             try
             {
-                Con.Close();
+                con.Close();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                // Log del error
+                string error = "Error en la desconexion a la base de datos";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
 
                 return false;
             }
