@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AccesoADatos;
 using Entidades;
+using HelperArchivos;
 using IronXL;
 
 namespace Trabajo_Final_Taller2.vistas
@@ -62,52 +63,17 @@ namespace Trabajo_Final_Taller2.vistas
         }
         private void salir_Click(object sender, RoutedEventArgs e)
         {
+            CerrarSesion();
+        }
+        private void CerrarSesion()
+        {
             VistaLogin vistaLogin = new VistaLogin();
             vistaLogin.Show();
             this.Close();
         }
-
         private void reporte_Click(object sender, RoutedEventArgs e)
         {
-            HacerReporte();
-        }
-        public void HacerReporte()
-        {
-            ///nombre de archivo: nombre de usuario con fecha y horario
-            ///en las tablas
-            ///preguntas | cantidad de respuestas de cada pregunta | estado de la pregunta
-            /// y tal vez tambien de cada pregunta
-            ///respuestas | fecha | nombre del user que hizo la respuesta | cantidad de likes de la respuesta |
-            
-            var fecha = DateTime.Now.ToString("yyyy-MM-dd / HH:mm:ss:ms");
-            var fechaMod = fecha.Replace(" ", "").Replace("/", "-").Replace(":", "-").Replace("+", "");
-            string fileName = usuario.Nombre + "" + usuario.Apellido + fechaMod;
-            //crea el documento
-            WorkBook xlsxWorkbook = WorkBook.Create(ExcelFileFormat.XLSX);
-            xlsxWorkbook.Metadata.Author = "IronXL";
-            //Add a blank WorkSheet
-            WorkSheet xlsSheet = xlsxWorkbook.CreateWorkSheet("main_sheet");
-            //Add data and styles to the new worksheet
-            xlsSheet["A1"].Value = "Usuario";
-            xlsSheet["B1"].Value = "Preguntas";
-            xlsSheet["C1"].Value = "Cantidad de respuestas";
-            xlsSheet["D1"].Value = "Estado de la pregunta";
-            xlsSheet["E1"].Value = "Fecha";
-            int row = 2;
-            foreach (var preg in usuario.Preguntas)
-            {
-                
-                xlsSheet["A" + row].Value = usuario.Nombre + " " + usuario.Apellido;
-                xlsSheet["B" + row].Value = preg.Titulo;
-                xlsSheet["C" + row].Value = preg.Respuestas.Count;
-                xlsSheet["D" + row].Value = preg.Estado;
-                xlsSheet["E" + row].Value = preg.Fecha;
-                row++;
- 
-            }
-            //Save the excel file
-            xlsxWorkbook.SaveAs(fileName + ".xlsx");
-
+            HelperReportes.GenerarReporteUsuario(usuario);
         }
         private void Brd_border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -117,6 +83,22 @@ namespace Trabajo_Final_Taller2.vistas
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void btn_borrar_cuenta_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                "¿Está seguro que quiere borrar su cuenta?", 
+                "Borrar Cuenta", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning
+                );
+
+            if (result == MessageBoxResult.Yes)
+            {
+                ControladorABM.EliminarCuenta(usuario);
+                CerrarSesion();
+            }
         }
     }
 }

@@ -185,6 +185,10 @@
       <Project>{70f2c610-41ce-4f4a-b884-8207dcea52e4}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HelperArchivos\HelperArchivos.csproj">
+      <Project>{b752a607-49d8-4c2a-91c8-fbecd997b37d}</Project>
+      <Name>HelperArchivos</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="yajuOverflowLogo.png" />
