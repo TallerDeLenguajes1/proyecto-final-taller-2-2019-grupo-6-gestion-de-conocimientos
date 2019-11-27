@@ -4,25 +4,57 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="VistaRegistro" Height="450" Width="800">
+        Title="VistaRegistro" Height="400" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="White" AllowsTransparency="True">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="127*"/>
-            <RowDefinition Height="292*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="txbNombre" HorizontalAlignment="Left" Height="23" Margin="40,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Nombre" HorizontalAlignment="Left" Margin="40,53,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txbApellido" HorizontalAlignment="Left" Height="23" Margin="40,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <Label Content="Apellido" HorizontalAlignment="Left" Margin="40,109,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <TextBox x:Name="txbPais" HorizontalAlignment="Left" Height="23" Margin="40,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <Label Content="Pais" HorizontalAlignment="Left" Margin="40,36,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Height="23" Margin="40,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <Label Content="email" HorizontalAlignment="Left" Margin="40,90,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="40,144,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <PasswordBox x:Name="pwbPassword" HorizontalAlignment="Left" Margin="40,170,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnRegistrar" Content="Registrar" HorizontalAlignment="Left" Margin="180,217,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110" Click="btnRegistrar_Click"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="40,217,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110" Click="btnCancelar_Click"/>
-
+        <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Background="#FF077DD1" BorderBrush="#FF077DD1" Width="30" Height="30" Padding="0" Click="Button_Click" >
+                        <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Border>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="50 0 50 0">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 20">
+                        <materialDesign:PackIcon Kind="User" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <TextBox x:Name="txbNombre" HorizontalAlignment="Left" Height="35" Width="200" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="0 0 0 20">
+                        <materialDesign:PackIcon Kind="User" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <TextBox x:Name="txbApellido" HorizontalAlignment="Left" Width="200" Height="35" materialDesign:HintAssist.Hint="Apellido" materialDesign:HintAssist.IsFloating="True"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="City" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <TextBox x:Name="txbPais" HorizontalAlignment="Left" Width="200" Height="35" materialDesign:HintAssist.Hint="Pais" materialDesign:HintAssist.IsFloating="True"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 20">
+                        <materialDesign:PackIcon Kind="Email" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Height="35" materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Asterisk" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <PasswordBox x:Name="pwbPassword" HorizontalAlignment="Left" Width="120" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnRegistrar" Content="Registrar" HorizontalAlignment="Left" Width="90" Margin="150 10 0 0" materialDesign:ButtonAssist.CornerRadius="5" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="btnRegistrar_Click"/>
+                <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Width="90" Margin="100 10 0 0" materialDesign:ButtonAssist.CornerRadius="5" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="btnCancelar_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
