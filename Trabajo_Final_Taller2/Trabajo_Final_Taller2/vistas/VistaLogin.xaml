@@ -33,16 +33,17 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin=" 0 20 0 0">
                     <materialDesign:PackIcon Kind="At" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                    <TextBox x:Name="txb_email"   HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"  materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5" Text="ig@gmail.com"/>
+                    <TextBox x:Name="txb_email"   HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"  materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5" Text=""/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin=" 0 20 0 0">
                     <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=psb_pass, Path=BorderBrush}" VerticalAlignment="Bottom"></materialDesign:PackIcon>
-                    <PasswordBox x:Name="psb_pass"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="210" KeyDown="OnKeyDownHandler" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5" Password="pw"/>
+                    <PasswordBox x:Name="psb_pass"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="210" KeyDown="OnKeyDownHandler" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.FloatingScale="1.5" Password=""/>
                 </StackPanel>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Background="White">
-            <Button x:Name="btn_login" Content="Ingresar" Margin="0 0 0 30" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Center" Width="139" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" materialDesign:ButtonAssist.CornerRadius="5"/>
+            <Button x:Name="btn_login" Content="Ingresar" Margin="0,0,200,30" VerticalAlignment="Bottom" Click="btn_login_Click" Height="31" HorizontalAlignment="Center" Width="138" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" materialDesign:ButtonAssist.CornerRadius="5"/>
+            <Button x:Name="btn_registro" Content="Registrarse" Margin="200,0,0,30" VerticalAlignment="Bottom" Height="31" HorizontalAlignment="Center" Width="140" Background="#FF0095FF" Foreground="White" FontFamily="Open Sans Semibold" BorderBrush="#FF077DD1" materialDesign:ButtonAssist.CornerRadius="5" Click="btn_registro_Click"/>
         </Grid>
     </Grid>
 </Window>

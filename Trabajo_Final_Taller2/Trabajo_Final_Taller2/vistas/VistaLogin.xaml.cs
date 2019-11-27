@@ -76,5 +76,11 @@ namespace Trabajo_Final_Taller2
         {
             DragMove();
         }
+
+        private void btn_registro_Click(object sender, RoutedEventArgs e)
+        {
+            vistas.VistaRegistro vRegistro = new vistas.VistaRegistro();
+            vRegistro.ShowDialog();
+        }
     }
 }

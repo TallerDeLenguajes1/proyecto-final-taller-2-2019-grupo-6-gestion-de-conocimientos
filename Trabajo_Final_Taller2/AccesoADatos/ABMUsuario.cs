@@ -21,7 +21,7 @@ namespace AccesoADatos
             {
                 //Hacer conexion a la base de datos
                 Conexion_Desconexion.Connection();
-                string query = @"INSERT INTO Usuarios(Nombre,Apellido,Pais,Email,Contraseña) VALUES(@nombre,@apellido,@pais,@email,@password)";
+                string query = @"INSERT INTO Usuarios(nombre,apellido,pais_origen,Email,password) VALUES(@nombre,@apellido,@pais,@email,@password)";
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 /*NOTA: placeholders.*/
                 command.Parameters.AddWithValue("@nombre", nombre);

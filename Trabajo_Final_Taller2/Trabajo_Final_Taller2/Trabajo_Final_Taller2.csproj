@@ -95,6 +95,9 @@
     <Compile Include="vistas\VistaPregunta.xaml.cs">
       <DependentUpon>VistaPregunta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vistas\VistaRegistro.xaml.cs">
+      <DependentUpon>VistaRegistro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vistas\VistaRespuesta.xaml.cs">
       <DependentUpon>VistaRespuesta.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="vistas\VistaPregunta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistas\VistaRegistro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
