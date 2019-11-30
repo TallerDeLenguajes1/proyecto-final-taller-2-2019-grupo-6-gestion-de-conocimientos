@@ -23,20 +23,12 @@
             </materialDesign:ColorZone>
         </Border>
         <Grid Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical">
-                    <Label FontFamily="Global Sans Serif" x:Name="label" Content="Notificaciones" HorizontalAlignment="Left"/>
-                    <ListBox x:Name="lbx_notificaciones" HorizontalAlignment="Left" Height="200" Width="230" SelectionChanged="Lbx_notificaciones_SelectionChanged"/>
+            <StackPanel>
+                <StackPanel Orientation="Vertical" Height="203">
+                    <Label FontFamily="Global Sans Serif" Content="Notificaciones" HorizontalAlignment="Left"/>
+                    <ListBox x:Name="lbx_notificaciones" HorizontalAlignment="Left" Height="200" Width="439" SelectionChanged="Lbx_notificaciones_SelectionChanged"/>
                 </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_notificacionSelecionada" Content="Notificacion seleccionada" HorizontalAlignment="Left" Width="150"/>
-                    <Label FontFamily="Global Sans Serif" x:Name="label1" Content="Informacion:" HorizontalAlignment="Left" Width="105"/>
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_usuario" HorizontalAlignment="Left" Width="33"/>
-                    <Label FontFamily="Global Sans Serif" x:Name="label1_Copy2" Content="Ha respondido tu pregunta" HorizontalAlignment="Left" Width="162"/>
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_tituloPregunta" HorizontalAlignment="Left" Width="162"/>
-                    <Label FontFamily="Global Sans Serif" x:Name="label1_Copy4" Content="el" HorizontalAlignment="Left" Width="41"/>
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" HorizontalAlignment="Left" Width="120"/>
-                </StackPanel>
+                <Label x:Name="lblInfoNotificacion" Content="Nueva una respuesta en &quot;[Titulo Pregunta]&quot; el día dd/mm/yyyy a las hh:min" Height="31"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">

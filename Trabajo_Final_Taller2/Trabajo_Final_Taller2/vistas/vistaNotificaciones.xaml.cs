@@ -27,6 +27,7 @@ namespace Trabajo_Final_Taller2.vistas
             InitializeComponent();
             this.usuario = usuario;
             lbx_notificaciones.ItemsSource = this.usuario.Notificaciones;
+            CargarInfoNotificacion();
         }
         private void Btn_borrarNotificacion_Click(object sender, RoutedEventArgs e)
         {
@@ -65,10 +66,27 @@ namespace Trabajo_Final_Taller2.vistas
 
         private void Lbx_notificaciones_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Notificacion notifselec = (Notificacion)lbx_notificaciones.SelectedItem;
-            lbl_usuario.Content = notifselec.UsuarioPregunta.Nombre;
-            lbl_tituloPregunta.Content = notifselec.PreguntaNotif.Titulo;
-            lbl_fecha.Content = notifselec.PreguntaNotif.FechaDeUltimaRespuesta().ToShortDateString();
+            CargarInfoNotificacion();
+        }
+
+        private void CargarInfoNotificacion()
+        {
+            if (lbx_notificaciones.Items.Count == 0)
+            {
+                lblInfoNotificacion.Content = "No hay notificaciones";
+            }
+            else
+            {
+                if (lbx_notificaciones.SelectedIndex == -1)
+                {
+                    lblInfoNotificacion.Content = "Seleccione una notificación";
+                }
+                else
+                {
+                    Notificacion notifselec = (Notificacion)lbx_notificaciones.SelectedItem;
+                    lblInfoNotificacion.Content = notifselec.ToLongString();
+                }
+            }
         }
     }
 }

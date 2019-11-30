@@ -25,7 +25,7 @@ namespace AccesoADatos
                 //Hago la conexion a la base de datos
                 Conexion_Desconexion.Connection();
                 //Armo el query para seleccionar todas las notificaciones segun el id
-                string query = @"SELECT * FROM Notificaciones WHERE id_user = @idUser";
+                string query = @"SELECT id_user, id_pregunta, id_notificacion, fecha_notificacion FROM Notificaciones WHERE id_user = @idUser";
                 //Armo el command con el query y la conexion
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 //Paso como parametro codificado el id del usuario
@@ -39,6 +39,7 @@ namespace AccesoADatos
                     notif.IdUserPregunta = reader.GetInt32(0);
                     notif.IdPregunta = reader.GetInt32(1);
                     notif.IdNotificacion = reader.GetInt32(2);
+                    notif.Fecha = reader.GetDateTime(3);
                     notificaciones.Add(notif);
                 }
                 //Cierro la conexion a la Bd
