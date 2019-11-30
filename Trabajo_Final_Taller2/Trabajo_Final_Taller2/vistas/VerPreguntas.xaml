@@ -25,21 +25,15 @@
             </materialDesign:ColorZone>
         </Border>
         <Grid Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FormatListBulleted" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Bottom" Height="25"></materialDesign:PackIcon>
-                        <Label FontFamily="Global Sans Serif" x:Name="label" Content="Preguntas" HorizontalAlignment="Left" Height="25"/>
-                    </StackPanel>
-                    <ListBox x:Name="lbx_Preguntas" HorizontalAlignment="Left" Height="175" Width="240" SelectionChanged="Lbx_Preguntas_SelectionChanged"/>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="FormatListBulleted" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Bottom" Height="25"></materialDesign:PackIcon>
+                    <Label FontFamily="Global Sans Serif" x:Name="label" Content="Preguntas" HorizontalAlignment="Left" Height="25"/>
                 </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontFamily="Global Sans Serif"  x:Name="label1" Content="Resumen de la pregunta seleccionada" HorizontalAlignment="Left" />
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_user" HorizontalAlignment="Left"/>
-                    <Label FontFamily="Global Sans Serif"  x:Name="label4" Content="Ha preguntado:" HorizontalAlignment="Left" />
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_titulo" HorizontalAlignment="Left"/>
-                    <Label FontFamily="Global Sans Serif" x:Name="lbl_fecha" HorizontalAlignment="Left"/>
-                </StackPanel>
+                <ListBox x:Name="lbx_Preguntas" Height="175" SelectionChanged="Lbx_Preguntas_SelectionChanged"/>
+                <Label x:Name="lblInfoPregunta" Content="[User Pregunta] ha preguntado &quot;[titulo pregunta]&quot; el día dd/mm/yyyy a las hh:min"/>
+                <Label x:Name="lblEstado" Content="Estado: [estado]"/>
+
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">

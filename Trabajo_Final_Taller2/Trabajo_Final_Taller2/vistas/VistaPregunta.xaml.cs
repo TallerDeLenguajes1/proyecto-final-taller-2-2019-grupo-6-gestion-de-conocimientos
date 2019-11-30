@@ -27,7 +27,7 @@ namespace Trabajo_Final_Taller2.vistas
             InitializeComponent();
             usuario = user;
             this.pregunta = pregunta;
-            CargarComponentes();
+            CargarInfoPregunta();
         }
 
         private void btnRegresar_Click(object sender, RoutedEventArgs e)
@@ -43,24 +43,23 @@ namespace Trabajo_Final_Taller2.vistas
                 VistaRespuesta vRespuesta = new VistaRespuesta(usuario, respuestaSelec);
 
                 vRespuesta.ShowDialog();
-                CargarComponentes();
+                CargarInfoPregunta();
             }
         }
 
-        private void CargarComponentes()
+        private void CargarInfoPregunta()
         {
+            lblInfoUserFecha.Content = pregunta.UserPregunta.ToString() + " el día " + pregunta.Fecha.ToShortDateString() + " a las " + pregunta.Fecha.ToShortTimeString() ;
             lblTitulo.Content = pregunta.Titulo;
             tbkDescripcion.Text = pregunta.Descripcion;
 
-            if (pregunta.UrlImagen == null)
+            if (string.IsNullOrWhiteSpace(pregunta.UrlImagen))
             {
                 btnVerImagen.IsEnabled = false;
             }
             else
             {
                 btnVerImagen.IsEnabled = true;
-                // TO DO
-                // Vincular boton con la imagen
             }
 
             lbxRespuestas.ItemsSource = pregunta.Respuestas;
@@ -74,7 +73,14 @@ namespace Trabajo_Final_Taller2.vistas
                 btnResponder.IsEnabled = false;
             }
 
-            // Cargar labels
+            if (lbxRespuestas.SelectedIndex == -1)
+            {
+                btnIrARespuesta.IsEnabled = false;
+            }
+            else
+            {
+                btnIrARespuesta.IsEnabled = true;
+            }
         }
 
         private void btnResponder_Click(object sender, RoutedEventArgs e)

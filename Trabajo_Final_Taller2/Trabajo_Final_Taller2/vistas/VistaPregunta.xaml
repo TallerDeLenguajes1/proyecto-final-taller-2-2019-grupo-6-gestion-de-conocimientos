@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="VistaPregunta" Height="470" Width="499" Background="White" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+        Title="VistaPregunta" Height="530" Width="499" Background="White" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="250"/>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="370"/>
+            <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown" >
             <materialDesign:ColorZone Mode="PrimaryDark">
@@ -23,15 +23,14 @@
             </materialDesign:ColorZone>
         </Border>
         <Grid Grid.Row="1">
-            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
-                <StackPanel Orientation="Vertical">
-                    <Label x:Name="lblTitulo" HorizontalAlignment="Left" FontWeight="Bold"/>
-                    <TextBlock x:Name="tbkDescripcion" HorizontalAlignment="Left" Height="200" Width="250"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontFamily="Global Sans Serif" Content="Respuestas" HorizontalAlignment="Left"/>
-                    <ListBox x:Name="lbxRespuestas" HorizontalAlignment="Left" Height="200" Width="250"/>
-                </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Grid>
+                    <Label x:Name="lblTitulo" HorizontalAlignment="Left" FontWeight="Bold" Content="[Titulo de pregunta]" FontSize="16"/>
+                    <Label x:Name="lblInfoUserFecha" HorizontalAlignment="Right" Content="[Usuario] el dia [fecha] a las [hora]" VerticalAlignment="Bottom"/>
+                </Grid>
+                <TextBlock x:Name="tbkDescripcion" Height="150" Text="[Descripcion de pregunta]" TextWrapping="Wrap" Padding="5"></TextBlock>
+                <Label FontFamily="Global Sans Serif" Content="Respuestas" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16"/>
+                <ListBox x:Name="lbxRespuestas" Height="170"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">

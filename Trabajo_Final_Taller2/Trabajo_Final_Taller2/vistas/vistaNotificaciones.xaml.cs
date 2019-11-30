@@ -74,17 +74,23 @@ namespace Trabajo_Final_Taller2.vistas
             if (lbx_notificaciones.Items.Count == 0)
             {
                 lblInfoNotificacion.Content = "No hay notificaciones";
+                btn_borrarNotificacion.IsEnabled = false;
+                btn_irAPregunta.IsEnabled = false;
             }
             else
             {
                 if (lbx_notificaciones.SelectedIndex == -1)
                 {
                     lblInfoNotificacion.Content = "Seleccione una notificación";
+                    btn_borrarNotificacion.IsEnabled = false;
+                    btn_irAPregunta.IsEnabled = false;
                 }
                 else
                 {
                     Notificacion notifselec = (Notificacion)lbx_notificaciones.SelectedItem;
-                    lblInfoNotificacion.Content = notifselec.ToLongString();
+                    lblInfoNotificacion.Content = notifselec.ToLongString(); 
+                    btn_borrarNotificacion.IsEnabled = true;
+                    btn_irAPregunta.IsEnabled = true;
                 }
             }
         }

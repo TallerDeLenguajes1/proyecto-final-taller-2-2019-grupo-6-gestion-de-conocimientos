@@ -139,5 +139,10 @@ namespace Entidades
         {
             return Estado == "Solucionada";
         }
+
+        public string ToLongString()
+        {
+            return UserPregunta.ToString() + " ha preguntado " + "\"" + this.ToString() + "\"" + " el día " + Fecha.ToShortDateString() + " a las " + Fecha.ToShortTimeString();
+        }
     }
 }

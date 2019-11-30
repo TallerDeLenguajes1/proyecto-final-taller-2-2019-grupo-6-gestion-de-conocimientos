@@ -29,8 +29,8 @@ namespace Trabajo_Final_Taller2.vistas
             usuario = user;
             preguntas = pregs;
             lbx_Preguntas.ItemsSource = pregs;
+            CargarInfoPregunta();
         }
-     
 
         private void btn_Regresar_Click(object sender, RoutedEventArgs e)
         {
@@ -44,16 +44,13 @@ namespace Trabajo_Final_Taller2.vistas
                 Pregunta preguntaSelec = (Pregunta)lbx_Preguntas.SelectedItem;
                 VistaPregunta vistaPregunta = new VistaPregunta(usuario, preguntaSelec);
                 vistaPregunta.ShowDialog();
+                CargarInfoPregunta();
             }
         }
 
         private void Lbx_Preguntas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Pregunta preguntaSelec = (Pregunta)lbx_Preguntas.SelectedItem;
-
-            lbl_user.Content =/*"El usuario: "+*/ preguntaSelec.UserPregunta.Nombre;
-            lbl_titulo.Content = preguntaSelec.Titulo;
-            lbl_fecha.Content = "El día: "+preguntaSelec.Fecha;
+            CargarInfoPregunta();
         }
 
         private void Brd_border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -64,6 +61,33 @@ namespace Trabajo_Final_Taller2.vistas
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void CargarInfoPregunta()
+        {
+            if (lbx_Preguntas.Items.Count == 0)
+            {
+                lblInfoPregunta.Content = "No hay preguntas";
+                lblEstado.Content = string.Empty;
+                btnIrAPregunta.IsEnabled = false;
+            }
+            else
+            {
+                if (lbx_Preguntas.SelectedIndex == -1)
+                {
+                    lblInfoPregunta.Content = "Seleccione una pregunta";
+                    lblEstado.Content = string.Empty;
+                    btnIrAPregunta.IsEnabled = false;
+                }
+                else
+                {
+                    Pregunta preguntaSelec = (Pregunta)lbx_Preguntas.SelectedItem;
+
+                    lblInfoPregunta.Content = preguntaSelec.ToLongString();
+                    lblEstado.Content = "Estado: " + preguntaSelec.Estado;
+                    btnIrAPregunta.IsEnabled = true;
+                }
+            }
         }
     }
 }
