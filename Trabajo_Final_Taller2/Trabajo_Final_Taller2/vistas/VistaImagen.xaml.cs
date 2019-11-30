@@ -24,32 +24,20 @@ namespace Trabajo_Final_Taller2.vistas
     public partial class VistaImagen : Window
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        string url; 
+
         public VistaImagen(string imgUrl)
         {
-
             InitializeComponent();
 
             try
             {
-                if (File.Exists(imgUrl))
+                string rutaAbsolutaImg = HelperImagen.BuscarImagen(imgUrl);
+
+                if (string.IsNullOrEmpty(rutaAbsolutaImg) == false)
                 {
-                    url = imgUrl;
-                    var ruta = new Uri(AppDomain.CurrentDomain.BaseDirectory +url, UriKind.Absolute);
+                    Uri ruta = new Uri(rutaAbsolutaImg, UriKind.Absolute);
                     img_imagen.Source = new BitmapImage(ruta);
                 }
-                else
-                {
-                    CargarImagenDefault();
-                }
-            }
-            catch (System.IO.DirectoryNotFoundException)
-            {
-                CargarImagenDefault();
-            }
-            catch (System.IO.FileNotFoundException)
-            {
-                CargarImagenDefault();
             }
             catch (Exception ex)
             {
@@ -61,15 +49,6 @@ namespace Trabajo_Final_Taller2.vistas
                 logger.Error(error);
                 throw;
             }
-
-
-        }
-        
-        private void CargarImagenDefault()
-        {
-            url = @"img\ImageNotFound.jpg";
-            var ruta = new Uri(AppDomain.CurrentDomain.BaseDirectory + url, UriKind.Absolute);
-            img_imagen.Source = new BitmapImage(ruta);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

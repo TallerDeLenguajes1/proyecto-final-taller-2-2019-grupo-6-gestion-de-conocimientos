@@ -24,7 +24,7 @@ namespace Trabajo_Final_Taller2.vistas
     {
         Usuario usuario;
         Pregunta pregunta;
-        string imagenFinal = null;
+        string rutaImagenSeleccionada = string.Empty;
 
         public VistaCrearRespuesta(Usuario usuario, Pregunta pregunta)
         {
@@ -39,48 +39,49 @@ namespace Trabajo_Final_Taller2.vistas
             this.Close();
         }
 
-
-        /// <summary>
-        /// Lo que hace este metodo es, al hacer click se abre un cuadro para seleccionar imagen; se usan unos parametros para especificar 
-        /// que tipo de imagenes se pueden subir
-        /// despues se obtiene el nombre del archivo, la ruta + el nombre, a donde se quiere copiar el archivo y destFile que va a ser la nueva ruta + el nombre dek archivo
-        /// luego se copia la imagen en la carpeta de imagenes del proyecto.
-        /// </summary>
         private void btnExaminar_Click(object sender, RoutedEventArgs e)
         {
-            imagenFinal = HelperImagen.GuardarImagen();
+            rutaImagenSeleccionada = HelperImagen.SeleccionarImagen();
         }
 
         private void btnResponder_Click(object sender, RoutedEventArgs e)
         {
-            string titulo;
-            string descripcion;
+            if (ValidacionDeCampos())
+            {
+                string titulo = txbTitulo.Text;
+                string descripcion = txbDescripcion.Text;
+                string nombreImagen = HelperImagen.GuardarImagen(rutaImagenSeleccionada);
 
-            //aun no se 100% como se va a manejar la imagen asi que por el momento lo dejo como un string...
-            string imagen = imagenFinal;
+                ControladorABM.ResponderPregunta(usuario, pregunta, titulo, descripcion, nombreImagen);
 
-            // Validacion de campos
-            if (string.IsNullOrWhiteSpace(txbTitulo.Text)
-               || string.IsNullOrWhiteSpace(txbDescripcion.Text))
-            {
-                MessageBox.Show("Campos invalidos");
-                return;
+                this.Close();
             }
-            else
+        }
+        private bool ValidacionDeCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txbTitulo.Text))
             {
-                titulo = txbTitulo.Text;
-                descripcion = txbDescripcion.Text;
+                MessageBox.Show("Campo Titulo invalido");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txbDescripcion.Text))
+            {
+                MessageBox.Show("Campo Descripcion invalido");
+                return false;
+            }
+            if (txbTitulo.Text.Length > 45)
+            {
+                MessageBox.Show("El titulo no puede superar los 45 caracteres");
+                return false;
+            }
+            if (txbDescripcion.Text.Length > 250)
+            {
+                MessageBox.Show("La descripción no puede superar los 45 caracteres");
+                return false;
             }
 
-            if (imagen != null)
-            {
-                ControladorABM.ResponderPregunta(usuario, pregunta, titulo, descripcion, imagen);
-            }
-            else
-            {
-                ControladorABM.ResponderPregunta(usuario, pregunta, titulo, descripcion);
-            }
-            this.Close();
+            // Si llega hasta aqui los campos son validos
+            return true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
