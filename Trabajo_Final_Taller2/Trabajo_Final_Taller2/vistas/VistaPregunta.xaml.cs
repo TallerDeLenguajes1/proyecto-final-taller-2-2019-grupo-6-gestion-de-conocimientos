@@ -41,7 +41,6 @@ namespace Trabajo_Final_Taller2.vistas
             {
                 Respuesta respuestaSelec = (Respuesta)lbxRespuestas.SelectedItem;
                 VistaRespuesta vRespuesta = new VistaRespuesta(usuario, respuestaSelec);
-
                 vRespuesta.ShowDialog();
                 CargarInfoPregunta();
             }
@@ -81,6 +80,7 @@ namespace Trabajo_Final_Taller2.vistas
             {
                 btnIrARespuesta.IsEnabled = true;
             }
+            lbxRespuestas.Items.Refresh();
         }
 
         private void btnResponder_Click(object sender, RoutedEventArgs e)
@@ -106,6 +106,11 @@ namespace Trabajo_Final_Taller2.vistas
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void lbxRespuestas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.CargarInfoPregunta();
         }
     }
 }

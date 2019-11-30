@@ -62,7 +62,7 @@ namespace Trabajo_Final_Taller2.vistas
             }
             if (txbDescripcion.Text.Length > 250)
             {
-                MessageBox.Show("La descripción no puede superar los 45 caracteres");
+                MessageBox.Show("La descripción no puede superar los 250 caracteres");
                 return false;
             }
 

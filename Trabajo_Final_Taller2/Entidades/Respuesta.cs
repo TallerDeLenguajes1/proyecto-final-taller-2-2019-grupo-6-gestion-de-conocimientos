@@ -15,9 +15,11 @@ namespace Entidades
         public string Descripcion { get; set; }
         public string UrlImagen { get; set; }
         public DateTime Fecha { get; set; }
-        //public int Likes { get => IdsUsuariosLike.Count;}
            
-        
+        public int GetCantidadLikes()
+        {
+            return IdsUsuariosLike.Count;
+        }
         
         public Usuario UserRespuesta { get; set; }
         public Pregunta PregRespuesta { get; set; }
@@ -37,7 +39,7 @@ namespace Entidades
 
         public override string ToString()
         {
-            return Titulo;
+            return Titulo + " " + GetCantidadLikes() + " likes";
         }
     }
 }

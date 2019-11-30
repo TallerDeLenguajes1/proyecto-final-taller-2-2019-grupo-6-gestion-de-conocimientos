@@ -37,11 +37,11 @@ namespace Trabajo_Final_Taller2.vistas
             // Actualizar boton de like
             if (respuesta.DioLike(usuario))
             {
-                btnLike.Content = "Dislike";
+                icoLike.Kind = MaterialDesignThemes.Wpf.PackIconKind.Dislike;
             }
             else
             {
-                btnLike.Content = "Like";
+                icoLike.Kind = MaterialDesignThemes.Wpf.PackIconKind.Like;
             }
 
             // Verificar si el usuario logueado puede marcar como solucion a la respuesta
@@ -57,7 +57,7 @@ namespace Trabajo_Final_Taller2.vistas
 
 
             // Boton de ver imagen
-            if (respuesta.UrlImagen == null)
+            if (string.IsNullOrEmpty(respuesta.UrlImagen))
             {
                 btnVerImagen.IsEnabled = false;
             }
@@ -68,9 +68,8 @@ namespace Trabajo_Final_Taller2.vistas
 
             // Cargar informacion de la respuesta
             lblTitulo.Content = respuesta.Titulo;
-            lblNombre.Content = respuesta.UserRespuesta.Nombre + " " + respuesta.UserRespuesta.Apellido;
-            lblFecha.Content = respuesta.Fecha.ToShortDateString();
             tbkDescripcion.Text = respuesta.Descripcion;
+            lblInfoUserFecha.Content = respuesta.UserRespuesta.ToString() + " el día " + respuesta.Fecha.ToShortDateString() + " a las " + respuesta.Fecha.ToShortTimeString();
 
         }
         private void btnRegresar_Click(object sender, RoutedEventArgs e)

@@ -30,7 +30,7 @@
                 </Grid>
                 <TextBlock x:Name="tbkDescripcion" Height="150" Text="[Descripcion de pregunta]" TextWrapping="Wrap" Padding="5"></TextBlock>
                 <Label FontFamily="Global Sans Serif" Content="Respuestas" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16"/>
-                <ListBox x:Name="lbxRespuestas" Height="170"/>
+                <ListBox x:Name="lbxRespuestas" Height="170" SelectionChanged="lbxRespuestas_SelectionChanged"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">

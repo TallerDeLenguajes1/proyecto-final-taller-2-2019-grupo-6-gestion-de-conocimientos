@@ -23,18 +23,23 @@
             </materialDesign:ColorZone>
         </Border>
         <Grid Grid.Row="1">
-            <StackPanel Orientation="Vertical" Margin="0 10 0 0">
-                <Label x:Name="lblTitulo" Content="[Titulo Respuesta]" HorizontalAlignment="Left" FontWeight="Bold"/>
-                <Label FontFamily="Global Sans Serif" x:Name="lblNombre" Content="[Nombre User]" HorizontalAlignment="Left"/>
-                <Label FontFamily="Global Sans Serif" x:Name="lblFecha" Content="[fecha de respuesta]" HorizontalAlignment="Left"/>
-                <TextBlock x:Name="tbkDescripcion" HorizontalAlignment="Left" TextWrapping="Wrap" Height="58" Width="260" Margin="10 10 0 10"></TextBlock>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85*"/>
+                <RowDefinition Height="166*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Margin="0 10 0 0" Grid.RowSpan="2">
+                <Grid>
+                    <Label x:Name="lblTitulo" Content="[Titulo Respuesta]" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16"/>
+                    <Label x:Name="lblInfoUserFecha" HorizontalAlignment="Right" Content="[Usuario] el dia [fecha] a las [hora]" VerticalAlignment="Bottom"/>
+                </Grid>
+                <TextBlock x:Name="tbkDescripcion" Text="[Descripcion de respuesta]" TextWrapping="Wrap" Height="150" Padding="5"></TextBlock>
                 <Button x:Name="btnVerImagen" Content="Ver imagen" HorizontalAlignment="Left" Width="110" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Margin="10 0 0 0" materialDesign:ButtonAssist.CornerRadius="5" Click="BtnVerImagen_Click"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical" Margin="10 20 0 0">
                 <Button x:Name="btnLike" HorizontalAlignment="Left" Width="60" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Margin="0 10 0 10" materialDesign:ButtonAssist.CornerRadius="5" Click="btnLike_Click">
-                    <materialDesign:PackIcon Kind="Like"></materialDesign:PackIcon>
+                    <materialDesign:PackIcon x:Name="icoLike" Kind="Like"></materialDesign:PackIcon>
                 </Button>
                 <Button x:Name="btnSolucion" Content="Seleccionar como solución" HorizontalAlignment="Left" Width="200" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Margin="0 0 0 10" materialDesign:ButtonAssist.CornerRadius="5" Click="btnSolucion_Click"/>
                 <Button x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Width="95" Click="btnRegresar_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
