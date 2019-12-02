@@ -39,6 +39,29 @@ namespace HelperArchivos
                         worksheet.Cells[row, 3].Value = preg.Respuestas.Count;
                         worksheet.Cells[row, 4].Value = preg.Estado;
                         worksheet.Cells[row, 5].Value = preg.Fecha.ToShortDateString() + " " + preg.Fecha.ToShortTimeString();
+
+                        // Aplicar estilo a la celda de Estado
+                        worksheet.Cells[row, 4].Style.Font.Bold = true;
+
+                        var color = System.Drawing.Color.Black; // Color por defecto
+                        if (preg.Estado == "Activa")
+                        {
+                            color = System.Drawing.Color.Blue;
+                        }
+                        else if (preg.Estado == "Inactiva")
+                        {
+                            color = System.Drawing.Color.PaleVioletRed;
+                        }
+                        else if (preg.Estado == "Suspendida")
+                        {
+                            color = System.Drawing.Color.Red;
+                        }
+                        else if (preg.Estado == "Solucionada")
+                        {
+                            color = System.Drawing.Color.Green;
+                        }
+                        worksheet.Cells[row, 4].Style.Font.Color.SetColor(color);
+
                         row++;
                     }
 
@@ -50,7 +73,9 @@ namespace HelperArchivos
                         range.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.DarkBlue);
                         range.Style.Font.Color.SetColor(System.Drawing.Color.White);
                     }
-                    
+
+
+
                     worksheet.Cells.AutoFitColumns(0);  //Autofit columns for all cells
 
                     // set some document properties
