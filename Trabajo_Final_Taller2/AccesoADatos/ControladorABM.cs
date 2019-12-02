@@ -55,7 +55,7 @@ namespace AccesoADatos
             foreach (Notificacion n in user.Notificaciones)
             {
                 n.UsuarioPregunta = user;
-                n.PreguntaNotif = user.Preguntas.First(p => p.IdPregunta == n.IdPregunta);
+                n.PreguntaNotif = user.Preguntas.Find(p => p.IdPregunta == n.IdPregunta);
             }
         }
 
@@ -74,6 +74,12 @@ namespace AccesoADatos
                 r.PregRespuesta = preg;
                 r.UserRespuesta = ABMUsuario.GetUsuario(r.IdUserResp); // Cargar usuario que hizo la respuesta
                 r.IdsUsuariosLike = ABMRespuesta.GetIdsUsuariosLike(r.IdRespuesta);
+            }
+
+            // Asignar la referencia a la solucion, si es que tiene solucion
+            if (preg.EstaSolucionada())
+            {
+                preg.Solucion = preg.Respuestas.Find(r => r.IdRespuesta == preg.IdSolucion);
             }
         }
 

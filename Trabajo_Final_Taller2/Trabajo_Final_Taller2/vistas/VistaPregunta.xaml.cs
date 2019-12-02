@@ -80,6 +80,7 @@ namespace Trabajo_Final_Taller2.vistas
             {
                 btnIrARespuesta.IsEnabled = true;
             }
+            pregunta.OrdenarRespuestas();
             lbxRespuestas.Items.Refresh();
         }
 

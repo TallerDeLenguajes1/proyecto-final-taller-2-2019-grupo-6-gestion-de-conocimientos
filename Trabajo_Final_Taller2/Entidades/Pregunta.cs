@@ -144,5 +144,32 @@ namespace Entidades
         {
             return UserPregunta.ToString() + " ha preguntado " + "\"" + this.ToString() + "\"" + " el día " + Fecha.ToShortDateString() + " a las " + Fecha.ToShortTimeString();
         }
+
+        /// <summary>
+        /// Ordena la lista de respuestas por cantidad de likes y la respuesta solucion a la pregunta
+        /// </summary>
+        public void OrdenarRespuestas()
+        {
+            Respuestas.Sort(CompararRespuestas);
+        }
+
+        public int CompararRespuestas(Respuesta x, Respuesta y)
+        {
+            if (EstaSolucionada())
+            {
+                if (x == Solucion)
+                {
+                    // x es la solucion y tiene prioridad
+                    return -1;
+                }
+                else
+                {
+                    // y es la solucion y tiene prioridad
+                    return 1;
+                }
+            }
+
+            return x.GetCantidadLikes().CompareTo(y.GetCantidadLikes()) * -1;
+        }
     }
 }

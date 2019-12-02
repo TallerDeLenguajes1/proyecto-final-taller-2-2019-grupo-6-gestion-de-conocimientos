@@ -39,6 +39,13 @@ namespace Entidades
 
         public override string ToString()
         {
+            if (PregRespuesta.EstaSolucionada())
+            {
+                if (PregRespuesta.IdSolucion == this.IdRespuesta)
+                {
+                    return "[SOLUCION] " + Titulo + " " + GetCantidadLikes() + " likes";
+                }
+            }
             return Titulo + " " + GetCantidadLikes() + " likes";
         }
     }
