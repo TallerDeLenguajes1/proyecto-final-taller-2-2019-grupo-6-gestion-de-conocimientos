@@ -41,8 +41,7 @@
             <Grid>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="btn_salir" Content="Cerrar sesion" HorizontalAlignment="Left" Width="120" Margin="40 0 0 0" Click="salir_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
-                    <Button x:Name="btn_reporte" Content="Crear reporte" HorizontalAlignment="Left" Width="120" Click="reporte_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5" Margin="40 0 0 0" />
-                    <Button x:Name="btn_borrar_cuenta" Content="Borrar cuenta" HorizontalAlignment="Left" Width="120" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5" Margin="40 0 0 0" Click="btn_borrar_cuenta_Click" />
+                    <Button x:Name="btn_borrar_cuenta" Content="Borrar cuenta" HorizontalAlignment="Left" Width="120" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5" Margin="190 0 0 0" Click="btn_borrar_cuenta_Click" />
                 </StackPanel>
             </Grid>
         </materialDesign:ColorZone>

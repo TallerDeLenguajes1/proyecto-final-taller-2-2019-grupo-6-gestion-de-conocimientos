@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using HelperArchivos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,20 @@ namespace Trabajo_Final_Taller2.vistas
                     lblEstado.Content = "Estado: " + preguntaSelec.Estado;
                     btnIrAPregunta.IsEnabled = true;
                 }
+            }
+        }
+
+        private void btnReporte_Click(object sender, RoutedEventArgs e)
+        {
+            string rutaArchivo = HelperReportes.GenerarReportePreguntas(this.preguntas);
+
+            if (string.IsNullOrEmpty(rutaArchivo))
+            {
+                MessageBox.Show("No se pudo generar el reporte", "Reporte preguntas", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                MessageBox.Show("Reporte generado exitosamente en " + rutaArchivo , "Reporte preguntas", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

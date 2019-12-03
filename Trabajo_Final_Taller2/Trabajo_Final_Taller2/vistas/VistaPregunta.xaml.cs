@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using HelperArchivos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -112,6 +113,20 @@ namespace Trabajo_Final_Taller2.vistas
         private void lbxRespuestas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.CargarInfoPregunta();
+        }
+
+        private void btnReporte_Click(object sender, RoutedEventArgs e)
+        {
+            string rutaArchivo = HelperReportes.GenerarReporteRespuestas(this.pregunta.Respuestas);
+
+            if (string.IsNullOrEmpty(rutaArchivo))
+            {
+                MessageBox.Show("No se pudo generar el reporte", "Reporte de respuestas", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                MessageBox.Show("Reporte generado exitosamente en " + rutaArchivo, "Reporte de respuestas", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

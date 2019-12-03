@@ -71,10 +71,7 @@ namespace Trabajo_Final_Taller2.vistas
             vistaLogin.Show();
             this.Close();
         }
-        private void reporte_Click(object sender, RoutedEventArgs e)
-        {
-            HelperReportes.GenerarReporteUsuario(usuario);
-        }
+
         private void Brd_border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();

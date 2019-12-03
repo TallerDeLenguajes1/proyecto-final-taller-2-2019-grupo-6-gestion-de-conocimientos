@@ -14,8 +14,8 @@ namespace HelperArchivos
     public static class HelperReportes
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        
-        public static void GenerarReporteUsuario(Usuario usuario)
+
+        public static string GenerarReportePreguntas(List<Pregunta> preguntas)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace HelperArchivos
 
                     //Add some items...
                     int row = 2;
-                    foreach (Pregunta preg in usuario.Preguntas)
+                    foreach (Pregunta preg in preguntas)
                     {
                         worksheet.Cells[row, 1].Value = preg.UserPregunta.ToString();
                         worksheet.Cells[row, 2].Value = preg.ToString();
@@ -74,39 +74,106 @@ namespace HelperArchivos
                         range.Style.Font.Color.SetColor(System.Drawing.Color.White);
                     }
 
-
-
                     worksheet.Cells.AutoFitColumns(0);  //Autofit columns for all cells
 
                     // set some document properties
-                    package.Workbook.Properties.Title = "Reporte Usuario";
+                    package.Workbook.Properties.Title = "Reporte de preguntas";
 
                     string fechaActual = DateTime.Now.ToString("yyyy-MM-dd / HH:mm:ss:ms");
                     fechaActual = fechaActual.Replace(" ", "");
                     fechaActual = fechaActual.Replace("/", "-");
                     fechaActual = fechaActual.Replace(":", "-");
                     fechaActual = fechaActual.Replace("+", "");
-                    string fileName = usuario.Nombre + usuario.Apellido + fechaActual;
+                    string fileName = "ReportePreguntas_" + fechaActual;
 
                     var xlFile = new FileInfo(fileName + ".xlsx");
                     // save our new workbook in the output directory and we are done!
                     package.SaveAs(xlFile);
+
+                    return xlFile.ToString();
                 }
 
             }
             catch (Exception ex)
             {
                 // Log del error
-                string error = "Error en generacion de reporte de usuario";
+                string error = "Error en generacion de reporte de preguntas";
                 error += "\n--------------------\n";
                 error += ex.ToString();
                 error += "\n--------------------\n";
                 logger.Error(error);
 
-                throw;
+                return string.Empty;
             }
         }
 
+        public static string GenerarReporteRespuestas(List<Respuesta> respuestas)
+        {
+            try
+            {
+                using (var package = new ExcelPackage())
+                {
+                    // Add a new worksheet to the empty workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Reporte Usuario");
+                    //Add the headers
+                    worksheet.Cells[1, 1].Value = "Usuario";
+                    worksheet.Cells[1, 2].Value = "Respuesta";
+                    worksheet.Cells[1, 3].Value = "Cantidad de likes";
+                    worksheet.Cells[1, 4].Value = "Fecha de la respuesta";
+
+                    //Add some items...
+                    int row = 2;
+                    foreach (Respuesta resp in respuestas)
+                    {
+                        worksheet.Cells[row, 1].Value = resp.UserRespuesta.ToString();
+                        worksheet.Cells[row, 2].Value = resp.Titulo;
+                        worksheet.Cells[row, 3].Value = resp.GetCantidadLikes();
+                        worksheet.Cells[row, 4].Value = resp.Fecha.ToShortDateString() + " " + resp.Fecha.ToShortTimeString();
+
+                        row++;
+                    }
+
+                    //Ok now format the values
+                    using (var range = worksheet.Cells[1, 1, 1, 4])
+                    {
+                        range.Style.Font.Bold = true;
+                        range.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        range.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.DarkBlue);
+                        range.Style.Font.Color.SetColor(System.Drawing.Color.White);
+                    }
+
+                    worksheet.Cells.AutoFitColumns(0);  //Autofit columns for all cells
+
+                    // set some document properties
+                    package.Workbook.Properties.Title = "Reporte de respuestas";
+
+                    string fechaActual = DateTime.Now.ToString("yyyy-MM-dd / HH:mm:ss:ms");
+                    fechaActual = fechaActual.Replace(" ", "");
+                    fechaActual = fechaActual.Replace("/", "-");
+                    fechaActual = fechaActual.Replace(":", "-");
+                    fechaActual = fechaActual.Replace("+", "");
+                    string fileName = "ReporteRespuestas_" + fechaActual;
+
+                    var xlFile = new FileInfo(fileName + ".xlsx");
+                    // save our new workbook in the output directory and we are done!
+                    package.SaveAs(xlFile);
+
+                    return xlFile.ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en generacion de reporte de respuestas";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+
+                return string.Empty;
+            }
+        }
 
     }
 }

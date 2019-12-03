@@ -35,13 +35,14 @@
         </Grid>
         <Grid Grid.Row="2">
             <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical" Margin="30 0 150 0">
+                <StackPanel Orientation="Vertical" Margin="30 0 0 0">
                     <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnVerImagen" Content="Ver imagen" HorizontalAlignment="Left" Width="110" Margin="0 20 0 20" materialDesign:ButtonAssist.CornerRadius="5" Click="verImg_Click"/>
                     <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnResponder" Content="Responder" HorizontalAlignment="Left" Width="105" materialDesign:ButtonAssist.CornerRadius="5" Click="btnResponder_Click"/>
                 </StackPanel>
+                <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnReporte" Content="Generar reporte&#xD;&#xA;de respuestas" HorizontalAlignment="Left" Width="150" Margin="30,40,30,40" materialDesign:ButtonAssist.CornerRadius="5" Height="50" Click="btnReporte_Click"/>
                 <StackPanel Orientation="Vertical">
                     <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnIrARespuesta" Content="Ir a respuesta" HorizontalAlignment="Left" Width="120" Margin="0 20 0 20" materialDesign:ButtonAssist.CornerRadius="5" Click="btnIrARespuesta_Click"/>
-                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Width="100" materialDesign:ButtonAssist.CornerRadius="5" Click="btnRegresar_Click"/>
+                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Width="120" materialDesign:ButtonAssist.CornerRadius="5" Click="btnRegresar_Click"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
