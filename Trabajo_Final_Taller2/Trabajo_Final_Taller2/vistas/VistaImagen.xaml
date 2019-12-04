@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="VistaImagen" Height="450" Width="551.493" WindowStyle="None" Background="White" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+        Title="VistaImagen" Height="610" Width="500" WindowStyle="None" Background="White" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="500"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">

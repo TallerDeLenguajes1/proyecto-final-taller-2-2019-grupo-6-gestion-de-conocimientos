@@ -162,10 +162,15 @@ namespace Entidades
                     // x es la solucion y tiene prioridad
                     return -1;
                 }
-                else
+                else if (y == Solucion)
                 {
                     // y es la solucion y tiene prioridad
                     return 1;
+                }
+                else
+                {
+                    // x e y no son la solucion
+                    return x.GetCantidadLikes().CompareTo(y.GetCantidadLikes()) * -1;
                 }
             }
 

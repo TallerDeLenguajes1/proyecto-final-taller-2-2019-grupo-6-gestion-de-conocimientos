@@ -24,10 +24,8 @@
         </Border>
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical">
-                <Grid>
-                    <Label x:Name="lblTitulo" HorizontalAlignment="Left" FontWeight="Bold" Content="[Titulo de pregunta]" FontSize="16"/>
-                    <Label x:Name="lblInfoUserFecha" HorizontalAlignment="Right" Content="[Usuario] el dia [fecha] a las [hora]" VerticalAlignment="Bottom"/>
-                </Grid>
+                <Label x:Name="lblInfoUserFecha" HorizontalAlignment="Left" Content="[Usuario] el dia [fecha] a las [hora]" VerticalAlignment="Bottom"/>
+                <Label x:Name="lblTitulo" HorizontalAlignment="Left" FontWeight="Bold" Content="[Titulo de pregunta]" FontSize="16"/>
                 <TextBlock x:Name="tbkDescripcion" Height="150" Text="[Descripcion de pregunta]" TextWrapping="Wrap" Padding="5"></TextBlock>
                 <Label FontFamily="Global Sans Serif" Content="Respuestas" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16"/>
                 <ListBox x:Name="lbxRespuestas" Height="170" SelectionChanged="lbxRespuestas_SelectionChanged"/>

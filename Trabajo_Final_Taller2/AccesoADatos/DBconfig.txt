@@ -1,1 +1,1 @@
-Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=nuevaBD;Integrated Security=True;
+Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GestionDeConocimiento;Integrated Security=True;

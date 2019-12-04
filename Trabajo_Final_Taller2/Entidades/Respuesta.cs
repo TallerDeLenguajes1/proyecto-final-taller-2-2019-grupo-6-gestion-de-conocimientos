@@ -43,10 +43,10 @@ namespace Entidades
             {
                 if (PregRespuesta.IdSolucion == this.IdRespuesta)
                 {
-                    return "[SOLUCION] " + Titulo + " " + GetCantidadLikes() + " likes";
+                    return "[SOLUCION] " + Titulo + " - " + GetCantidadLikes() + " likes";
                 }
             }
-            return Titulo + " " + GetCantidadLikes() + " likes";
+            return Titulo + " - " + GetCantidadLikes() + " likes";
         }
     }
 }
