@@ -17,5 +17,10 @@ namespace Entidades
         public string Password { get; set; }
         public List<Pregunta> Preguntas { get; set; }
         public List<Notificacion> Notificaciones { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre + " " + Apellido;
+        }
     }
 }

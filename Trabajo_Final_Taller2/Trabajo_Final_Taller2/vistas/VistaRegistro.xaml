@@ -1,0 +1,60 @@
+﻿<Window x:Class="Trabajo_Final_Taller2.vistas.VistaRegistro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="VistaRegistro" Height="400" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="White" AllowsTransparency="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Background="#FF077DD1" BorderBrush="#FF077DD1" Width="30" Height="30" Padding="0" Click="Button_Click" >
+                        <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Border>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="50 0 50 0">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 20">
+                        <materialDesign:PackIcon Kind="User" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <TextBox x:Name="txbNombre" HorizontalAlignment="Left" Height="40" Width="200" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="0 0 0 20">
+                        <materialDesign:PackIcon Kind="User" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <TextBox x:Name="txbApellido" HorizontalAlignment="Left" Width="200" Height="40" materialDesign:HintAssist.Hint="Apellido" materialDesign:HintAssist.IsFloating="True"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="City" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <TextBox x:Name="txbPais" HorizontalAlignment="Left" Width="200" Height="40" materialDesign:HintAssist.Hint="Pais" materialDesign:HintAssist.IsFloating="True"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 20">
+                        <materialDesign:PackIcon Kind="Email" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <TextBox x:Name="txbEmail" HorizontalAlignment="Left" Height="40" materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True" Width="222"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Asterisk" VerticalAlignment="Bottom"></materialDesign:PackIcon>
+                        <PasswordBox x:Name="pwbPassword" HorizontalAlignment="Left" Width="134" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnRegistrar" Content="Registrar" HorizontalAlignment="Left" Width="90" Margin="150 10 0 0" materialDesign:ButtonAssist.CornerRadius="5" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="btnRegistrar_Click"/>
+                <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Width="90" Margin="100 10 0 0" materialDesign:ButtonAssist.CornerRadius="5" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" Click="btnCancelar_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,6 +11,7 @@ namespace AccesoADatos
 {
     public class ABMNotificacion
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Obtiene las notificaciones correspondientes del usuario con el id especificado
         /// </summary>
@@ -23,7 +25,7 @@ namespace AccesoADatos
                 //Hago la conexion a la base de datos
                 Conexion_Desconexion.Connection();
                 //Armo el query para seleccionar todas las notificaciones segun el id
-                string query = @"SELECT * FROM Notificaciones WHERE id_user = @idUser";
+                string query = @"SELECT id_user, id_pregunta, id_notificacion, fecha_notificacion FROM Notificaciones WHERE id_user = @idUser";
                 //Armo el command con el query y la conexion
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 //Paso como parametro codificado el id del usuario
@@ -34,17 +36,23 @@ namespace AccesoADatos
                 while (reader.Read())
                 {
                     Notificacion notif = new Notificacion();
-                    notif.IdUserPregunta = reader.GetInt16(0);
-                    notif.IdPregunta = reader.GetInt16(1);
-                    notif.IdNotificacion = reader.GetInt16(2);
+                    notif.IdUserPregunta = reader.GetInt32(0);
+                    notif.IdPregunta = reader.GetInt32(1);
+                    notif.IdNotificacion = reader.GetInt32(2);
+                    notif.Fecha = reader.GetDateTime(3);
                     notificaciones.Add(notif);
                 }
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMNotificacion GetNotificaciones";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
             //Finalmente devuelvo la lista de notificaciones
@@ -76,7 +84,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMNotificacion AltaNotificacion";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
 
@@ -107,7 +120,12 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMNotificacion BajaNotificacion";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }

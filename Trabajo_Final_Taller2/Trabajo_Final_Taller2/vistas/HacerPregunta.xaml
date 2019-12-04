@@ -4,17 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="HacerPregunta" Height="391" Width="604">
+        Title="HacerPregunta" Height="391" Width="544.5" Background="White" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="25,56,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="64" Margin="25,115,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="505"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="80,186,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="235"/>
-        <Button x:Name="button" Content="Cancelar" HorizontalAlignment="Left" Margin="25,286,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button1" Content="Preguntar" HorizontalAlignment="Left" Margin="185,286,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="label" Content="Título" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="45"/>
-        <Label x:Name="label1" Content="Imagen" HorizontalAlignment="Left" Margin="25,184,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Descripción" HorizontalAlignment="Left" Margin="25,84,0,0" VerticalAlignment="Top"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="159"/>
+        </Grid.RowDefinitions>
+        <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown">
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <Grid>
+                    <Label Content="Haz tu pregunta" FontSize="15" Foreground="White"></Label>
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Background="#FF077DD1" BorderBrush="#FF077DD1" Width="30" Height="30" Padding="0" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="Close" Foreground="White"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:ColorZone>
+        </Border>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="FormatTitle" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Bottom" Height="20"></materialDesign:PackIcon>
+                    <TextBox x:Name="txbTitulo" HorizontalAlignment="Left"  Width="500" materialDesign:HintAssist.Hint="Título" materialDesign:HintAssist.IsFloating="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 30 0 0">
+                    <materialDesign:PackIcon Kind="Text" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Bottom" Height="20"></materialDesign:PackIcon>
+                    <TextBox x:Name="txbDescripcion" HorizontalAlignment="Left" Width="505" materialDesign:HintAssist.Hint="Descripción" materialDesign:HintAssist.IsFloating="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 50 0 0">
+                    <materialDesign:PackIcon Kind="ImageAdd" Foreground="{Binding ElementName=txb_email, Path=BorderBrush}" VerticalAlignment="Center" Height="25"></materialDesign:PackIcon>
+                    <Label Content="Subir imagen"></Label>
+                    <Button x:Name="btnExaminar" Content="Examinar" HorizontalAlignment="Left" Width="95" Click="btnExaminar_Click" Height="30" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" Margin="0 50 0 0">
+                <Button x:Name="btnPreguntar" Content="Preguntar" Click="btnPreguntar_Click" Height="30" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5" Margin="30 0 300 0"/>
+                <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Click="btnCancelar_Click" Height="30" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

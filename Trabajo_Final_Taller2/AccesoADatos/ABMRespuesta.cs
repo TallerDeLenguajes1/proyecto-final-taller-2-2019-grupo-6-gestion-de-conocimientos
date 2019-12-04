@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -7,6 +8,7 @@ namespace AccesoADatos
 {
     public class ABMRespuesta
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Selecciona las respuestas de la pregunta con el id especificado
         /// </summary>
@@ -31,23 +33,34 @@ namespace AccesoADatos
                 while (reader.Read())
                 {
                     Respuesta resp = new Respuesta();
-                    resp.IdUserResp = reader.GetInt16(0);
-                    resp.IdPregunta = reader.GetInt16(1);
-                    resp.IdRespuesta = reader.GetInt16(2);
+                    resp.IdUserResp = reader.GetInt32(0);
+                    resp.IdPregunta = reader.GetInt32(1);
+                    resp.IdRespuesta = reader.GetInt32(2);
                     resp.Titulo = reader.GetString(3);
                     resp.Descripcion = reader.GetString(4);
-                    resp.UrlImagen = reader.GetString(5);
+                    if (reader[5] == DBNull.Value)
+                    {
+                        resp.UrlImagen = null;
+                    }
+                    else
+                    {
+                        resp.UrlImagen = reader.GetString(5);
+                    }
                     resp.Fecha = reader.GetDateTime(6);
-                    resp.Likes = reader.GetInt16(7);
                     respuestas.Add(resp);
             	}
                 //Cierro la conexion a la Bd
                 Conexion_Desconexion.Desconnect();
 	        }
-	        catch (Exception)
-	        {
-                //Nloggear
-		        throw;
+	        catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMRespuesta GetRespuestas";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
 	        }
             //Finalmente devuelvo la lista de respuestas
             return respuestas;
@@ -55,7 +68,7 @@ namespace AccesoADatos
 
 
         /// <summary>
-        /// Crea una nueva respuesta y la inserta en la base de datos
+        /// Crea una nueva respuesta con imagen y la inserta en la base de datos
         /// </summary>
         /// <param name="idUserResp"></param>
         /// <param name="idPregunta"></param>
@@ -83,11 +96,53 @@ namespace AccesoADatos
             }
             catch (Exception ex)
             {
-                //Nloggear
+                // Log del error
+                string error = "Error en ABMRespuesta AltaRespuesta con imagen";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
                 throw;
             }
         }
-        
+
+        /// <summary>
+        /// Crea una nueva respuesta sin imagen y la inserta en la base de datos
+        /// </summary>
+        /// <param name="idUserResp"></param>
+        /// <param name="idPregunta"></param>
+        /// <param name="tituloResp"></param>
+        /// <param name="descripcionResp"></param>
+        static public void AltaRespuesta(int idUserResp, int idPregunta, string tituloResp, string descripcionResp)
+        {
+            // Realizar INSERT INTO en la tabla de respuestas
+            try
+            {
+                //Hacer conexion a la base de datos
+                Conexion_Desconexion.Connection();
+                string query = @"INSERT INTO Respuestas(id_user,id_pregunta,titulo,descripcion) VALUES(@id_user,@id_pregunta,@titulo,@descripcion)";
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                /*NOTA: placeholders.*/
+                command.Parameters.AddWithValue("@id_user", idUserResp);
+                command.Parameters.AddWithValue("@id_pregunta", idPregunta);
+                command.Parameters.AddWithValue("@titulo", tituloResp);
+                command.Parameters.AddWithValue("@descripcion", descripcionResp);
+                command.ExecuteNonQuery();
+                //Desconectar
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMRespuesta AltaRespuesta sin imagen";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
+            }
+        }
+
         /// <summary>
         /// Elimina una respuesta de la base de datos
         /// </summary>
@@ -107,25 +162,108 @@ namespace AccesoADatos
                 command.ExecuteNonQuery();
                 Conexion_Desconexion.Desconnect();
 	        }
-	        catch (Exception)
-	        {
-                //Nloggear
-          		throw;
+	        catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMRespuesta BajaRespuesta";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
 	        }
             
 
         }
 
         /// <summary>
-        /// Realiza un UPDATE de los likes de la respuesta con el id especificado
+        /// Realiza un INSERT en la tabla likes
+        /// con el id del user y el id de la respuesta
         /// </summary>
         /// <param name="idRespuesta"></param>
         /// <param name="likes"></param>
-        static public void UpdateLikes(int idRespuesta,int likes)
+        static public void AltaLike(int idRespuesta, int idUser)
         {
-            // TO DO
+            try
+            {
+                Conexion_Desconexion.Connection();
+                string query = @"INSERT INTO Likes(id_respuesta, id_user) VALUES(@idResp, @idUser)";
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                command.Parameters.AddWithValue("@idResp", idRespuesta);
+                command.Parameters.AddWithValue("@idUser", idUser);
+                command.ExecuteNonQuery();
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMRespuesta AltaLike";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
+            }
         }
 
 
+        /// <summary>
+        /// Realiza un DELETE en la tabla likes
+        /// con el id del user y el id de la respuesta
+        /// </summary>
+        /// <param name="idRespuesta"></param>
+        /// <param name="likes"></param>
+        static public void BajaLike(int idRespuesta, int idUser)
+        {
+            try
+            {
+                Conexion_Desconexion.Connection();
+                string query = @"DELETE FROM Likes WHERE id_respuesta= @idResp AND id_user = @idUser";
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                command.Parameters.AddWithValue("@idResp", idRespuesta);
+                command.Parameters.AddWithValue("@idUser", idUser);
+                command.ExecuteNonQuery();
+                Conexion_Desconexion.Desconnect();
+            }
+            catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMRespuesta BajaLike";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
+            }
+        }
+
+        static public List<int> GetIdsUsuariosLike(int idRespuesta)
+        {
+            List<int> IdsUsers = new List<int>();
+            try { 
+                Conexion_Desconexion.Connection();
+                string query = @"SELECT id_user FROM Likes WHERE id_respuesta = @idRespuesta";
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                command.Parameters.AddWithValue("@idRespuesta", idRespuesta);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    IdsUsers.Add(reader.GetInt32(0));
+                }
+                Conexion_Desconexion.Desconnect();
+
+            }
+            catch (Exception ex)
+            {
+                // Log del error
+                string error = "Error en ABMRespuesta GetIdsUsuariosLike";
+                error += "\n--------------------\n";
+                error += ex.ToString();
+                error += "\n--------------------\n";
+                logger.Error(error);
+                throw;
+            }
+            return IdsUsers;
+        }
     }
 }

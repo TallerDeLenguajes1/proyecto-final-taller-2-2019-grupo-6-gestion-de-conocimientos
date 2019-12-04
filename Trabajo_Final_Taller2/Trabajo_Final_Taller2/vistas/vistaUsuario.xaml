@@ -4,14 +4,46 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="vistaUsuarios" Height="331" Width="529">
-    <Grid HorizontalAlignment="Left" Width="519" Height="296" VerticalAlignment="Top">
-        <Button x:Name="btn_verNotificacion" Content="Ver notificaciones" HorizontalAlignment="Left" Margin="15,50,0,0" VerticalAlignment="Top" Width="105"/>
-        <Button x:Name="btn_hacerPregunta" Content="Hacer pregunta" HorizontalAlignment="Left" Margin="130,50,0,0" VerticalAlignment="Top" Width="110"/>
-        <Button x:Name="btn_verPreguntas" Content="ver todas las preguntas" HorizontalAlignment="Left" Margin="376,50,0,0" VerticalAlignment="Top" Width="133"/>
-        <Button x:Name="btn_verMisPreguntas" Content="Ver mis preguntas" HorizontalAlignment="Left" Margin="250,50,0,0" VerticalAlignment="Top" Width="115"/>
-        <Button x:Name="btn_salir" Content="salir" HorizontalAlignment="Left" Margin="15,258,0,0" VerticalAlignment="Top" Width="105" Click="button_Copy3_Click"/>
-
+        Title="vistaUsuarios" Height="331" Width="518" Background="White" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+    <Grid HorizontalAlignment="Left" Width="519" Height="331" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Border Name="brd_border" Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Brd_border_MouseLeftButtonDown" >
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <Grid>
+                    <Label x:Name="lbl_name" Content="" HorizontalAlignment="Left" FontSize="16" Foreground="White"/>
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Background="#FF077DD1" BorderBrush="#FF077DD1" Width="30" Height="30" Padding="0" Click="Button_Click">
+                            <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:ColorZone>
+        </Border>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Margin="40 40 40 40">
+                    <Button x:Name="btn_verNotificacion" Content="Ver notificaciones" HorizontalAlignment="Left" Width="150" Margin="25 0 100 0" Click="Btn_verNotificacion_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
+                    <Button x:Name="btn_hacerPregunta" Content="Hacer pregunta" HorizontalAlignment="Left" Width="150" Click="Btn_hacerPregunta_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="40 0 40 0">
+                    <Button x:Name="btn_verPreguntas" Content="Ver todas las preguntas" HorizontalAlignment="Left"  Width="180" Margin="15 0 80 0" Click="Btn_verPreguntas_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
+                    <Button x:Name="btn_verMisPreguntas" Content="Ver mis preguntas" HorizontalAlignment="Left"  Width="150" Click="Btn_verMisPreguntas_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <materialDesign:ColorZone Mode="PrimaryDark" Grid.Row="2" Height="80">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btn_salir" Content="Cerrar sesion" HorizontalAlignment="Left" Width="120" Margin="40 0 0 0" Click="salir_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
+                    <Button x:Name="btn_borrar_cuenta" Content="Borrar cuenta" HorizontalAlignment="Left" Width="120" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5" Margin="190 0 0 0" Click="btn_borrar_cuenta_Click" />
+                </StackPanel>
+            </Grid>
+        </materialDesign:ColorZone>
     </Grid>
 </Window>

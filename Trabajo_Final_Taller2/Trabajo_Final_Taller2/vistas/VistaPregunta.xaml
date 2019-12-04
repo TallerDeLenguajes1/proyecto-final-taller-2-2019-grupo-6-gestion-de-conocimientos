@@ -4,17 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trabajo_Final_Taller2.vistas"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="VistaPregunta" Height="501" Width="499">
+        Title="VistaPregunta" Height="530" Width="499" Background="White" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <Grid>
-        <Label x:Name="label" Content="Título pregunta" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Descripcion" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="{}{Contenido descripcion}" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="Imagen" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label4" Content="Respuestas" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="129" Margin="10,186,0,0" VerticalAlignment="Top" Width="260"/>
-        <Button x:Name="button" Content="Ir a respuesta" HorizontalAlignment="Left" Margin="10,333,0,0" VerticalAlignment="Top" Width="92"/>
-        <Button x:Name="button1" Content="Regresar" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="75"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="370"/>
+            <RowDefinition Height="130"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown" >
+            <materialDesign:ColorZone Mode="PrimaryDark">
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Width="30" Height="30" Background="#FF077DD1" BorderBrush="#FF077DD1" Padding="0" Click="Button_Click">
+                        <materialDesign:PackIcon Kind="Close" Foreground="White"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Border>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <Label x:Name="lblInfoUserFecha" HorizontalAlignment="Left" Content="[Usuario] el dia [fecha] a las [hora]" VerticalAlignment="Bottom"/>
+                <Label x:Name="lblTitulo" HorizontalAlignment="Left" FontWeight="Bold" Content="[Titulo de pregunta]" FontSize="16"/>
+                <TextBlock x:Name="tbkDescripcion" Height="150" Text="[Descripcion de pregunta]" TextWrapping="Wrap" Padding="5"></TextBlock>
+                <Label FontFamily="Global Sans Serif" Content="Respuestas" HorizontalAlignment="Left" FontWeight="Bold" FontSize="16"/>
+                <ListBox x:Name="lbxRespuestas" Height="170" SelectionChanged="lbxRespuestas_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="30 0 0 0">
+                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnVerImagen" Content="Ver imagen" HorizontalAlignment="Left" Width="110" Margin="0 20 0 20" materialDesign:ButtonAssist.CornerRadius="5" Click="verImg_Click"/>
+                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnResponder" Content="Responder" HorizontalAlignment="Left" Width="105" materialDesign:ButtonAssist.CornerRadius="5" Click="btnResponder_Click"/>
+                </StackPanel>
+                <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnReporte" Content="Generar reporte&#xD;&#xA;de respuestas" HorizontalAlignment="Left" Width="150" Margin="30,40,30,40" materialDesign:ButtonAssist.CornerRadius="5" Height="50" Click="btnReporte_Click"/>
+                <StackPanel Orientation="Vertical">
+                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnIrARespuesta" Content="Ir a respuesta" HorizontalAlignment="Left" Width="120" Margin="0 20 0 20" materialDesign:ButtonAssist.CornerRadius="5" Click="btnIrARespuesta_Click"/>
+                    <Button Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Width="120" materialDesign:ButtonAssist.CornerRadius="5" Click="btnRegresar_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
