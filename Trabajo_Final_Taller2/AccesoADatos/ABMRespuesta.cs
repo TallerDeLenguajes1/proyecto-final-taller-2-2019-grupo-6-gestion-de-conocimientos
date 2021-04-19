@@ -50,7 +50,7 @@ namespace AccesoADatos
                     respuestas.Add(resp);
             	}
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
 	        }
 	        catch (Exception ex)
             {
@@ -92,7 +92,7 @@ namespace AccesoADatos
                 command.Parameters.AddWithValue("@url_imagen", urlImg);
                 command.ExecuteNonQuery();
                 //Desconectar
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace AccesoADatos
                 command.Parameters.AddWithValue("@descripcion", descripcionResp);
                 command.ExecuteNonQuery();
                 //Desconectar
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace AccesoADatos
                 command.Parameters.AddWithValue("@idResp",idRespuesta);
                 //Ejecuto el Delete y cierro la conexion
                 command.ExecuteNonQuery();
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
 	        }
 	        catch (Exception ex)
             {
@@ -192,7 +192,7 @@ namespace AccesoADatos
                 command.Parameters.AddWithValue("@idResp", idRespuesta);
                 command.Parameters.AddWithValue("@idUser", idUser);
                 command.ExecuteNonQuery();
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -223,7 +223,7 @@ namespace AccesoADatos
                 command.Parameters.AddWithValue("@idResp", idRespuesta);
                 command.Parameters.AddWithValue("@idUser", idUser);
                 command.ExecuteNonQuery();
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -250,7 +250,7 @@ namespace AccesoADatos
                 {
                     IdsUsers.Add(reader.GetInt32(0));
                 }
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
 
             }
             catch (Exception ex)

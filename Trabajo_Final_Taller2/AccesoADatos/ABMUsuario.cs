@@ -31,7 +31,7 @@ namespace AccesoADatos
                 command.Parameters.AddWithValue("@password", password);
                 command.ExecuteNonQuery();
                 //Desconectar
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace AccesoADatos
                 user.Password = reader.GetString(5);
                 user.FechaIngreso = reader.GetDateTime(6);
                 //Desconecto la base de datos
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex )
             {
@@ -121,7 +121,7 @@ namespace AccesoADatos
                 user.Password = reader.GetString(5);
                 user.FechaIngreso = reader.GetDateTime(6);
                 //Desconecto la base de datos
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -156,7 +156,7 @@ namespace AccesoADatos
                 //Ejecuto el command
                 command.ExecuteNonQuery();
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -192,7 +192,7 @@ namespace AccesoADatos
                 //Verifico la cantidad de veces que aparece el id en la base de datos y lo guardo
                 count = Convert.ToInt32(command.ExecuteScalar());
                 //Cierro la conexion a la base de datos
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
 	        }
 	        catch (Exception ex)
             {
@@ -229,7 +229,7 @@ namespace AccesoADatos
                 //Verifico la cantidad de veces que aparece el email en la base de datos y lo guardo
                 count = Convert.ToInt32(command.ExecuteScalar());
                 //Cierro la conexion a la base de datos
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
 	        }
 	        catch (Exception ex)
             {
@@ -245,5 +245,38 @@ namespace AccesoADatos
             return count != 0;
         }
 
+        /// <summary>
+        /// modifica alguna propiedad del usuario
+        /// </summary>
+        /// <param contraseña="contraseña"></param>
+        /// <returns></returns>
+        static public void modificarAtributo(int idUser, string contraseña)
+        {
+            idUser = 1;
+            contraseña = "4321";
+
+            try
+            {
+                
+                //Armo la conexion a la base de datos
+                Conexion_Desconexion.Connection();
+                //Armo el query para verificar que existe el usuario segun su id
+                string query = @"UPDATE Usuarios SET password = @new_password WHERE id_user = @id_user";
+                //Armo el command con el query
+                SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
+                //Paso el id por parametro codificado
+                command.Parameters.AddWithValue("@id_user", idUser);
+                command.Parameters.AddWithValue("@new_password", contraseña);
+                //Ejecuto el comando
+                command.ExecuteNonQuery();
+                //Cierro la conexion a la base de datos
+                Conexion_Desconexion.Disconnect();
+                //
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

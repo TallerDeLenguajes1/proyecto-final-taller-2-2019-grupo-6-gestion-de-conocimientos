@@ -45,7 +45,7 @@ namespace AccesoADatos
                 return false;
             }
         }
-        public static bool Desconnect()
+        public static bool Disconnect()
         {
             try
             {

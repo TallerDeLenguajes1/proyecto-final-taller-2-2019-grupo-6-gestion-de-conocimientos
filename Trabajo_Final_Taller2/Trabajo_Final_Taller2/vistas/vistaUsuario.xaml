@@ -26,7 +26,11 @@
             </materialDesign:ColorZone>
         </Border>
         <Grid Grid.Row="1">
-            <StackPanel Orientation="Vertical">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Margin="0,0,2,0">
                 <StackPanel Orientation="Horizontal" Margin="40 40 40 40">
                     <Button x:Name="btn_verNotificacion" Content="Ver notificaciones" HorizontalAlignment="Left" Width="150" Margin="25 0 100 0" Click="Btn_verNotificacion_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
                     <Button x:Name="btn_hacerPregunta" Content="Hacer pregunta" HorizontalAlignment="Left" Width="150" Click="Btn_hacerPregunta_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
@@ -41,7 +45,7 @@
             <Grid>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="btn_salir" Content="Cerrar sesion" HorizontalAlignment="Left" Width="120" Margin="40 0 0 0" Click="salir_Click" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5"/>
-                    <Button x:Name="btn_borrar_cuenta" Content="Borrar cuenta" HorizontalAlignment="Left" Width="120" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5" Margin="190 0 0 0" Click="btn_borrar_cuenta_Click" />
+                    <Button x:Name="btn_config_cuenta" Content="Configuracion" HorizontalAlignment="Left" Width="120" Background="#FF0095FF" Foreground="White" BorderBrush="#FF0D78C5" materialDesign:ButtonAssist.CornerRadius="5" Margin="190,24,0,24" Click="btn_config_cuenta_Click" />
                 </StackPanel>
             </Grid>
         </materialDesign:ColorZone>

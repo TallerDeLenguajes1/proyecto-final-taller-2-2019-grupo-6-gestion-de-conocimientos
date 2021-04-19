@@ -35,6 +35,7 @@ namespace AccesoADatos
                     Pregunta preg = new Pregunta();
                     preg.IdUserPregunta = reader.GetInt32(0);
                     preg.IdPregunta = reader.GetInt32(1);
+
                     if (reader[2] == DBNull.Value)
                     {
                         preg.IdSolucion = -1;
@@ -58,7 +59,7 @@ namespace AccesoADatos
                     preguntas.Add(preg);
                 }
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -123,7 +124,7 @@ namespace AccesoADatos
                     preguntasDeUser.Add(preg);
                 }
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -158,7 +159,7 @@ namespace AccesoADatos
                 //Ejecuto el query con el command
                 command.ExecuteNonQuery();
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -197,7 +198,7 @@ namespace AccesoADatos
                 //Ejecuto el comando
                 command.ExecuteNonQuery();
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -233,7 +234,7 @@ namespace AccesoADatos
                 //Ejecuto el comando
                 command.ExecuteNonQuery();
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -269,7 +270,7 @@ namespace AccesoADatos
                 //Ejecuto el comando
                 command.ExecuteNonQuery();
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -300,7 +301,7 @@ namespace AccesoADatos
                 //Ejecuto el comando
                 command.ExecuteNonQuery();
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {

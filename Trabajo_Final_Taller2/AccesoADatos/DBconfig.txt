@@ -1,1 +1,1 @@
-Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GestionDeConocimiento;Integrated Security=True;
+Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=K:\FinalLabII\Trabajo_Final_Taller2\LabII.mdf;Integrated Security=True;Connect Timeout=30

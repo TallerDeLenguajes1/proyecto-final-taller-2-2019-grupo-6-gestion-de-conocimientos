@@ -104,6 +104,9 @@
     <Compile Include="vistas\vistaUsuario.xaml.cs">
       <DependentUpon>vistaUsuario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vistas\vistaUsuarioConfiguracion.xaml.cs">
+      <DependentUpon>vistaUsuarioConfiguracion.xaml</DependentUpon>
+    </Compile>
     <Page Include="vistas\HacerPregunta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="vistas\vistaUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistas\vistaUsuarioConfiguracion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

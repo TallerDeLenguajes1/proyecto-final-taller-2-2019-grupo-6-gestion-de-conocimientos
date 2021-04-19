@@ -324,5 +324,9 @@ namespace AccesoADatos
             todasLasPreguntas.ForEach(p => CargarListaRespuestas(p));
             return todasLasPreguntas;
         }
+        public static void cambiarPass(Usuario user)
+        {
+            ABMUsuario.modificarAtributo(user.IdUsuario, "test");
+        }
     }
 }

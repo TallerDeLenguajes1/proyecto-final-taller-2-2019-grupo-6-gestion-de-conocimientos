@@ -24,13 +24,15 @@ namespace Trabajo_Final_Taller2.vistas
     public partial class vistaUsuarios : Window
     {
         Usuario usuario;
+        
         public vistaUsuarios(Usuario user)
         {
             InitializeComponent();
             lbl_name.Content = user.Nombre + " está en sesión.";
             usuario = user;
+          
         }
-        
+     
         /// <summary>
         /// cada boton hace practicamente lo mismo
         /// cierra esta ventana y abre la ventana necesaria.
@@ -82,20 +84,26 @@ namespace Trabajo_Final_Taller2.vistas
             Application.Current.Shutdown();
         }
 
-        private void btn_borrar_cuenta_Click(object sender, RoutedEventArgs e)
+        private void btn_config_cuenta_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(
-                "¿Está seguro que quiere borrar su cuenta?", 
-                "Borrar Cuenta", 
-                MessageBoxButton.YesNo, 
-                MessageBoxImage.Warning
-                );
-
-            if (result == MessageBoxResult.Yes)
-            {
-                ControladorABM.EliminarCuenta(usuario);
-                CerrarSesion();
-            }
+            vistaUsuarioConfiguracion vistaConfig = new vistaUsuarioConfiguracion(usuario);
+            vistaConfig.Show();
         }
+
+        /* private void btn_borrar_cuenta_Click(object sender, RoutedEventArgs e)
+         {
+             MessageBoxResult result = MessageBox.Show(
+                 "¿Está seguro que quiere borrar su cuenta?", 
+                 "Borrar Cuenta", 
+                 MessageBoxButton.YesNo, 
+                 MessageBoxImage.Warning
+                 );
+
+             if (result == MessageBoxResult.Yes)
+             {
+                 ControladorABM.EliminarCuenta(usuario);
+                 CerrarSesion();
+             }
+         }*/
     }
 }

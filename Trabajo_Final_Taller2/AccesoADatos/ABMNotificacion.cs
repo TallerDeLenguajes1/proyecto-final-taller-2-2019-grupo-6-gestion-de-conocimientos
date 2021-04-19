@@ -11,12 +11,15 @@ namespace AccesoADatos
 {
     public class ABMNotificacion
     {
+        //nlog
         private static Logger logger = LogManager.GetCurrentClassLogger();
+
         /// <summary>
         /// Obtiene las notificaciones correspondientes del usuario con el id especificado
         /// </summary>
         /// <param name="idUser"></param>
         /// <returns></returns>
+        
         static public List<Notificacion> GetNotificaciones(int idUser)
         {
             List<Notificacion> notificaciones = new List<Notificacion>();
@@ -43,7 +46,7 @@ namespace AccesoADatos
                     notificaciones.Add(notif);
                 }
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -64,6 +67,7 @@ namespace AccesoADatos
         /// </summary>
         /// <param name="idUserPregunta"></param>
         /// <param name="idPregunta"></param>
+        
         static public void AltaNotificacion(int idUserPregunta, int idPregunta)
         {
             try
@@ -75,12 +79,12 @@ namespace AccesoADatos
                 //Armo mi command con el query y la conexion
                 SqlCommand command = new SqlCommand(query, Conexion_Desconexion.Con);
                 //Paso los ids codificados por parametro
-                command.Parameters.AddWithValue("@id_user",idUserPregunta);
+                command.Parameters.AddWithValue("@id_user", idUserPregunta);
                 command.Parameters.AddWithValue("@id_pregunta", idPregunta);
                 //Ejecuto el query
                 command.ExecuteNonQuery();
                 //Desconecto la base de datos
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
             }
             catch (Exception ex)
             {
@@ -100,6 +104,7 @@ namespace AccesoADatos
         /// Elimina de la base de datos la notificacion con el id especificado
         /// </summary>
         /// <param name="idNotificacion"></param>
+
         static public void BajaNotificacion(int idNotificacion)
         {
             try
@@ -115,7 +120,7 @@ namespace AccesoADatos
                 //Ejecuto el query
                 command.ExecuteNonQuery();
                 //Cierro la conexion a la Bd
-                Conexion_Desconexion.Desconnect();
+                Conexion_Desconexion.Disconnect();
 
             }
             catch (Exception ex)
